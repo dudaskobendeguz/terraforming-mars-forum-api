@@ -3,10 +3,8 @@ package com.codecool.terraformingmarsforum.controller;
 import com.codecool.terraformingmarsforum.model.Comment;
 import com.codecool.terraformingmarsforum.service.CommentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.net.URI;
 import java.net.URISyntaxException;

@@ -1,9 +1,7 @@
 package com.codecool.terraformingmarsforum.model;
 
-import com.codecool.terraformingmarsforum.service.DAO.CommentDAO;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Data
 @Builder
