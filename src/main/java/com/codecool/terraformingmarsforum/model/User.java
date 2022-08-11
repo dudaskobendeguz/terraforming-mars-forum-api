@@ -10,6 +10,6 @@ public class User {
     private int id;
     private String name;
     private String password;
-    private String nickName;
+    private String nickname;
     private String imgUrl;
 }
