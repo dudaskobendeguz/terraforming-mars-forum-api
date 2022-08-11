@@ -14,7 +14,8 @@ public class PostCreator {
 
     @PostConstruct
     public void initialize() {
-        System.out.println(postMemory);
+        // TODO
+        System.out.println("Adding values to PostMemory...");
     }
 
 }
