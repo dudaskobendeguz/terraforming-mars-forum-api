@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public abstract class Post {
+public class Post {
     private final int id;
     private String title;
     private String description;
