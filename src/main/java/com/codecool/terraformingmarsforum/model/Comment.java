@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Builder
 public class Comment {
 
-    private final int id;
-    private final String description;
-    private final User user;
+    private int id;
+    private String description;
+    private User user;
 }
