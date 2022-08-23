@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {InMemoryDbService} from "angular-in-memory-web-api";
 import {User} from "../interfaces/user";
+import {LeaguePost} from "../interfaces/league-post";
 import {PostComment} from "../interfaces/post-comment";
 
 @Injectable({
@@ -21,7 +22,7 @@ export class InMemoryDataService implements InMemoryDbService{
         username: "bende",
         password: "1234"
       }
-    ]
+    ];
     const comments: PostComment[] = [
       {
         id: 1,
@@ -34,6 +35,16 @@ export class InMemoryDataService implements InMemoryDbService{
         timestamp: new Date()
       }
     ]
-    return {users, comments};
+    const leaguePosts: LeaguePost[] = [
+      {
+        id: 1,
+        timestamp: new Date(),
+        description: "Im a league post description",
+        imageSource: "https://bobbyhadz.com/images/blog/typescript-date-format/banner.webp",
+        leagueDetails: {id: 1},
+        comments: comments
+      }
+    ]
+    return {users, leaguePosts, comments};
   }
 }
