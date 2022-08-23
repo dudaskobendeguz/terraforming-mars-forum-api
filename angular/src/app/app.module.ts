@@ -6,11 +6,13 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {InMemoryDataService} from "./services/in-memory-data.service";
+import { MessageLoggerComponent } from './components/message-logger/message-logger.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MessageLoggerComponent
   ],
   imports: [
     BrowserModule,
