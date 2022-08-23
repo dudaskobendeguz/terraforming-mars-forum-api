@@ -10,12 +10,14 @@ import {MessageLoggerComponent} from './components/message-logger/message-logger
 import {FooterComponent} from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MessageLoggerComponent,
+    CommentComponent,
     FooterComponent,
     HeaderComponent,
     NavigationBarComponent
