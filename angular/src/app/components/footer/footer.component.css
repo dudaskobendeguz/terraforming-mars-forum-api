@@ -1,0 +1,10 @@
+footer {
+  background-color: lightgray;
+  padding: 15px;
+  height: auto;
+}
+
+small {
+  text-align: center;
+  margin: 0;
+}
