@@ -8,13 +8,17 @@ import {HttpClientModule} from "@angular/common/http";
 import {InMemoryDataService} from "./services/in-memory-data.service";
 import {MessageLoggerComponent} from './components/message-logger/message-logger.component';
 import {FooterComponent} from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MessageLoggerComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent,
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,
