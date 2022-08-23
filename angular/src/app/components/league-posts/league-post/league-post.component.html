@@ -1,0 +1,10 @@
+<div class="league-post" *ngIf="post" id="league-post-{{ post.id }}">
+  <h2>League Post#{{ post.id }}</h2>
+  <img src="{{ post.imageSource }}" alt="#{{ post.id }}League Post's Image">
+  <h3>League Details</h3>
+  <p>{{ post.leagueDetails }}</p>
+  <h3>Comments:</h3>
+  <div class="comments" *ngFor="let comment of post.comments">
+    <app-comment [comment]="comment"></app-comment>
+  </div>
+</div>
