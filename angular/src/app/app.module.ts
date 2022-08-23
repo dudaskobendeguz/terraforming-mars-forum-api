@@ -11,6 +11,8 @@ import {FooterComponent} from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { UserPostContainerComponent } from './components/user-post-container/user-post-container.component';
+import { UserPostComponent } from './components/user-post/user-post.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { CommentComponent } from './components/comment/comment.component';
     CommentComponent,
     FooterComponent,
     HeaderComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    UserPostContainerComponent,
+    UserPostComponent
   ],
   imports: [
     BrowserModule,

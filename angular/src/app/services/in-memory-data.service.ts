@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {InMemoryDbService} from "angular-in-memory-web-api";
 import {User} from "../interfaces/user";
+import {UserPost} from "../interfaces/user-post";
 import {LeaguePost} from "../interfaces/league-post";
 import {PostComment} from "../interfaces/post-comment";
 
@@ -21,6 +22,23 @@ export class InMemoryDataService implements InMemoryDbService{
         imageSource: "https://xsgames.co/randomusers/assets/images/favicon.png",
         username: "bende",
         password: "1234"
+      }
+    ];
+
+    const userPosts: UserPost[] = [
+      {
+        id: 1,
+        timestamp: new Date(),
+        user: users[0],
+        description: "This is the first test post of Hello user",
+        comments: [],
+      },
+      {
+        id: 2,
+        timestamp: new Date(),
+        user: users[0],
+        description: "This is the second test post of Hello user",
+        comments: [],
       }
     ];
     const comments: PostComment[] = [
@@ -45,6 +63,6 @@ export class InMemoryDataService implements InMemoryDbService{
         comments: comments
       }
     ]
-    return {users, leaguePosts, comments};
+    return {users, userPosts, leaguePosts, comments};
   }
 }
