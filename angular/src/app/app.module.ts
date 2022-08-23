@@ -6,13 +6,15 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {InMemoryDataService} from "./services/in-memory-data.service";
-import { MessageLoggerComponent } from './components/message-logger/message-logger.component';
+import {MessageLoggerComponent} from './components/message-logger/message-logger.component';
+import {FooterComponent} from './components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MessageLoggerComponent
+    MessageLoggerComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
