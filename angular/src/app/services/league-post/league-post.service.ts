@@ -9,7 +9,7 @@ import {LeaguePost} from "../../interfaces/league-post";
   providedIn: 'root'
 })
 export class LeaguePostService {
-  private leaguePostsUrl: string = 'api/league-posts';
+  private leaguePostsUrl: string = 'api/leaguePosts';
   private httpOptions: {} = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
