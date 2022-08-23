@@ -30,7 +30,14 @@ export class InMemoryDataService implements InMemoryDbService{
         id: 1,
         timestamp: new Date(),
         user: users[0],
-        description: "This is a test user post",
+        description: "This is the first test post of Hello user",
+        comments: [],
+      },
+      {
+        id: 2,
+        timestamp: new Date(),
+        user: users[0],
+        description: "This is the second test post of Hello user",
         comments: [],
       }
     ];
