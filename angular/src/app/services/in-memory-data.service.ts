@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {InMemoryDbService} from "angular-in-memory-web-api";
 import {User} from "../interfaces/user";
-import {Comment} from "../interfaces/comment";
+import {PostComment} from "../interfaces/post-comment";
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class InMemoryDataService implements InMemoryDbService{
         password: "1234"
       }
     ]
-    const comments: Comment[] = [
+    const comments: PostComment[] = [
       {
         id: 1,
         user: users[0],
