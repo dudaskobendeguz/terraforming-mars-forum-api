@@ -1,4 +1,5 @@
 import {LeagueDetails} from "./league-details";
+import {PostComment} from "./post-comment";
 
 export interface LeaguePost {
   id: number,
@@ -6,5 +7,5 @@ export interface LeaguePost {
   description: string,
   imageSource: string,
   leagueDetails: LeagueDetails,
-  comments: Comment[]
+  comments: PostComment[]
 }
