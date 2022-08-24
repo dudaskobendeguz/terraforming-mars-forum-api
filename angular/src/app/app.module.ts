@@ -18,7 +18,6 @@ import { LeaguePostComponent } from './components/league-posts/league-post/leagu
 import { UserPostContainerComponent } from './components/user-post-components/user-post-container/user-post-container.component';
 import { UserPostComponent } from './components/user-post-components/user-post/user-post.component';
 import { UserComponent } from './components/user/user.component';
-import { UserPostFormComponent } from './components/user-post-components/user-post-form/user-post-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from "@angular/material/slider";
 import {MatDialogModule} from "@angular/material/dialog";
@@ -47,7 +46,6 @@ import { AddUserPostDialogComponent } from './components/user-post-components/ad
     LeaguePostComponent,
     UserComponent,
     LeaguePostComponent,
-    UserPostFormComponent,
     EditUserPostDialogComponent,
     DeleteUserPostDialogComponent,
     AddUserPostDialogComponent
