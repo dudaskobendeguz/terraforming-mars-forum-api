@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UserPost} from "../../../interfaces/user-post";
 import {MatDialog} from "@angular/material/dialog";
 import {EditUserPostDialogComponent} from "../edit-user-post-dialog/edit-user-post-dialog.component";
+import {DeleteUserPostDialogComponent} from "../delete-user-post-dialog/delete-user-post-dialog.component";
 
 @Component({
   selector: 'app-user-post',
@@ -21,21 +22,27 @@ export class UserPostComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteUserPost(): void {
-    this.onDeleteUserPost.emit(this.userPost);
-  }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(EditUserPostDialogComponent, {
+  openEditDialog(): void {
+    const editDialog = this.dialog.open(EditUserPostDialogComponent, {
       data: {
         description: this.userPost?.description
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    editDialog.afterClosed().subscribe(result => {
       if (this.userPost && result) {
         this.userPost.description = result;
         this.onUpdateUserPost.emit(this.userPost);
+      }
+    })
+  }
+
+  openDeleteDialog(): void {
+    const deleteDialog = this.dialog.open(DeleteUserPostDialogComponent);
+
+    deleteDialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.onDeleteUserPost.emit(this.userPost);
       }
     })
   }

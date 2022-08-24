@@ -26,6 +26,7 @@ import { EditUserPostDialogComponent } from './components/user-post-components/e
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import { DeleteUserPostDialogComponent } from './components/user-post-components/delete-user-post-dialog/delete-user-post-dialog.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {MatInputModule} from "@angular/material/input";
     UserComponent,
     LeaguePostComponent,
     UserPostFormComponent,
-    EditUserPostDialogComponent
+    EditUserPostDialogComponent,
+    DeleteUserPostDialogComponent
   ],
   imports: [
     BrowserModule,

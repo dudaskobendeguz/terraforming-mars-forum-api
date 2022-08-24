@@ -2,6 +2,6 @@
   <small>id: {{userPost.id}}</small>
   <h3>{{userPost.id}}: {{userPost.user.firstName}} {{userPost.user.lastName}}</h3>
   <p>{{userPost.description}}</p>
-  <button mat-flat-button type="button" (click)="deleteUserPost()">Delete</button>
-  <button *ngIf="userPost" mat-flat-button (click)="openDialog()">Edit</button>
+  <button mat-flat-button type="button" (click)="openDeleteDialog()">Delete</button>
+  <button *ngIf="userPost" mat-flat-button (click)="openEditDialog()">Edit</button>
 </div>
