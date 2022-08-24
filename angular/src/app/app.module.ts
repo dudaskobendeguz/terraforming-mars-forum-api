@@ -27,6 +27,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { DeleteUserPostDialogComponent } from './components/user-post-components/delete-user-post-dialog/delete-user-post-dialog.component';
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { DeleteUserPostDialogComponent } from './components/user-post-components
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
