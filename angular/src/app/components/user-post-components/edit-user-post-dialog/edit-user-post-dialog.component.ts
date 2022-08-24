@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {UserPost} from "../../../interfaces/user-post";
 
 @Component({
   selector: 'app-edit-user-post-dialog',
@@ -9,7 +10,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 export class EditUserPostDialogComponent implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<EditUserPostDialogComponent>
+    public dialogRef: MatDialogRef<EditUserPostDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: UserPost
   ) {
   }
 

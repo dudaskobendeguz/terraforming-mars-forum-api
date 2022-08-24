@@ -25,6 +25,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { EditUserPostComponent } from './components/user-post-components/edit-user-post/edit-user-post.component';
 import { EditUserPostDialogComponent } from './components/user-post-components/edit-user-post-dialog/edit-user-post-dialog.component';
 import {MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import {MatButtonModule} from "@angular/material/button";
     BrowserAnimationsModule,
     MatSliderModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

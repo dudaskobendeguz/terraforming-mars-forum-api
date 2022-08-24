@@ -1,7 +1,10 @@
 <h1 mat-dialog-title>Edit Post</h1>
 <div mat-dialog-content>
-  <p>Here is a post!</p>
+  <mat-form-field appearance="fill">
+    <textarea matInput [(ngModel)]="data.description"></textarea>
+  </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="closeDialog()">OK</button>
+  <button mat-flat-button (click)="closeDialog()">Close</button>
+  <button mat-raised-button [mat-dialog-close]="data.description">Save</button>
 </div>
