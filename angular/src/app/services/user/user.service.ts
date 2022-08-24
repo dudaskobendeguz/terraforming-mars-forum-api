@@ -4,6 +4,7 @@ import {catchError, Observable, tap} from "rxjs";
 import {User} from "../../interfaces/user";
 import {ErrorHandlerService} from "../error-handler/error-handler.service";
 import {MessageLoggerService} from "../message-logger/message-logger.service";
+import {InMemoryDataService} from "../in-memory-data.service";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class UserService {
   constructor(
     private messageLogger: MessageLoggerService,
     private http: HttpClient,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private memory: InMemoryDataService
   ) { }
 
   getUsers(): Observable<User[]> {
@@ -31,4 +33,10 @@ export class UserService {
   private log(message: string): void {
     this.messageLogger.add(UserService.name, message);
   }
+
+
+  getLoggedInUser(): User {
+    return this.memory.createDb().users[0];
+  }
+
 }

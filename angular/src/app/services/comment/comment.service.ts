@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {MessageLoggerService} from "../message-logger/message-logger.service";
 import {ErrorHandlerService} from "../error-handler/error-handler.service";
 import {catchError, Observable, tap} from "rxjs";
-import {Comment} from "../../interfaces/comment";
+import {User} from "../../interfaces/user";
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +30,8 @@ export class CommentService {
 
   private log(message: string): void {
     this.messageLogger.add(CommentService.name, message);
+  }
+
+  addComment(description: string, user: User) {
   }
 }
