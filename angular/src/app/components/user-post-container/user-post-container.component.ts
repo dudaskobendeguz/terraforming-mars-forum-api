@@ -44,7 +44,7 @@ export class UserPostContainerComponent implements OnInit {
   }
 
   deleteUserPost(userPost: UserPost) {
-    this.userPosts = this.userPosts.filter(post => post.description !== userPost.description);
+    this.userPosts = this.userPosts.filter(post => post !== userPost);
     this.userPostService.deleteUserPost(userPost).subscribe();
     this.log(`deleteUserPost: delete user post=${userPost.id}`);
 
