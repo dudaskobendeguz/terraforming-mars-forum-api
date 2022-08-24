@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {MessageLoggerService} from "../message-logger/message-logger.service";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ErrorHandlerService} from "../error-handler/error-handler.service";
-import {catchError, Observable, tap} from "rxjs";
+import {catchError, Observable, of, tap} from "rxjs";
 import {UserPost} from "../../interfaces/user-post";
 
 @Injectable({
@@ -10,6 +10,9 @@ import {UserPost} from "../../interfaces/user-post";
 })
 export class UserPostService {
   private userPostsUrl: string = "api/userPosts";
+  private httpOptions: {} = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
   constructor(
     private messageLogger: MessageLoggerService,
@@ -22,7 +25,15 @@ export class UserPostService {
       .pipe(
         tap((_) => this.log(`user posts fetched (TAP)`)),
         catchError(this.errorHandler.handleError<UserPost[]>('getUserPosts', []))
-      )
+      );
+  }
+
+  addUserPost(userPost: UserPost): Observable<UserPost> {
+    return this.http.post<UserPost>(this.userPostsUrl, userPost, this.httpOptions)
+      .pipe(
+        tap((_) => this.log(`created user post with id=${userPost.id}`)),
+        catchError(this.errorHandler.handleError<UserPost>('addUserPost'))
+      );
   }
 
   private log(message: string): void {
