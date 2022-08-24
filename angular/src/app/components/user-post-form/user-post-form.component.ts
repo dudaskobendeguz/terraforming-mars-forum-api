@@ -24,9 +24,23 @@ export class UserPostFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.messageLogger.add(UserPostFormComponent.name,
-      `Submitted form with description: ${this.postForm.value.description}`);
-    this.postForm.reset();
+    const description = this.postForm.value.description;
+    if (!description) {
+      const errorMessage: string = "Cannot create post with empty description!";
+      this.log(errorMessage);
+      alert(errorMessage);
+    } else if (confirm("Are you sure you want to create a post?")) {
+      this.addPost(description);
+      this.postForm.reset();
+    }
+  }
+
+  addPost(description: string): void {
+    this.log(`Added post: ${description}`);
+  }
+
+  log(message: string): void {
+    this.messageLogger.add(UserPostFormComponent.name, message);
   }
 
 }
