@@ -48,6 +48,7 @@ export class UserPostContainerComponent implements OnInit {
 
   openAddDialog(): void {
     const addDialog = this.dialog.open(AddUserPostDialogComponent, {
+      width: "60vw",
       data: {
         description: ""
       }

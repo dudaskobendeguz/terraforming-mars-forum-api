@@ -24,6 +24,7 @@ export class UserPostComponent implements OnInit {
 
   openEditDialog(): void {
     const editDialog = this.dialog.open(EditUserPostDialogComponent, {
+      width: "60vw",
       data: {
         description: this.userPost?.description
       }

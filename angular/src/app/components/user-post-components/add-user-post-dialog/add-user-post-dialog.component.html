@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Add Post</h1>
+<h1 mat-dialog-title align="center">Add Post</h1>
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
     <mat-label>Add post description</mat-label>
@@ -7,7 +7,7 @@
     <mat-hint align="end">{{textArea.minLength}}/{{textArea.value?.length || 0}}</mat-hint>
   </mat-form-field>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions align="end">
   <button mat-flat-button (click)="closeDialog()">Cancel</button>
   <button mat-flat-button color="primary" [mat-dialog-close]="data.description" [disabled]="data.description.length < textArea.minLength">Save</button>
 </div>
