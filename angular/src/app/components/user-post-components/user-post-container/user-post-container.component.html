@@ -1,6 +1,7 @@
 <div class="user-post-container">
   <h2>User Posts</h2>
   <button mat-raised-button color="primary" (click)="openAddDialog()">Add Post</button>
+  <mat-spinner *ngIf="!userPosts.length"></mat-spinner>
   <div class="user-posts" *ngFor="let userPost of userPosts">
     <app-user-post
       [userPost]="userPost"
