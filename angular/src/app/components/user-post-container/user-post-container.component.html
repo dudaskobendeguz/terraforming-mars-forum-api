@@ -1,5 +1,6 @@
 <div class="user-post-container">
   <h2>User Post Container</h2>
+  <app-user-post-form></app-user-post-form>
   <div class="user-posts" *ngFor="let userPost of userPosts">
     <app-user-post [userPost]="userPost"></app-user-post>
   </div>
