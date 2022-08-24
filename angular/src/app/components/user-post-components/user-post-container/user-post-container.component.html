@@ -1,6 +1,6 @@
 <div class="user-post-container">
-  <h2>User Post Container</h2>
-  <app-user-post-form (onAddUserPost)="addUserPost($event)"></app-user-post-form>
+  <h2>User Posts</h2>
+  <button mat-raised-button color="primary" (click)="openAddDialog()">Add Post</button>
   <div class="user-posts" *ngFor="let userPost of userPosts">
     <app-user-post
       [userPost]="userPost"
