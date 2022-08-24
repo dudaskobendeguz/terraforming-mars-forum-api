@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserService} from "../../services/user/user.service";
 import {User} from "../../interfaces/user";
 import {CommentService} from "../../services/comment/comment.service";
 import {MessageLoggerService} from "../../services/message-logger/message-logger.service";
-import { FormBuilder } from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
+import {PostComment} from "../../interfaces/post-comment";
 
 @Component({
   selector: 'app-comment-form',
@@ -12,17 +13,14 @@ import { FormBuilder } from '@angular/forms';
 })
 export class CommentFormComponent implements OnInit {
 
-  user?: User
+  user?: User;
+  postForm = this.formBuilder.group({description: ''});
+  @Output() onAddComment: EventEmitter<PostComment> = new EventEmitter<PostComment>();
 
-  checkoutForm = this.formBuilder.group({
-    description: ''
-  });
-
-  constructor(
-    private userService: UserService,
-    private commentService: CommentService,
-    private logger: MessageLoggerService,
-    private formBuilder: FormBuilder
+  constructor(private userService: UserService,
+              private commentService: CommentService,
+              private logger: MessageLoggerService,
+              private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -34,9 +32,22 @@ export class CommentFormComponent implements OnInit {
   }
 
   addComment(): void {
-    if (this.user){
-      this.commentService.addComment((<string>this.checkoutForm.value.description), this.user)
+    const description = this.postForm.value.description;
+    if (!description) {
+      const errorMsg: string = `Cannot create comment`;
+      alert(errorMsg);
+      console.log(errorMsg);
+    } else if (confirm("Post this comment!")) {
+      if (this.user) {
+        const comment: PostComment = {
+          id: 0,
+          user: this.user,
+          description: description,
+          timestamp: new Date()
+        };
+        this.onAddComment.emit(comment);
+      }
+      this.postForm.reset();
     }
   }
-
 }
