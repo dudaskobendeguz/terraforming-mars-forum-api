@@ -19,6 +19,7 @@ import { UserPostContainerComponent } from './components/user-post-container/use
 import { UserPostComponent } from './components/user-post/user-post.component';
 import { UserComponent } from './components/user/user.component';
 import { UserPostFormComponent } from './components/user-post-form/user-post-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { UserPostFormComponent } from './components/user-post-form/user-post-for
       InMemoryDataService, {dataEncapsulation: false}
     ),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
