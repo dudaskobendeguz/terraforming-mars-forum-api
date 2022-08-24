@@ -4,6 +4,8 @@ import {MessageLoggerService} from "../message-logger/message-logger.service";
 import {ErrorHandlerService} from "../error-handler/error-handler.service";
 import {catchError, Observable, tap} from "rxjs";
 import {User} from "../../interfaces/user";
+import {PostComment} from "../../interfaces/post-comment";
+import {UserPost} from "../../interfaces/user-post";
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +34,14 @@ export class CommentService {
     this.messageLogger.add(CommentService.name, message);
   }
 
-  addComment(description: string, user: User) {
+  addComment(comment: PostComment): Observable<PostComment> {
+    // TODO: call this method from the page detail view if created
+
+    return this.http.post<PostComment>(this.commentsUrl, comment, this.httpOptions)
+      .pipe(
+        tap((a) => this.log(`created comment | id=${comment.id}`)),
+        catchError(this.errorHandler.handleError<UserPost>('addUserPost'))
+      )
   }
 }
+
