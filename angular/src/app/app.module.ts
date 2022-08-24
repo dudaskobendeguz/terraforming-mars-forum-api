@@ -17,6 +17,7 @@ import { LeaguePostContainerComponent } from './components/league-posts/league-p
 import { LeaguePostComponent } from './components/league-posts/league-post/league-post.component';
 import { UserPostContainerComponent } from './components/user-post-container/user-post-container.component';
 import { UserPostComponent } from './components/user-post/user-post.component';
+import { UserComponent } from './components/user/user.component';
 import { UserPostFormComponent } from './components/user-post-form/user-post-form.component';
 
 
@@ -33,6 +34,8 @@ import { UserPostFormComponent } from './components/user-post-form/user-post-for
     UserPostComponent,
     NavigationBarComponent,
     LeaguePostContainerComponent,
+    LeaguePostComponent,
+    UserComponent,
     LeaguePostComponent,
     UserPostFormComponent
   ],

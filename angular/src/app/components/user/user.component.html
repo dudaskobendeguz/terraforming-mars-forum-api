@@ -1,0 +1,14 @@
+<div class="user" *ngIf="user" id="user-{{ user.id }}">
+  <div class="user-picture">
+    <h3>Profile picture</h3>
+    <img src="{{ user.imageSource }}" alt="#{{user.id}} User's image ">
+  </div>
+  <div class="user-data">
+    <h3>Profile</h3>
+    <p>Username: {{ user.username }}</p>
+    <p>First name: {{ user.firstName }}</p>
+    <p>Last name: {{ user.lastName }}</p>
+    <p>Email: {{ user.email }}</p>
+<!--    TODO figure out password display-->
+  </div>
+</div>
