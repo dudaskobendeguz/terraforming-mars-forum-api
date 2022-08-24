@@ -8,7 +8,7 @@
   </div>
   <div class="separator"></div>
 
-  <form [formGroup]="checkoutForm" (ngSubmit)="addComment()">
+  <form [formGroup]="postForm" (ngSubmit)="addComment()">
     <textarea id="description" class="description" formControlName="description"></textarea>
     <br>
     <button type="submit" class="submit-btn">Submit</button>
