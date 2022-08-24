@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {MessageLoggerService} from "../../services/message-logger/message-logger.service";
+import {UserPostService} from "../../services/user-post/user-post.service";
+import {UserPost} from "../../interfaces/user-post";
+import {User} from "../../interfaces/user";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-user-post-form',
@@ -9,6 +13,9 @@ import {MessageLoggerService} from "../../services/message-logger/message-logger
 })
 export class UserPostFormComponent implements OnInit {
 
+  private user?: User;
+  @Output() onAddUserPost: EventEmitter<UserPost> = new EventEmitter<UserPost>();
+
   postForm = this.formBuilder.group(
     {
       description: ''
@@ -16,11 +23,23 @@ export class UserPostFormComponent implements OnInit {
   );
 
   constructor(
+    private userPostService: UserPostService,
+    private userService: UserService,
     private formBuilder: FormBuilder,
     private messageLogger: MessageLoggerService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
+    this.getUser();
+  }
+
+  getUser(): void {
+    this.userService.getUsers().subscribe(users => {
+      if (users.length) {
+        this.user = users[0];
+      }
+    });
   }
 
   onSubmit(): void {
@@ -36,7 +55,19 @@ export class UserPostFormComponent implements OnInit {
   }
 
   addPost(description: string): void {
-    this.log(`Added post: ${description}`);
+    // Generates id
+    this.userPostService.getUserPosts().subscribe(posts => {
+      if (this.user) {
+        this.onAddUserPost.emit({
+          id: posts.length + 1,
+          timestamp: new Date(),
+          user: this.user,
+          description: description,
+          comments: []
+        });
+      }
+    });
+
   }
 
   log(message: string): void {
