@@ -1,9 +1,13 @@
-<div *ngIf="comment">
+<div *ngIf="comment" class="comment-form">
   <div class="comment-head">
-    <img alt="{{comment.user.username}}'s profile picture" src="{{comment.user.imageSource}}">
-    <p class="user-full-name">{{comment.user.firstName}} {{comment.user.lastName}}</p>
-    <p class="username">{{comment.user.username}}</p>
+    <img class="profile-picture" alt="{{comment.user.username}}'s profile picture" src="{{comment.user.imageSource}}">
+    <div class="comment-head-text">
+      <p class="user-full-name">{{comment.user.firstName}} {{comment.user.lastName}}</p>
+      <p class="username">{{comment.user.username}}</p>
+    </div>
   </div>
+
   <div class="separator"></div>
+
   <p class="comment-body">{{comment.description}}</p>
 </div>

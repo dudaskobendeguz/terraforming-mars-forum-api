@@ -1,0 +1,43 @@
+.comment-form {
+  background-color: burlywood;
+}
+
+.profile-picture {
+  display: inline;
+  height: 3.5em;
+}
+
+.user-full-name {
+  display: inline;
+
+}
+
+.username {
+  display: inline;
+  padding-left: 3%;
+}
+
+.description {
+  text-align: center;
+  height: 4em;
+  width: 90%;
+}
+
+.submit-btn {
+  margin-left: 85%;
+}
+
+.comment-head {
+  vertical-align: top;
+  background-color: peru;
+}
+
+.comment-head-text {
+  display: inline;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+}
