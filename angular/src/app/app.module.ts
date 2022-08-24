@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
+import {FormsModule} from "@angular/forms";
 import { LeaguePostContainerComponent } from './components/league-posts/league-post-container/league-post-container.component';
 import { LeaguePostComponent } from './components/league-posts/league-post/league-post.component';
 import { UserPostContainerComponent } from './components/user-post-container/user-post-container.component';
@@ -42,7 +43,8 @@ import { UserPostComponent } from './components/user-post/user-post.component';
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false}
-    )
+    ),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
