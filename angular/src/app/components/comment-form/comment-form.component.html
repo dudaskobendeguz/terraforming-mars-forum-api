@@ -8,9 +8,9 @@
   </div>
   <div class="separator"></div>
 
-  <textarea class="description" [(ngModel)]="description"></textarea>
-  <br>
-  <button type="button" class="submit-btn"
-      (click)="addComment()"
-  >Submit</button>
+  <form [formGroup]="checkoutForm" (ngSubmit)="addComment()">
+    <textarea id="description" class="description" formControlName="description"></textarea>
+    <br>
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
 </div>

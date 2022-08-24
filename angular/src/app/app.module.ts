@@ -12,7 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LeaguePostContainerComponent } from './components/league-posts/league-post-container/league-post-container.component';
 import { LeaguePostComponent } from './components/league-posts/league-post/league-post.component';
 import { UserPostContainerComponent } from './components/user-post-container/user-post-container.component';
@@ -44,7 +44,8 @@ import { UserPostComponent } from './components/user-post/user-post.component';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false}
     ),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
