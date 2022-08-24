@@ -3,4 +3,5 @@ div.league-posts {
   text-align: center;
   justify-content: center;
   border-radius: 5px;
+  height: auto;
 }
