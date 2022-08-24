@@ -2,5 +2,6 @@
   <small>id: {{userPost.id}}</small>
   <h3>{{userPost.id}}: {{userPost.user.firstName}} {{userPost.user.lastName}}</h3>
   <p>{{userPost.description}}</p>
-  <button type="button" (click)="deleteUserPost()">Delete</button>
+  <button mat-flat-button type="button" (click)="deleteUserPost()">Delete</button>
+  <app-edit-user-post [userPost]="userPost"></app-edit-user-post>
 </div>

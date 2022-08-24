@@ -20,6 +20,11 @@ import { UserPostComponent } from './components/user-post/user-post.component';
 import { UserComponent } from './components/user/user.component';
 import { UserPostFormComponent } from './components/user-post-form/user-post-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSliderModule} from "@angular/material/slider";
+import {MatDialogModule} from "@angular/material/dialog";
+import { EditUserPostComponent } from './components/edit-user-post/edit-user-post.component';
+import { EditUserPostDialogComponent } from './components/edit-user-post-dialog/edit-user-post-dialog.component';
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -38,7 +43,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LeaguePostComponent,
     UserComponent,
     LeaguePostComponent,
-    UserPostFormComponent
+    UserPostFormComponent,
+    EditUserPostComponent,
+    EditUserPostDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ),
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
