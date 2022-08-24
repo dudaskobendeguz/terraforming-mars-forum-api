@@ -1,12 +1,10 @@
 .user-post-container {
-  background: darkblue;
   padding: 25px;
 }
 
-h2 {
-  color: white;
-}
-
-button {
-  margin: 10px;
+.user-posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
