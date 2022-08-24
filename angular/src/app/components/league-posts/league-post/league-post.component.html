@@ -1,5 +1,7 @@
 <div class="league-post" *ngIf="post" id="league-post-{{ post.id }}">
   <h2>League Post#{{ post.id }}</h2>
+  <p>{{post.timestamp | date: 'medium'}}</p>
+  <p class="description">{{ post.description }}</p>
   <img src="{{ post.imageSource }}" alt="#{{ post.id }}League Post's Image">
   <h3>League Details</h3>
   <p>{{ post.leagueDetails }}</p>

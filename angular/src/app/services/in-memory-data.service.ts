@@ -22,7 +22,16 @@ export class InMemoryDataService implements InMemoryDbService{
         imageSource: "https://xsgames.co/randomusers/assets/images/favicon.png",
         username: "bende",
         password: "1234"
-      }
+      },
+      {
+        id: 2,
+        email: "test2@gmail.com",
+        firstName: "Test",
+        lastName: "user2",
+        imageSource: "https://cdn1.iconfinder.com/data/icons/linkedin-ui-glyph/48/Sed-04-512.png",
+        username: "TestedUserName 2",
+        password: "1234"
+      },
     ];
 
     const userPosts: UserPost[] = [
@@ -60,6 +69,24 @@ export class InMemoryDataService implements InMemoryDbService{
         description: "Im a league post description",
         imageSource: "https://bobbyhadz.com/images/blog/typescript-date-format/banner.webp",
         leagueDetails: {id: 1},
+        comments: comments
+      },
+      {
+        id: 2,
+        timestamp: new Date(),
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\n" +
+          "molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\n" +
+          "numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\n" +
+          "optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\n" +
+          "obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\n" +
+          "nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\n" +
+          "tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,\n" +
+          "quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos \n" +
+          "sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam\n" +
+          "recusandae alias error harum maxime adipisci amet laborum. Perspiciatis \n" +
+          "minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit ",
+        imageSource: "https://raketa.hu/uploads/2022/07/mars_sample_return-768x432.jpg",
+        leagueDetails: {id: 2},
         comments: comments
       }
     ]
