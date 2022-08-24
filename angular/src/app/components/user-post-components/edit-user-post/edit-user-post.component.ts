@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {EditUserPostDialogComponent} from "../edit-user-post-dialog/edit-user-post-dialog.component";
-import {UserPost} from "../../interfaces/user-post";
+import {UserPost} from "../../../interfaces/user-post";
 
 @Component({
   selector: 'app-edit-user-post',

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {UserPostContainerComponent} from "./components/user-post-container/user-post-container.component";
+import {UserPostContainerComponent} from "./components/user-post-components/user-post-container/user-post-container.component";
 import {
   LeaguePostContainerComponent
 } from "./components/league-posts/league-post-container/league-post-container.component";
