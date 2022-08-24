@@ -49,4 +49,9 @@ export class UserPostContainerComponent implements OnInit {
     this.log(`deleteUserPost: delete user post=${userPost.id}`);
 
   }
+
+  updateUserPost(userPost: UserPost) {
+    this.userPostService.updateUserPost(userPost).subscribe();
+    this.log(`updateUserPost: update user post=${userPost.id}`);
+  }
 }

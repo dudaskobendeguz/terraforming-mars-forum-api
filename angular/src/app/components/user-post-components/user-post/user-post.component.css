@@ -5,3 +5,7 @@
   width: 400px;
   height: auto;
 }
+
+button {
+  margin: 5px;
+}

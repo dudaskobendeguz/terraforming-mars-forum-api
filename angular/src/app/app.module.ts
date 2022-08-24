@@ -22,7 +22,6 @@ import { UserPostFormComponent } from './components/user-post-components/user-po
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from "@angular/material/slider";
 import {MatDialogModule} from "@angular/material/dialog";
-import { EditUserPostComponent } from './components/user-post-components/edit-user-post/edit-user-post.component';
 import { EditUserPostDialogComponent } from './components/user-post-components/edit-user-post-dialog/edit-user-post-dialog.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -46,7 +45,6 @@ import {MatInputModule} from "@angular/material/input";
     UserComponent,
     LeaguePostComponent,
     UserPostFormComponent,
-    EditUserPostComponent,
     EditUserPostDialogComponent
   ],
   imports: [
