@@ -3,11 +3,20 @@ div.league-post {
   height: auto;
   background-color: aliceblue;
 }
-img {
+img.league-image {
   width: 400px;
   height: auto;
 }
-p.description {
+div.league-admin {
+  background-color: #77a3cb;
+}
+img.league-admin-picture {
+  width: 50px;
+  height: auto;
+  background-color: brown;
+  border-radius: 30px;
+}
+p.gameType {
   font-size: 1.5em;
   color: #565c5e;
   background-color: #77a3cb;

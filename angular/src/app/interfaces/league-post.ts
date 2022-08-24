@@ -1,11 +1,13 @@
-import {LeagueDetails} from "./league-details";
 import {PostComment} from "./post-comment";
+import {User} from "./user";
 
 export interface LeaguePost {
   id: number,
   timestamp: Date,
-  description: string,
-  imageSource: string,
-  leagueDetails: LeagueDetails,
+  "gameType": string,
+  "name": string,
+  "leagueAdmin": User,
+  "numberOfRounds": number,
+  "imageSource": string,
   comments: PostComment[]
 }

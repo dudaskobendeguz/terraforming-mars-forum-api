@@ -1,10 +1,15 @@
 <div class="league-post" *ngIf="post" id="league-post-{{ post.id }}">
-  <h2>League Post#{{ post.id }}</h2>
+  <h2>{{ post.name }}#{{ post.id }}</h2>
   <p>{{post.timestamp | date: 'medium'}}</p>
-  <p class="description">{{ post.description }}</p>
-  <img src="{{ post.imageSource }}" alt="#{{ post.id }}League Post's Image">
+  <p class="gameType">{{ post.gameType }}</p>
+  <img class="league-image" src="{{ post.imageSource }}" alt="#{{ post.id }}League Post's Image">
   <h3>League Details</h3>
-  <p>{{ post.leagueDetails }}</p>
+  <div class="league-admin">
+    <img src="{{ post.leagueAdmin.imageSource }}" alt="league admin's image" class="league-admin-picture">
+    <p>
+      {{ post.leagueAdmin.firstName | titlecase }} {{ post.leagueAdmin.lastName | titlecase }}({{ post.leagueAdmin.username }})# {{ post.leagueAdmin.id }}
+    </p>
+  </div>
   <h3>Comments:</h3>
   <div class="comments" *ngFor="let comment of post.comments">
     <app-comment [comment]="comment"></app-comment>
