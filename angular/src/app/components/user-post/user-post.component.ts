@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UserPost} from "../../interfaces/user-post";
 
 @Component({
@@ -8,11 +8,15 @@ import {UserPost} from "../../interfaces/user-post";
 })
 export class UserPostComponent implements OnInit {
 
-  @Input() userPost?: UserPost;
+  @Input() public userPost?: UserPost;
+  @Output() onDeleteUserPost: EventEmitter<UserPost> = new EventEmitter<UserPost>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  deleteUserPost(): void {
+    this.onDeleteUserPost.emit(this.userPost);
+  }
 }
