@@ -55,19 +55,16 @@ export class UserPostFormComponent implements OnInit {
   }
 
   addPost(description: string): void {
-    // Generates id
-    this.userPostService.getUserPosts().subscribe(posts => {
       if (this.user) {
-        this.onAddUserPost.emit({
-          id: posts.length + 1,
+        const userPost: UserPost = {
+          id: 0,
           timestamp: new Date(),
           user: this.user,
           description: description,
           comments: []
-        });
+        };
+        this.onAddUserPost.emit(userPost);
       }
-    });
-
   }
 
   log(message: string): void {

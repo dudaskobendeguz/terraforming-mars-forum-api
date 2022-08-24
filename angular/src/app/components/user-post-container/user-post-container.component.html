@@ -2,6 +2,6 @@
   <h2>User Post Container</h2>
   <app-user-post-form (onAddUserPost)="addUserPost($event)"></app-user-post-form>
   <div class="user-posts" *ngFor="let userPost of userPosts">
-    <app-user-post [userPost]="userPost"></app-user-post>
+    <app-user-post [userPost]="userPost" (onDeleteUserPost)="deleteUserPost($event)"></app-user-post>
   </div>
 </div>
