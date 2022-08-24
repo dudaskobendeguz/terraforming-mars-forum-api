@@ -1,0 +1,17 @@
+div.league-post {
+  width: 450px;
+  height: 900px;
+  background-color: aliceblue;
+}
+img {
+  width: 400px;
+  height: auto;
+}
+p.description {
+  font-size: 1.5em;
+  color: #565c5e;
+  background-color: #77a3cb;
+  border-radius: 20px;
+
+}
+
