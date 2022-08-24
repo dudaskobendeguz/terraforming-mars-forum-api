@@ -29,4 +29,16 @@ export class UserPostContainerComponent implements OnInit {
       });
   }
 
+  addUserPost(userPost: UserPost) {
+    this.userPostService.addUserPost(userPost).subscribe(userPost => {
+      this.userPosts.push(userPost);
+      this.log(`addUserPost: add user post=${userPost.id}`);
+    }
+    );
+
+  }
+
+  log(message: string): void {
+    this.messageLogger.add(UserPostContainerComponent.name, message);
+  }
 }
