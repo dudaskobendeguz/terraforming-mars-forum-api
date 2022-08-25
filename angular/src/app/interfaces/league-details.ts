@@ -2,11 +2,11 @@ import {User} from "./user";
 
 export interface LeagueDetails {
   "id": number,
-  "game_type": string,
+  "gameType": string,
   "name": string,
-  "image_source": string,
-  "league_admin": User,
-  "league_players": User[],
+  "imageSource": string,
+  "leagueAdmin": User,
+  "leaguePlayers": User[],
   "numberOfFinishedRounds": number,
   "numberOfInProgressRounds": number,
   "numberOfRounds": number,

@@ -92,11 +92,11 @@ export class InMemoryDataService implements InMemoryDbService{
     const leaguePostDetails: LeagueDetails[] = [
       {
         id: leaguePosts[0].leagueId,
-        game_type: leaguePosts[0].gameType,
+        gameType: leaguePosts[0].gameType,
         name: leaguePosts[0].name,
-        image_source: leaguePosts[0].imageSource,
-        league_admin: leaguePosts[0].leagueAdmin,
-        league_players: users,
+        imageSource: leaguePosts[0].imageSource,
+        leagueAdmin: leaguePosts[0].leagueAdmin,
+        leaguePlayers: users,
         numberOfFinishedRounds: 1,
         numberOfInProgressRounds: 0,
         numberOfRounds: leaguePosts[0].numberOfRounds
