@@ -7,11 +7,11 @@ import {FormBuilder} from '@angular/forms';
 import {PostComment} from "../../interfaces/post-comment";
 
 @Component({
-  selector: 'app-comment-form',
-  templateUrl: './comment-form.component.html',
-  styleUrls: ['./comment-form.component.css']
+  selector: 'app-comment-dialog',
+  templateUrl: './comment-dialog.component.html',
+  styleUrls: ['./comment-dialog.component.css']
 })
-export class CommentFormComponent implements OnInit {
+export class CommentDialog implements OnInit {
 
   user?: User;
   postForm = this.formBuilder.group({description: ''});

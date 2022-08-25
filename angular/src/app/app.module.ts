@@ -11,7 +11,7 @@ import {FooterComponent} from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { CommentComponent } from './components/comment/comment.component';
-import { CommentFormComponent } from './components/comment-form/comment-form.component';
+import { CommentDialog } from './components/comment-dialog/comment-dialog.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LeaguePostContainerComponent } from './components/league-posts/league-post-container/league-post-container.component';
 import { LeaguePostComponent } from './components/league-posts/league-post/league-post.component';
@@ -42,7 +42,7 @@ import { UserRegisterDialogComponent } from './components/user/register/user-reg
     FooterComponent,
     HeaderComponent,
     NavigationBarComponent,
-    CommentFormComponent,
+    CommentDialog,
     UserPostContainerComponent,
     UserPostComponent,
     NavigationBarComponent,
