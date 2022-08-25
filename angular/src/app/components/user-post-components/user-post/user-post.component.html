@@ -12,9 +12,12 @@
       <p>{{userPost.description}}</p>
     </mat-card-content>
 
-    <mat-card-actions align="end">
-      <button mat-flat-button type="button" color="primary" (click)="openEditDialog()">Edit</button>
-      <button mat-flat-button type="button" color="warn" (click)="openDeleteDialog()">Delete</button>
+    <mat-card-actions>
+      <button *ngIf="isPreview" mat-flat-button color="primary" class="details" routerLink="/user-posts/{{userPost.id}}">Details</button>
+      <div *ngIf="!isPreview">
+        <button mat-stroked-button type="button" color="primary" (click)="openEditDialog()">Edit</button>
+        <button mat-flat-button type="button" color="warn" (click)="openDeleteDialog()">Delete</button>
+      </div>
     </mat-card-actions>
   </mat-card>
 </div>

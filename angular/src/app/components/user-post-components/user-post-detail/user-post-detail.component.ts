@@ -33,4 +33,13 @@ export class UserPostDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  deleteUserPost(userPost: UserPost) {
+    this.userPostService.deleteUserPost(userPost).subscribe();
+    this.goBack();
+  }
+
+  updateUserPost(userPost: UserPost) {
+    this.userPostService.updateUserPost(userPost).subscribe();
+  }
 }
