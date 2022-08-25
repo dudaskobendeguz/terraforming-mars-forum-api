@@ -41,4 +41,8 @@ export class LeaguePotsDetailComponent implements OnInit {
       this.messageService.add(LeaguePostDetailService.name, `getPostById(${id}) fetched post`);
     });
   }
+
+  hasComment(): boolean {
+    return this.leaguePost?.comments ? this.leaguePost.comments.length> 0 : false;
+  }
 }

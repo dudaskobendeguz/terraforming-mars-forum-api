@@ -33,6 +33,7 @@ import { UserPostDetailComponent } from './components/user-post-components/user-
 import { ProfilePageComponent } from './components/user/profile-page/profile-page.component';
 import { UserRegisterDialogComponent } from './components/user/register/user-register-dialog.component';
 import { LeaguePotsDetailComponent } from './components/league-posts/league-pots-detail/league-pots-detail.component';
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import { LeaguePotsDetailComponent } from './components/league-posts/league-pots
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
