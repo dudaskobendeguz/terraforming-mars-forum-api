@@ -15,10 +15,16 @@ import { CommentFormComponent } from './components/comment-form/comment-form.com
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LeaguePostContainerComponent } from './components/league-posts/league-post-container/league-post-container.component';
 import { LeaguePostComponent } from './components/league-posts/league-post/league-post.component';
-import { UserPostContainerComponent } from './components/user-post-container/user-post-container.component';
-import { UserPostComponent } from './components/user-post/user-post.component';
+import { UserPostContainerComponent } from './components/user-post-components/user-post-container/user-post-container.component';
+import { UserPostComponent } from './components/user-post-components/user-post/user-post.component';
 import { UserComponent } from './components/user/user.component';
-import { UserPostFormComponent } from './components/user-post-form/user-post-form.component';
+import { UserPostFormComponent } from './components/user-post-components/user-post-form/user-post-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSliderModule} from "@angular/material/slider";
+import {MatDialogModule} from "@angular/material/dialog";
+import { EditUserPostComponent } from './components/user-post-components/edit-user-post/edit-user-post.component';
+import { EditUserPostDialogComponent } from './components/user-post-components/edit-user-post-dialog/edit-user-post-dialog.component';
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -37,7 +43,9 @@ import { UserPostFormComponent } from './components/user-post-form/user-post-for
     LeaguePostComponent,
     UserComponent,
     LeaguePostComponent,
-    UserPostFormComponent
+    UserPostFormComponent,
+    EditUserPostComponent,
+    EditUserPostDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +58,11 @@ import { UserPostFormComponent } from './components/user-post-form/user-post-for
       InMemoryDataService, {dataEncapsulation: false}
     ),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

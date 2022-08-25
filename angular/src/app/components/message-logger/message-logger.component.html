@@ -1,6 +1,6 @@
 <div>
   <h3>Messages: </h3>
-  <button type="button" (click)="messageLoggerService.clear()">Clear</button>
+  <button mat-flat-button type="button" (click)="messageLoggerService.clear()">Clear</button>
   <ol>
     <li *ngFor="let message of messageLoggerService.messages">
       {{ message }}

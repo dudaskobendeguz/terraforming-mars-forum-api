@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {UserPost} from "../../interfaces/user-post";
+import {UserPost} from "../../../interfaces/user-post";
 
 @Component({
   selector: 'app-user-post',

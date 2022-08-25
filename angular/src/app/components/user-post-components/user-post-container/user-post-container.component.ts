@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {UserPost} from "../../interfaces/user-post";
-import {UserPostService} from "../../services/user-post/user-post.service";
-import {MessageLoggerService} from "../../services/message-logger/message-logger.service";
+import {UserPost} from "../../../interfaces/user-post";
+import {UserPostService} from "../../../services/user-post/user-post.service";
+import {MessageLoggerService} from "../../../services/message-logger/message-logger.service";
 
 @Component({
   selector: 'app-user-post-container',

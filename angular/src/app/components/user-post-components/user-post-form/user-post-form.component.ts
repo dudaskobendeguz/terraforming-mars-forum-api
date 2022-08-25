@@ -1,10 +1,10 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
-import {MessageLoggerService} from "../../services/message-logger/message-logger.service";
-import {UserPostService} from "../../services/user-post/user-post.service";
-import {UserPost} from "../../interfaces/user-post";
-import {User} from "../../interfaces/user";
-import {UserService} from "../../services/user/user.service";
+import {MessageLoggerService} from "../../../services/message-logger/message-logger.service";
+import {UserPostService} from "../../../services/user-post/user-post.service";
+import {UserPost} from "../../../interfaces/user-post";
+import {User} from "../../../interfaces/user";
+import {UserService} from "../../../services/user/user.service";
 
 @Component({
   selector: 'app-user-post-form',
