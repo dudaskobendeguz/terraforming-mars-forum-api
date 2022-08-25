@@ -4,12 +4,14 @@ import {UserPostContainerComponent} from "./components/user-post-components/user
 import {
   LeaguePostContainerComponent
 } from "./components/league-posts/league-post-container/league-post-container.component";
+import {UserPostDetailComponent} from "./components/user-post-components/user-post-detail/user-post-detail.component";
 import {ProfilePageComponent} from "./components/user/profile-page/profile-page.component";
 
 const routes: Routes = [
   {path: 'user-posts', component: UserPostContainerComponent},
   {path: 'league-posts', component: LeaguePostContainerComponent},
-  {path: 'profile', component: ProfilePageComponent}
+  {path: 'profile', component: ProfilePageComponent},
+  {path: 'user-posts/:id', component: UserPostDetailComponent}
 ];
 
 @NgModule({
