@@ -29,6 +29,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { UserPostDetailComponent } from './components/user-post-components/user-post-detail/user-post-detail.component';
 import { ProfilePageComponent } from './components/user/profile-page/profile-page.component';
 import { UserRegisterDialogComponent } from './components/user/register/user-register-dialog.component';
+import { LoginDialogComponent } from './components/user/login-dialog/login-dialog.component';
 import {MatIconModule} from "@angular/material/icon";
 import {LeaguePostDetailComponent} from "./components/league-posts/league-post-detail/league-post-detail.component";
 import { TextareaDialogComponent } from './components/dialog-components/textarea-dialog/textarea-dialog.component';
@@ -47,7 +48,6 @@ import { CommentIconComponent } from './components/icons/comment-icon/comment-ic
 import { PlayersIconComponent } from './components/icons/players-icon/players-icon.component';
 import { IconComponent } from './components/icons/icon/icon.component';
 import {MatSelectModule} from "@angular/material/select";
-import { LoginComponent } from './components/user/login/login.component';
 
 
 @NgModule({
@@ -68,6 +68,7 @@ import { LoginComponent } from './components/user/login/login.component';
     UserPostDetailComponent,
     ProfilePageComponent,
     UserRegisterDialogComponent,
+    LoginDialogComponent,
     TextareaDialogComponent,
     UserPostActionsMenuComponent,
     LeagueIconsComponent,
@@ -79,7 +80,6 @@ import { LoginComponent } from './components/user/login/login.component';
     CommentIconComponent,
     PlayersIconComponent,
     IconComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,
