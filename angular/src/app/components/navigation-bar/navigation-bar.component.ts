@@ -3,6 +3,7 @@ import {UserRegisterDialogComponent} from "../user/register/user-register-dialog
 import {MatDialog} from "@angular/material/dialog";
 import {RegistrationService} from "../../services/registration/registration.service";
 import {UserService} from "../../services/user/user.service";
+import {LoginDialogComponent} from "../user/login-dialog/login-dialog.component";
 
 @Component({
   selector: 'app-navigation-bar',
@@ -40,7 +41,19 @@ export class NavigationBarComponent implements OnInit {
   }
 
   openLoginModal():void {
-
+    const loginDialog = this.dialog.open(LoginDialogComponent,
+      {
+       width: "35em",
+       data: {
+         email: "",
+         password: "",
+       }
+      })
+    loginDialog.afterClosed().subscribe(result => {
+      if (result) { //TODO: login requirements check
+        console.log(result);
+      }
+    })
   }
 
 }
