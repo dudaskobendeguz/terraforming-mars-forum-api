@@ -34,22 +34,6 @@ export class InMemoryDataService implements InMemoryDbService{
       },
     ];
 
-    const userPosts: UserPost[] = [
-      {
-        id: 1,
-        timestamp: new Date(),
-        user: users[0],
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        comments: [],
-      },
-      {
-        id: 2,
-        timestamp: new Date(),
-        user: users[0],
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        comments: [],
-      }
-    ];
     const comments: PostComment[] = [
       {
         id: 1,
@@ -84,6 +68,22 @@ export class InMemoryDataService implements InMemoryDbService{
         comments: comments
       }
     ]
+    const userPosts: UserPost[] = [
+      {
+        id: 1,
+        timestamp: new Date(),
+        user: users[0],
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        comments: comments,
+      },
+      {
+        id: 2,
+        timestamp: new Date(),
+        user: users[0],
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        comments: comments,
+      }
+    ];
     return {users, userPosts, leaguePosts, comments};
   }
 }

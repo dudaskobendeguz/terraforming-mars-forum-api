@@ -13,3 +13,7 @@
   margin: 5px;
 }
 
+.details {
+  align-self: start !important;
+}
+

@@ -3,9 +3,6 @@
   <button mat-raised-button color="primary" (click)="openAddDialog()">Add Post</button>
   <mat-spinner *ngIf="!userPosts.length"></mat-spinner>
   <div class="user-posts" *ngFor="let userPost of userPosts">
-    <app-user-post
-      [userPost]="userPost"
-      (onDeleteUserPost)="deleteUserPost($event)"
-      (onUpdateUserPost)="updateUserPost($event)"></app-user-post>
+    <app-user-post [userPost]="userPost" [isPreview]="true"></app-user-post>
   </div>
 </div>

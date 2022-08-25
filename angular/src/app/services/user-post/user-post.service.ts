@@ -32,6 +32,15 @@ export class UserPostService {
       );
   }
 
+  getUserPost(id: number): Observable<UserPost> {
+    const url = `${this.userPostsUrl}/${id}`;
+    return this.http.get<UserPost>(url)
+      .pipe(
+        tap((_) => this.log(`get user post with id=${id}`)),
+        catchError(this.errorHandler.handleError<UserPost>('getUserPost'))
+      );
+  }
+
   addUserPost(userPost: UserPost): Observable<UserPost> {
     // Generate ID
     userPost.id = ++this.generateId;

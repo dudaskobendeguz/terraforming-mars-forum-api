@@ -81,15 +81,5 @@ export class UserPostContainerComponent implements OnInit {
     this.messageLogger.add(UserPostContainerComponent.name, message);
   }
 
-  deleteUserPost(userPost: UserPost) {
-    this.userPosts = this.userPosts.filter(post => post !== userPost);
-    this.userPostService.deleteUserPost(userPost).subscribe();
-    this.log(`deleteUserPost: delete user post=${userPost.id}`);
 
-  }
-
-  updateUserPost(userPost: UserPost) {
-    this.userPostService.updateUserPost(userPost).subscribe();
-    this.log(`updateUserPost: update user post=${userPost.id}`);
-  }
 }

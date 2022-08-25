@@ -12,6 +12,7 @@ import {DeleteUserPostDialogComponent} from "../delete-user-post-dialog/delete-u
 export class UserPostComponent implements OnInit {
 
   @Input() public userPost?: UserPost;
+  @Input() public isPreview?: boolean;
   @Output() onDeleteUserPost: EventEmitter<UserPost> = new EventEmitter<UserPost>();
   @Output() onUpdateUserPost: EventEmitter<UserPost> = new EventEmitter<UserPost>();
 
