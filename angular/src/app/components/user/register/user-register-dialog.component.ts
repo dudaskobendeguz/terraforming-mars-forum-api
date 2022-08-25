@@ -11,6 +11,7 @@ export class UserRegisterDialogComponent implements OnInit {
 
   emailForMach: string = "";
   passwordForMach: string = "";
+  hide: boolean = true;
   constructor(
     public dialogRef: MatDialogRef<UserRegisterDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: User,

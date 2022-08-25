@@ -33,8 +33,9 @@ export class LeaguePostService {
     this.log(`LeaguePost fetching with the given id:${id}`);
     return this.http.get<LeaguePost>(url)
       .pipe(
-        tap((_) => this.log(`getLeaguePostById(${id})(TAP)`)),
-        catchError(this.errorHandler.handleError<LeaguePost>(`LeaguePost not found by the given id:${id}`))
+        tap(() => this.log(`getLeaguePostById(${id})(TAP)`)),
+        catchError(this.errorHandler.handleError<LeaguePost>(`LeaguePost not found by the given id:${id}`
+        ))
       );
   }
 
