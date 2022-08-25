@@ -7,11 +7,11 @@ import {LeaguePost} from "../../../interfaces/league-post";
 import {LeaguePostService} from "../../../services/league-post/league-post.service";
 
 @Component({
-  selector: 'app-league-pots-detail',
-  templateUrl: './league-pots-detail.component.html',
-  styleUrls: ['./league-pots-detail.component.css']
+  selector: 'app-league-post-detail',
+  templateUrl: './league-post-detail.component.html',
+  styleUrls: ['./league-post-detail.component.css']
 })
-export class LeaguePotsDetailComponent implements OnInit {
+export class LeaguePostDetailComponent implements OnInit {
   postDetails?: LeagueDetails;
   leaguePost?: LeaguePost;
 

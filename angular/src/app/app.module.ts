@@ -32,7 +32,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { UserPostDetailComponent } from './components/user-post-components/user-post-detail/user-post-detail.component';
 import { ProfilePageComponent } from './components/user/profile-page/profile-page.component';
 import { UserRegisterDialogComponent } from './components/user/register/user-register-dialog.component';
-import { LeaguePotsDetailComponent } from './components/league-posts/league-pots-detail/league-pots-detail.component';
+import { LeaguePostDetailComponent } from './components/league-posts/league-post-detail/league-post-detail.component';
 import {MatIconModule} from "@angular/material/icon";
 
 
@@ -55,7 +55,7 @@ import {MatIconModule} from "@angular/material/icon";
     EditUserPostDialogComponent,
     DeleteUserPostDialogComponent,
     AddUserPostDialogComponent,
-    LeaguePotsDetailComponent,
+    LeaguePostDetailComponent,
     AddUserPostDialogComponent,
     AddUserPostDialogComponent,
     UserPostDetailComponent,
