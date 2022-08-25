@@ -17,4 +17,8 @@ export class LoginDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  closeDialogPanel() {
+    this.dialogRef.close();
+  }
+
 }
