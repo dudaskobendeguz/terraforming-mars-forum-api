@@ -13,7 +13,7 @@ export class NavigationBarComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private user: UserService,
+    private userService: UserService,
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class NavigationBarComponent implements OnInit {
       });
     registerDialog.afterClosed().subscribe(r => {
       if (true) { //TODO: registration requirements check
-        this.user.addUser(r);
+        this.userService.addUser(r);
       }
       }
     )
