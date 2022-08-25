@@ -31,6 +31,7 @@ import { AddUserPostDialogComponent } from './components/user-post-components/ad
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { UserPostDetailComponent } from './components/user-post-components/user-post-detail/user-post-detail.component';
 import { ProfilePageComponent } from './components/user/profile-page/profile-page.component';
+import { UserRegisterDialogComponent } from './components/user/register/user-register-dialog.component';
 
 
 @NgModule({
@@ -52,8 +53,10 @@ import { ProfilePageComponent } from './components/user/profile-page/profile-pag
     EditUserPostDialogComponent,
     DeleteUserPostDialogComponent,
     AddUserPostDialogComponent,
+    AddUserPostDialogComponent,
     UserPostDetailComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    UserRegisterDialogComponent,
   ],
   imports: [
     BrowserModule,

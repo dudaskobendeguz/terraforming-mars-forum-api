@@ -1,0 +1,39 @@
+<h1 mat-dialog-title align="center">Registration</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Firstname</mat-label>
+    <textarea matInput [(ngModel)]="data.firstName"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Lastname</mat-label>
+    <textarea matInput [(ngModel)]="data.lastName"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <textarea matInput [(ngModel)]="data.username"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <textarea matInput [(ngModel)]="data.email"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Email Again</mat-label>
+    <textarea matInput [(ngModel)]="emailForMach"></textarea>
+    <mat-hint *ngIf="data.email.length > 0 && emailForMach.length > 0 &&
+            data.email != emailForMach">Provided emails are different</mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <textarea class="password-input" matInput [(ngModel)]="data.password"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Password Again</mat-label>
+    <textarea class="password-input" matInput [(ngModel)]="passwordForMach"></textarea>
+    <mat-hint *ngIf="data.password.length > 0 && passwordForMach.length >0 &&
+            data.password != passwordForMach">Provided password are different</mat-hint>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button [mat-dialog-close]="data" >Register</button>
+  <button mat-stroked-button (click)="closeDialogPanel()">Close</button>
+</div>
