@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from "../../../interfaces/user";
+import {UserService} from "../../../services/user/user.service";
 
 @Component({
   selector: 'app-profile-page',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit {
+  @Input() user?: User;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getUserById('1')
+      .subscribe((user) => {
+        this.user = user;
+      });
   }
 
 }
