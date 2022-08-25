@@ -21,7 +21,14 @@ export class NavigationBarComponent implements OnInit {
   openRegisterModal():void {
     const registerDialog = this.dialog.open(UserRegisterComponent,
       {
-        width: "30vW",
+        width: "35em",
+        data: {
+          username: "",
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+        }
       });
     registerDialog.afterClosed().subscribe(r => {
       if (true) { //TODO: registration requirements check

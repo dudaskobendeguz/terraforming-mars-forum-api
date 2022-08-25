@@ -21,6 +21,7 @@ export class RegistrationService {
   ) { }
 
   addUser(user: User): Observable<User> {
+    console.log(user)
     return this.http.post<User>(this.commentsUrl, user, this.httpOptions).pipe(
       tap(() => this.log(`User saved id=${user.id}`),
       catchError(this.errorHandler.handleError<User>('registerUser')))

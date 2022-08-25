@@ -9,9 +9,11 @@ import {User} from "../../../interfaces/user";
 })
 export class UserRegisterComponent implements OnInit {
 
+  emailForMach: string = "";
+  passwordForMach: string = "";
   constructor(
     public dialogRef: MatDialogRef<UserRegisterComponent>,
-    @Inject(MAT_DIALOG_DATA) public user: User,
+    @Inject(MAT_DIALOG_DATA) public data: User,
   ) { }
 
   ngOnInit(): void {
