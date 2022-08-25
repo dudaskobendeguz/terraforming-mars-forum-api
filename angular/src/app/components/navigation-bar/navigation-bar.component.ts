@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {UserRegisterComponent} from "../user/register/user-register.component";
+import {MatDialog} from "@angular/material/dialog";
+import {RegistrationService} from "../../services/registration/registration.service";
 
 @Component({
   selector: 'app-navigation-bar',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog,
+    private registrationService: RegistrationService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  openRegisterModal():void {
+    const registerDialog = this.dialog.open(UserRegisterComponent,
+      {
+        width: "30vW",
+      });
+    registerDialog.afterClosed().subscribe(r => {
+      if (true) { //TODO: registration requirements check
+        this.registrationService.addUser(r);
+      }
+      }
+    )
   }
 
 }
