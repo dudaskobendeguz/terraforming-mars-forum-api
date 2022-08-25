@@ -8,6 +8,7 @@ import {User} from "../../../interfaces/user";
   styleUrls: ['./login-dialog.component.css']
 })
 export class LoginDialogComponent implements OnInit {
+  hide: boolean = true;
 
   constructor(
     public dialogRef: MatDialogRef<LoginDialogComponent>,
