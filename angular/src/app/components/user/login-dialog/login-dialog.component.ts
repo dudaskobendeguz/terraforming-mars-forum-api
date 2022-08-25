@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {User} from "../../../interfaces/user";
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,7 @@ import {User} from "../../../interfaces/user";
 })
 export class LoginDialogComponent implements OnInit {
   hide: boolean = true;
+  email: any = new FormControl('', [Validators.required, Validators.email]);
 
   constructor(
     public dialogRef: MatDialogRef<LoginDialogComponent>,
@@ -16,6 +18,14 @@ export class LoginDialogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  getErrorMessage(): string {
+    if (this.email.hasError('required')){
+      return 'You must enter your email'
+    }
+
+    return this.email.hasError('email') ? 'Not valid email' : '';
   }
 
   closeDialogPanel() {
