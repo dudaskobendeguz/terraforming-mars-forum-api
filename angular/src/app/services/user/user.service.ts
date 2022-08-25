@@ -39,6 +39,14 @@ export class UserService {
       )
   }
 
+  addUser(user: User): Observable<User> {
+    console.log(user)
+    return this.http.post<User>(this.usersUrl, user, this.httpOptions).pipe(
+      tap(() => this.log(`User saved id=${user.id}`),
+        catchError(this.errorHandler.handleError<User>('registerUser')))
+    );
+  }
+
   private log(message: string): void {
     this.messageLogger.add(UserService.name, message);
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserRegisterDialogComponent} from "../user/register/user-register-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {RegistrationService} from "../../services/registration/registration.service";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-navigation-bar',
@@ -12,7 +13,7 @@ export class NavigationBarComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private registrationService: RegistrationService
+    private user: UserService,
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +33,7 @@ export class NavigationBarComponent implements OnInit {
       });
     registerDialog.afterClosed().subscribe(r => {
       if (true) { //TODO: registration requirements check
-        this.registrationService.addUser(r);
+        this.user.addUser(r);
       }
       }
     )
