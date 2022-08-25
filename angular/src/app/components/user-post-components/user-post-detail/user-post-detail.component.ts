@@ -4,9 +4,9 @@ import {Location} from "@angular/common";
 import {UserPostService} from "../../../services/user-post/user-post.service";
 import {UserPost} from "../../../interfaces/user-post";
 import {MatDialog} from "@angular/material/dialog";
-import {CommentDialog} from "../../comment-dialog/comment-dialog.component";
 import {CommentService} from "../../../services/comment/comment.service";
 import {PostComment} from "../../../interfaces/post-comment";
+import {TextareaDialogComponent} from "../../dialog-components/textarea-dialog/textarea-dialog.component";
 
 @Component({
   selector: 'app-user-post-detail',
@@ -50,10 +50,11 @@ export class UserPostDetailComponent implements OnInit {
   }
 
   openAddCommentDialog() {
-    const addCommentDialog = this.dialog.open(CommentDialog, {
-      width: "60vw",
+    const addCommentDialog = this.dialog.open(TextareaDialogComponent, {
+      width: "35em",
       data: {
-        description: ""
+        title: "Add Comment",
+        text: ""
       }
     });
 
