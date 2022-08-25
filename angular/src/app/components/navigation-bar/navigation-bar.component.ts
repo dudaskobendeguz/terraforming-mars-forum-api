@@ -39,4 +39,8 @@ export class NavigationBarComponent implements OnInit {
     )
   }
 
+  openLoginModal():void {
+
+  }
+
 }
