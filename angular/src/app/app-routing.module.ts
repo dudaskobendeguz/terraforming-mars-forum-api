@@ -10,7 +10,7 @@ import {ProfilePageComponent} from "./components/user/profile-page/profile-page.
 const routes: Routes = [
   {path: 'user-posts', component: UserPostContainerComponent},
   {path: 'league-posts', component: LeaguePostContainerComponent},
-  {path: 'profile', component: ProfilePageComponent},
+  {path: 'profile/:id', component: ProfilePageComponent},
   {path: 'user-posts/:id', component: UserPostDetailComponent}
 ];
 
