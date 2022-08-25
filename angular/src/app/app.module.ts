@@ -29,6 +29,7 @@ import { DeleteUserPostDialogComponent } from './components/user-post-components
 import {MatCardModule} from "@angular/material/card";
 import { AddUserPostDialogComponent } from './components/user-post-components/add-user-post-dialog/add-user-post-dialog.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { ProfilePageComponent } from './components/user/profile-page/profile-page.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     LeaguePostComponent,
     EditUserPostDialogComponent,
     DeleteUserPostDialogComponent,
-    AddUserPostDialogComponent
+    AddUserPostDialogComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,7 @@
+<div class="profile-page">
+  <h2>Profile Details</h2>
+  <mat-spinner *ngIf="!user"></mat-spinner>
+  <div *ngIf="user" class="user-details">
+    <app-user [user]="user"></app-user>
+  </div>
+</div>
