@@ -11,7 +11,7 @@ export class CommentDialog implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<CommentDialog>,
-    @Inject(MAT_DIALOG_DATA) data: PostComment
+    @Inject(MAT_DIALOG_DATA) public data: PostComment
   ) {
   }
 
