@@ -6,7 +6,7 @@ import {
 } from "./components/league-posts/league-post-container/league-post-container.component";
 import {UserPostDetailComponent} from "./components/user-post-components/user-post-detail/user-post-detail.component";
 import {ProfilePageComponent} from "./components/user/profile-page/profile-page.component";
-import {LeaguePostDetailComponent} from "./components/league-posts/league-pots-detail/league-post-detail.component";
+import {LeaguePostDetailComponent} from "./components/league-posts/league-post-detail/league-post-detail.component";
 
 const routes: Routes = [
   {path: 'user-posts', component: UserPostContainerComponent},

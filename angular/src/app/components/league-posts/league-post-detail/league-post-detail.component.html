@@ -8,7 +8,7 @@
 
   <mat-card-content>
 
-    <img src="{{ postDetails.image_source }}" alt="league image">
+    <img src="{{ postDetails.imageSource }}" alt="league image">
     <div class="league-details">
       <h2>Rounds: </h2>
       <p>Started: <span>{{ postDetails.numberOfRounds }}</span></p>
@@ -19,7 +19,7 @@
     <h2>Players:</h2>
     <div class="players" >
       <mat-card class="player shadow"
-                *ngFor="let player of postDetails.league_players"
+                *ngFor="let player of postDetails.leaguePlayers"
                 [ngClass]="leaguePost.leagueAdmin.id == player.id ? 'admin-player' : 'casual-player'"
                 routerLink="/profile/{{ player.id }}">
         <mat-card-header>

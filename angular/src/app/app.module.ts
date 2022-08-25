@@ -32,8 +32,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { UserPostDetailComponent } from './components/user-post-components/user-post-detail/user-post-detail.component';
 import { ProfilePageComponent } from './components/user/profile-page/profile-page.component';
 import { UserRegisterDialogComponent } from './components/user/register/user-register-dialog.component';
-import { LeaguePostDetailComponent } from './components/league-posts/league-post-detail/league-post-detail.component';
 import {MatIconModule} from "@angular/material/icon";
+import {LeaguePostDetailComponent} from "./components/league-posts/league-post-detail/league-post-detail.component";
 
 
 @NgModule({
@@ -47,17 +47,13 @@ import {MatIconModule} from "@angular/material/icon";
     CommentDialog,
     UserPostContainerComponent,
     UserPostComponent,
-    NavigationBarComponent,
     LeaguePostContainerComponent,
-    LeaguePostComponent,
     UserComponent,
     LeaguePostComponent,
     EditUserPostDialogComponent,
     DeleteUserPostDialogComponent,
     AddUserPostDialogComponent,
     LeaguePostDetailComponent,
-    AddUserPostDialogComponent,
-    AddUserPostDialogComponent,
     UserPostDetailComponent,
     ProfilePageComponent,
     UserRegisterDialogComponent,
