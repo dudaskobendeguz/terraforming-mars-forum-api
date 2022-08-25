@@ -4,15 +4,15 @@ import {User} from "../../../interfaces/user";
 
 @Component({
   selector: 'app-user-register',
-  templateUrl: './user-register.component.html',
-  styleUrls: ['./user-register.component.css']
+  templateUrl: './user-register-dialog.component.html',
+  styleUrls: ['./user-register-dialog.component.css']
 })
-export class UserRegisterComponent implements OnInit {
+export class UserRegisterDialogComponent implements OnInit {
 
   emailForMach: string = "";
   passwordForMach: string = "";
   constructor(
-    public dialogRef: MatDialogRef<UserRegisterComponent>,
+    public dialogRef: MatDialogRef<UserRegisterDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: User,
   ) { }
 

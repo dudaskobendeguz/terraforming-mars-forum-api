@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserRegisterComponent} from "../user/register/user-register.component";
+import {UserRegisterDialogComponent} from "../user/register/user-register-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {RegistrationService} from "../../services/registration/registration.service";
 
@@ -19,7 +19,7 @@ export class NavigationBarComponent implements OnInit {
   }
 
   openRegisterModal():void {
-    const registerDialog = this.dialog.open(UserRegisterComponent,
+    const registerDialog = this.dialog.open(UserRegisterDialogComponent,
       {
         width: "35em",
         data: {

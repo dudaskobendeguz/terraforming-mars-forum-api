@@ -29,9 +29,9 @@ import { DeleteUserPostDialogComponent } from './components/user-post-components
 import {MatCardModule} from "@angular/material/card";
 import { AddUserPostDialogComponent } from './components/user-post-components/add-user-post-dialog/add-user-post-dialog.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import { UserRegisterComponent } from './components/user/register/user-register.component';
 import { UserPostDetailComponent } from './components/user-post-components/user-post-detail/user-post-detail.component';
 import { ProfilePageComponent } from './components/user/profile-page/profile-page.component';
+import { UserRegisterDialogComponent } from './components/user/register/user-register-dialog.component';
 
 
 @NgModule({
@@ -53,10 +53,10 @@ import { ProfilePageComponent } from './components/user/profile-page/profile-pag
     EditUserPostDialogComponent,
     DeleteUserPostDialogComponent,
     AddUserPostDialogComponent,
-    UserRegisterComponent,
     AddUserPostDialogComponent,
     UserPostDetailComponent,
     ProfilePageComponent,
+    UserRegisterDialogComponent,
   ],
   imports: [
     BrowserModule,
