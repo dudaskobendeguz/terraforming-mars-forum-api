@@ -32,6 +32,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { UserPostDetailComponent } from './components/user-post-components/user-post-detail/user-post-detail.component';
 import { ProfilePageComponent } from './components/user/profile-page/profile-page.component';
 import { UserRegisterDialogComponent } from './components/user/register/user-register-dialog.component';
+import { LeaguePostDetailComponent } from './components/league-posts/league-post-detail/league-post-detail.component';
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -52,6 +54,8 @@ import { UserRegisterDialogComponent } from './components/user/register/user-reg
     LeaguePostComponent,
     EditUserPostDialogComponent,
     DeleteUserPostDialogComponent,
+    AddUserPostDialogComponent,
+    LeaguePostDetailComponent,
     AddUserPostDialogComponent,
     AddUserPostDialogComponent,
     UserPostDetailComponent,
@@ -77,7 +81,8 @@ import { UserRegisterDialogComponent } from './components/user/register/user-reg
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

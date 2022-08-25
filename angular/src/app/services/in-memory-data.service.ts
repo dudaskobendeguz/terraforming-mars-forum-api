@@ -4,6 +4,7 @@ import {User} from "../interfaces/user";
 import {UserPost} from "../interfaces/user-post";
 import {LeaguePost} from "../interfaces/league-post";
 import {PostComment} from "../interfaces/post-comment";
+import {LeagueDetails} from "../interfaces/league-details";
 
 @Injectable({
   providedIn: 'root'
@@ -46,9 +47,11 @@ export class InMemoryDataService implements InMemoryDbService{
         timestamp: new Date()
       }
     ]
+
     const leaguePosts: LeaguePost[] = [
       {
         id: 1,
+        leagueId: 1,
         timestamp: new Date(),
         gameType: "Ares Expedition",
         name: "My Test League",
@@ -59,6 +62,7 @@ export class InMemoryDataService implements InMemoryDbService{
       },
       {
         id: 2,
+        leagueId: 2,
         timestamp: new Date(),
         gameType: "Terraforming Mars",
         name: "Test Mars League",
@@ -84,6 +88,20 @@ export class InMemoryDataService implements InMemoryDbService{
         comments: comments,
       }
     ];
-    return {users, userPosts, leaguePosts, comments};
+
+    const leaguePostDetails: LeagueDetails[] = [
+      {
+        id: leaguePosts[0].leagueId,
+        gameType: leaguePosts[0].gameType,
+        name: leaguePosts[0].name,
+        imageSource: leaguePosts[0].imageSource,
+        leagueAdmin: leaguePosts[0].leagueAdmin,
+        leaguePlayers: users,
+        numberOfFinishedRounds: 1,
+        numberOfInProgressRounds: 0,
+        numberOfRounds: leaguePosts[0].numberOfRounds
+      },
+    ];
+    return {users, userPosts, leaguePosts, comments, leaguePostDetails};
   }
 }
