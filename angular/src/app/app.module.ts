@@ -47,6 +47,7 @@ import { CommentIconComponent } from './components/icons/comment-icon/comment-ic
 import { PlayersIconComponent } from './components/icons/players-icon/players-icon.component';
 import { IconComponent } from './components/icons/icon/icon.component';
 import {MatSelectModule} from "@angular/material/select";
+import { LoginComponent } from './components/user/login/login.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import {MatSelectModule} from "@angular/material/select";
     CommentIconComponent,
     PlayersIconComponent,
     IconComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
