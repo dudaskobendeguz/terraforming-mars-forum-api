@@ -7,6 +7,7 @@
       [userPost]="userPost"
       (onDeleteUserPost)="deleteUserPost($event)"
       (onUpdateUserPost)="updateUserPost($event)"></app-user-post>
+    <button mat-flat-button type="button" color="primary" (click)="openAddCommentDialog()">Add Comment</button>
     <div class="user-post-comments" *ngFor="let comment of userPost.comments">
       <app-comment [comment]="comment"></app-comment>
     </div>
