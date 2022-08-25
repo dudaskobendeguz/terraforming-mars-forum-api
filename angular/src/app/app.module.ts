@@ -18,13 +18,17 @@ import { LeaguePostComponent } from './components/league-posts/league-post/leagu
 import { UserPostContainerComponent } from './components/user-post-components/user-post-container/user-post-container.component';
 import { UserPostComponent } from './components/user-post-components/user-post/user-post.component';
 import { UserComponent } from './components/user/user.component';
-import { UserPostFormComponent } from './components/user-post-components/user-post-form/user-post-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from "@angular/material/slider";
 import {MatDialogModule} from "@angular/material/dialog";
-import { EditUserPostComponent } from './components/user-post-components/edit-user-post/edit-user-post.component';
 import { EditUserPostDialogComponent } from './components/user-post-components/edit-user-post-dialog/edit-user-post-dialog.component';
 import {MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import { DeleteUserPostDialogComponent } from './components/user-post-components/delete-user-post-dialog/delete-user-post-dialog.component';
+import {MatCardModule} from "@angular/material/card";
+import { AddUserPostDialogComponent } from './components/user-post-components/add-user-post-dialog/add-user-post-dialog.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -43,9 +47,9 @@ import {MatButtonModule} from "@angular/material/button";
     LeaguePostComponent,
     UserComponent,
     LeaguePostComponent,
-    UserPostFormComponent,
-    EditUserPostComponent,
-    EditUserPostDialogComponent
+    EditUserPostDialogComponent,
+    DeleteUserPostDialogComponent,
+    AddUserPostDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,11 @@ import {MatButtonModule} from "@angular/material/button";
     BrowserAnimationsModule,
     MatSliderModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

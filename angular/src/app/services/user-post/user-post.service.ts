@@ -42,6 +42,14 @@ export class UserPostService {
       );
   }
 
+  updateUserPost(userPost: UserPost): Observable<UserPost> {
+    return this.http.put<UserPost>(this.userPostsUrl, userPost, this.httpOptions)
+      .pipe(
+        tap((_) => this.log(`update hero with id=${userPost.id} (TAP)`)),
+        catchError(this.errorHandler.handleError<UserPost>('updateUserPost'))
+      );
+  }
+
   deleteUserPost(userPost: UserPost): Observable<UserPost> {
     const url = `${this.userPostsUrl}/${userPost.id}`;
     return this.http.delete<UserPost>(url, this.httpOptions)
