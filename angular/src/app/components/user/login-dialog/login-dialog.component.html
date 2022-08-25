@@ -1,1 +1,18 @@
-<p>login works!</p>
+<div class="login" align="center">
+  <p>
+  <mat-form-field>
+    <mat-label>Enter your email</mat-label>
+    <input matInput placeholder="email@example.com" [(ngModel)]="data.email" required>
+  </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input matInput [(ngModel)]="data.password" required>
+    </mat-form-field>
+  </p>
+    <div mat-dialog-actions align="end">
+      <button mat-stroked-button (click)="closeDialogPanel()">Cancel</button>
+      <button mat-stroked-button [mat-dialog-close]="data" >Login</button>
+    </div>
+</div>
