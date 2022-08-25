@@ -30,7 +30,7 @@ export class UserService {
       );
   }
 
-  getUserById(id: string): Observable<User> {
+  getUserById(id: number): Observable<User> {
     const url = `${this.usersUrl}/${id}`
     return this.http.get<User>(url)
       .pipe(
