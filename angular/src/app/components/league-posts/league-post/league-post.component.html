@@ -1,5 +1,5 @@
 <div class="league-post" *ngIf="post" id="league-post-{{ post.id }}">
-  <div class="link" routerLink="/league/{{ post.leagueId }}">
+  <div class="link" routerLink="/league-posts/{{ post.leagueId }}">
     <h2>{{ post.name }}#{{ post.id }}</h2>
     <p>{{post.timestamp | date: 'medium'}}</p>
     <p class="gameType">{{ post.gameType }}</p>
