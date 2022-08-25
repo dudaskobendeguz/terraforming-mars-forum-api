@@ -1,13 +1,15 @@
 <div class="league-post" *ngIf="post" id="league-post-{{ post.id }}">
-  <h2>{{ post.name }}#{{ post.id }}</h2>
-  <p>{{post.timestamp | date: 'medium'}}</p>
-  <p class="gameType">{{ post.gameType }}</p>
-  <img class="league-image" src="{{ post.imageSource }}" alt="#{{ post.id }}League Post's Image">
-  <h3>League Details</h3>
+  <div routerLink="/league/{{ post.leagueId }}">
+    <h2>{{ post.name }}#{{ post.id }}</h2>
+    <p>{{post.timestamp | date: 'medium'}}</p>
+    <p class="gameType">{{ post.gameType }}</p>
+    <img class="league-image" src="{{ post.imageSource }}" alt="#{{ post.id }}League Post's Image">
+  </div>
   <div class="league-admin">
     <img src="{{ post.leagueAdmin.imageSource }}" alt="league admin's image" class="league-admin-picture">
     <p>
-      {{ post.leagueAdmin.firstName | titlecase }} {{ post.leagueAdmin.lastName | titlecase }}({{ post.leagueAdmin.username }})# {{ post.leagueAdmin.id }}
+      {{ post.leagueAdmin.firstName | titlecase }} {{ post.leagueAdmin.lastName | titlecase }}
+      ({{ post.leagueAdmin.username }})# {{ post.leagueAdmin.id }}
     </p>
   </div>
   <h3>Comments:</h3>
