@@ -1,16 +1,26 @@
-<div *ngIf="user" class="comment-form">
-  <div class="comment-head">
-    <img class="profile-picture" alt="{{user.username}}'s profile picture" src="{{user.imageSource}}">
-    <div class="comment-head-text">
-      <p class="user-full-name">{{user.firstName}} {{user.lastName}}</p>
-      <p class="username">@{{user.username}}</p>
-    </div>
-  </div>
-  <div class="separator"></div>
-
-  <form [formGroup]="postForm" (ngSubmit)="addComment()">
-    <textarea id="description" class="description" formControlName="description"></textarea>
-    <br>
-    <button type="submit" class="submit-btn">Submit</button>
-  </form>
+<h1 mat-dialog-title>Add Post</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+  </mat-form-field>
 </div>
+<div mat-dialog-actions>
+
+</div>
+
+<!--<div *ngIf="user" class="comment-form">-->
+<!--  <div class="comment-head">-->
+<!--    <img class="profile-picture" alt="{{user.username}}'s profile picture" src="{{user.imageSource}}">-->
+<!--    <div class="comment-head-text">-->
+<!--      <p class="user-full-name">{{user.firstName}} {{user.lastName}}</p>-->
+<!--      <p class="username">@{{user.username}}</p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="separator"></div>-->
+
+<!--  <form>-->
+<!--    <textarea id="description" class="description" formControlName="description"></textarea>-->
+<!--    <br>-->
+<!--    <button type="submit" class="submit-btn">Submit</button>-->
+<!--  </form>-->
+<!--</div>-->
+
