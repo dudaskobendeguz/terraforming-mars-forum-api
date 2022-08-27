@@ -23,7 +23,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import { DeleteUserPostDialogComponent } from './components/user-post-components/delete-user-post-dialog/delete-user-post-dialog.component';
+import { DeleteDialog } from './components/dialog-components/delete-dialog/delete-dialog.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { UserPostDetailComponent } from './components/user-post-components/user-post-detail/user-post-detail.component';
@@ -47,7 +47,7 @@ import { TextareaDialogComponent } from './components/dialog-components/textarea
     LeaguePostContainerComponent,
     UserComponent,
     LeaguePostComponent,
-    DeleteUserPostDialogComponent,
+    DeleteDialog,
     LeaguePostDetailComponent,
     UserPostDetailComponent,
     ProfilePageComponent,
