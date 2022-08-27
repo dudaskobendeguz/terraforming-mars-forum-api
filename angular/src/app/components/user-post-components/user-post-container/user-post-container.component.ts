@@ -16,6 +16,7 @@ export class UserPostContainerComponent implements OnInit {
 
   private user?: User;
   userPosts: UserPost[] = [];
+  isLoading: boolean = true;
 
   constructor(
     private userPostService: UserPostService,
@@ -31,10 +32,12 @@ export class UserPostContainerComponent implements OnInit {
   }
 
   getUserPosts(): void {
+    this.isLoading = true;
     this.userPostService.getUserPosts()
       .subscribe(userPosts => {
         this.userPosts = userPosts;
-        this.messageLogger.add(UserPostContainerComponent.name, "getUserPosts: user posts fetched")
+        this.messageLogger.add(UserPostContainerComponent.name, "getUserPosts: user posts fetched");
+        this.isLoading = false;
       });
   }
 
