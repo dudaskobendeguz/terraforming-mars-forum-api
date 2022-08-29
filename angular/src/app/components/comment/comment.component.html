@@ -1,13 +1,26 @@
-<div *ngIf="comment" class="comment-form">
-  <div class="comment-head">
-    <img class="profile-picture" alt="{{comment.user.username}}'s profile picture" src="{{comment.user.imageSource}}">
-    <div class="comment-head-text">
-      <p class="user-full-name">{{comment.user.firstName}} {{comment.user.lastName}}</p>
-      <p class="username">{{comment.user.username}}</p>
-    </div>
-  </div>
-
-  <div class="separator"></div>
-
-  <p class="comment-body">{{comment.description}}</p>
+<div *ngIf="comment" class="comment">
+  <mat-card>
+    <mat-card-content>
+      <div mat-card-avatar class="comment-image"></div>
+      <div class="comment-details">
+        <strong><a class="comment-user-link" routerLink="/profile/{{comment.user.id}}">{{comment.user.username}}</a></strong>
+        <small class="comment-timestamp">{{comment.timestamp | date}}</small>
+        <p class="comment-description">{{comment.description}}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
+
+<!--<div *ngIf="comment" class="comment-form">-->
+<!--  <div class="comment-head">-->
+<!--    <img class="profile-picture" alt="{{comment.user.username}}'s profile picture" src="{{comment.user.imageSource}}">-->
+<!--    <div class="comment-head-text">-->
+<!--      <p class="user-full-name">{{comment.user.firstName}} {{comment.user.lastName}}</p>-->
+<!--      <p class="username">{{comment.user.username}}</p>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="separator"></div>-->
+
+<!--  <p class="comment-body">{{comment.description}}</p>-->
+<!--</div>-->

@@ -9,8 +9,14 @@ import {PostComment} from "../../interfaces/post-comment";
 export class CommentComponent implements OnInit {
 
   @Input() comment?: PostComment
+  date?: string
 
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.comment) {
+      const date = new Date(this.comment.timestamp);
+      this.date = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date.getUTCMinutes()}`
+    }
+  }
 }
