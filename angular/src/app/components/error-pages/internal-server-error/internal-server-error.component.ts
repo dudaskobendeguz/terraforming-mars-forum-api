@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./internal-server-error.component.css']
 })
 export class InternalServerErrorComponent implements OnInit {
+  header: string = "Server Error.";
+  message: string = "Oops, something went wrong.\n Try to refresh this page or feel free to contact us if problem persist...";
 
   constructor() { }
 
