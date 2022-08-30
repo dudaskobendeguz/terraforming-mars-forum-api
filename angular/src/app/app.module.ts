@@ -48,6 +48,7 @@ import { IconComponent } from './components/icons/icon/icon.component';
 import {MatSelectModule} from "@angular/material/select";
 import { PageNotFoundComponent } from './components/error-pages/page-not-found/page-not-found.component';
 import { InternalServerErrorComponent } from './components/error-pages/internal-server-error/internal-server-error.component';
+import { ErrorDetailComponent } from './components/error-pages/error-detail/error-detail.component';
 
 
 @NgModule({
@@ -82,6 +83,7 @@ import { InternalServerErrorComponent } from './components/error-pages/internal-
     IconComponent,
     PageNotFoundComponent,
     InternalServerErrorComponent,
+    ErrorDetailComponent,
   ],
   imports: [
     BrowserModule,
