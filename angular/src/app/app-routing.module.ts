@@ -8,6 +8,8 @@ import {UserPostDetailComponent} from "./components/user-post-components/user-po
 import {ProfilePageComponent} from "./components/user/profile-page/profile-page.component";
 import {LeaguePostDetailComponent} from "./components/league-posts/league-post-detail/league-post-detail.component";
 import {PostContainerComponent} from "./components/posts/post-container/post-container.component";
+import {PageNotFoundComponent} from "./components/error-pages/page-not-found/page-not-found.component";
+import {FooterComponent} from "./components/footer/footer.component";
 
 const routes: Routes = [
   {path: '', component: PostContainerComponent},
@@ -16,6 +18,12 @@ const routes: Routes = [
   {path: 'league-posts', component: LeaguePostContainerComponent},
   {path: 'profile/:id', component: ProfilePageComponent},
   {path: 'user-posts/:id', component: UserPostDetailComponent},
+
+  //error pages
+  {path: 'page-not-found', title:"Page Not Found", component: PageNotFoundComponent},
+
+  //Wild card route for 404 request
+  {path: "**", redirectTo: "page-not-found", pathMatch: "full"}
 ];
 
 @NgModule({

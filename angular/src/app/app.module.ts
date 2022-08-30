@@ -78,6 +78,7 @@ import {MatSelectModule} from "@angular/material/select";
     CommentIconComponent,
     PlayersIconComponent,
     IconComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

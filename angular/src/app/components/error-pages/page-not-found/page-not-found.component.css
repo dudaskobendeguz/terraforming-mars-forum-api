@@ -1,0 +1,21 @@
+div.error-message {
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+  background-color: #324a5d;
+
+}
+span.error {
+  line-height: 1em;
+  font-size: 30em;
+  color: #cccccc;
+}
+
+div.message-box {
+  background-color: #8fb5c2;
+  height: 300px;
+}
+
+div.message-box p {
+  font-size: 5em;
+}
