@@ -34,6 +34,7 @@ import {LeaguePostDetailComponent} from "./components/league-posts/league-post-d
 import { TextareaDialogComponent } from './components/dialog-components/textarea-dialog/textarea-dialog.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { IconsComponent } from './components/league-posts/icons/icons.component';
+import { DateAgoPipe } from './pipes/date-ago/date-ago.pipe';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { IconsComponent } from './components/league-posts/icons/icons.component'
     UserRegisterDialogComponent,
     TextareaDialogComponent,
     IconsComponent,
+    DateAgoPipe,
   ],
     imports: [
         BrowserModule,
