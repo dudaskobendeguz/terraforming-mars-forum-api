@@ -11,7 +11,6 @@ import {FooterComponent} from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { CommentComponent } from './components/comment/comment.component';
-import { CommentDialog } from './components/comment-dialog/comment-dialog.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LeaguePostContainerComponent } from './components/league-posts/league-post-container/league-post-container.component';
 import { LeaguePostComponent } from './components/league-posts/league-post/league-post.component';
@@ -21,19 +20,18 @@ import { UserComponent } from './components/user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from "@angular/material/slider";
 import {MatDialogModule} from "@angular/material/dialog";
-import { EditUserPostDialogComponent } from './components/user-post-components/edit-user-post-dialog/edit-user-post-dialog.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import { DeleteUserPostDialogComponent } from './components/user-post-components/delete-user-post-dialog/delete-user-post-dialog.component';
+import { DeleteDialogComponent } from './components/dialog-components/delete-dialog/delete-dialog.component';
 import {MatCardModule} from "@angular/material/card";
-import { AddUserPostDialogComponent } from './components/user-post-components/add-user-post-dialog/add-user-post-dialog.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { UserPostDetailComponent } from './components/user-post-components/user-post-detail/user-post-detail.component';
 import { ProfilePageComponent } from './components/user/profile-page/profile-page.component';
 import { UserRegisterDialogComponent } from './components/user/register/user-register-dialog.component';
 import {MatIconModule} from "@angular/material/icon";
 import {LeaguePostDetailComponent} from "./components/league-posts/league-post-detail/league-post-detail.component";
+import { TextareaDialogComponent } from './components/dialog-components/textarea-dialog/textarea-dialog.component';
 
 
 @NgModule({
@@ -44,19 +42,17 @@ import {LeaguePostDetailComponent} from "./components/league-posts/league-post-d
     FooterComponent,
     HeaderComponent,
     NavigationBarComponent,
-    CommentDialog,
     UserPostContainerComponent,
     UserPostComponent,
     LeaguePostContainerComponent,
     UserComponent,
     LeaguePostComponent,
-    EditUserPostDialogComponent,
-    DeleteUserPostDialogComponent,
-    AddUserPostDialogComponent,
+    DeleteDialogComponent,
     LeaguePostDetailComponent,
     UserPostDetailComponent,
     ProfilePageComponent,
     UserRegisterDialogComponent,
+    TextareaDialogComponent,
   ],
   imports: [
     BrowserModule,

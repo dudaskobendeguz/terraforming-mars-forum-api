@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UserPost} from "../../../interfaces/user-post";
 import {MatDialog} from "@angular/material/dialog";
-import {EditUserPostDialogComponent} from "../edit-user-post-dialog/edit-user-post-dialog.component";
-import {DeleteUserPostDialogComponent} from "../delete-user-post-dialog/delete-user-post-dialog.component";
+import {DeleteDialogComponent} from "../../dialog-components/delete-dialog/delete-dialog.component";
+import {TextareaDialogComponent} from "../../dialog-components/textarea-dialog/textarea-dialog.component";
 
 @Component({
   selector: 'app-user-post',
@@ -24,10 +24,11 @@ export class UserPostComponent implements OnInit {
   }
 
   openEditDialog(): void {
-    const editDialog = this.dialog.open(EditUserPostDialogComponent, {
-      width: "60vw",
+    const editDialog = this.dialog.open(TextareaDialogComponent, {
+      width: "50em",
       data: {
-        description: this.userPost?.description
+        title: "Edit Post",
+        text: this.userPost?.description
       }
     });
 
@@ -40,7 +41,12 @@ export class UserPostComponent implements OnInit {
   }
 
   openDeleteDialog(): void {
-    const deleteDialog = this.dialog.open(DeleteUserPostDialogComponent);
+    const deleteDialog = this.dialog.open(DeleteDialogComponent, {
+      data: {
+        title: "Delete Post",
+        text: "Are you sure you want to delete this post?"
+      }
+    });
 
     deleteDialog.afterClosed().subscribe(result => {
       if (result) {

@@ -3,9 +3,9 @@ import {UserPost} from "../../../interfaces/user-post";
 import {UserPostService} from "../../../services/user-post/user-post.service";
 import {MessageLoggerService} from "../../../services/message-logger/message-logger.service";
 import {MatDialog} from "@angular/material/dialog";
-import {AddUserPostDialogComponent} from "../add-user-post-dialog/add-user-post-dialog.component";
 import {User} from "../../../interfaces/user";
 import {UserService} from "../../../services/user/user.service";
+import {TextareaDialogComponent} from "../../dialog-components/textarea-dialog/textarea-dialog.component";
 
 @Component({
   selector: 'app-user-post-container',
@@ -16,6 +16,7 @@ export class UserPostContainerComponent implements OnInit {
 
   private user?: User;
   userPosts: UserPost[] = [];
+  isLoading: boolean = true;
 
   constructor(
     private userPostService: UserPostService,
@@ -31,10 +32,12 @@ export class UserPostContainerComponent implements OnInit {
   }
 
   getUserPosts(): void {
+    this.isLoading = true;
     this.userPostService.getUserPosts()
       .subscribe(userPosts => {
         this.userPosts = userPosts;
-        this.messageLogger.add(UserPostContainerComponent.name, "getUserPosts: user posts fetched")
+        this.messageLogger.add(UserPostContainerComponent.name, "getUserPosts: user posts fetched");
+        this.isLoading = false;
       });
   }
 
@@ -47,10 +50,11 @@ export class UserPostContainerComponent implements OnInit {
   }
 
   openAddDialog(): void {
-    const addDialog = this.dialog.open(AddUserPostDialogComponent, {
-      width: "60vw",
+    const addDialog = this.dialog.open(TextareaDialogComponent, {
+      width: "50em",
       data: {
-        description: ""
+        title: "Add Post",
+        text: ""
       }
     });
 
@@ -65,7 +69,7 @@ export class UserPostContainerComponent implements OnInit {
         };
         this.addUserPost(userPost);
       }
-    })
+    });
   }
 
   addUserPost(userPost: UserPost) {
@@ -74,12 +78,9 @@ export class UserPostContainerComponent implements OnInit {
         this.log(`addUserPost: add user post=${post.id}`);
       }
     );
-
   }
 
   log(message: string): void {
     this.messageLogger.add(UserPostContainerComponent.name, message);
   }
-
-
 }
