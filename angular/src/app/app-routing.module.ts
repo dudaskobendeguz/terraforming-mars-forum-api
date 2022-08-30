@@ -9,7 +9,9 @@ import {ProfilePageComponent} from "./components/user/profile-page/profile-page.
 import {LeaguePostDetailComponent} from "./components/league-posts/league-post-detail/league-post-detail.component";
 import {PostContainerComponent} from "./components/posts/post-container/post-container.component";
 import {PageNotFoundComponent} from "./components/error-pages/page-not-found/page-not-found.component";
-import {FooterComponent} from "./components/footer/footer.component";
+import {
+  InternalServerErrorComponent
+} from "./components/error-pages/internal-server-error/internal-server-error.component";
 
 const routes: Routes = [
   {path: '', component: PostContainerComponent},
@@ -21,6 +23,7 @@ const routes: Routes = [
 
   //error pages
   {path: 'page-not-found', title:"Page Not Found", component: PageNotFoundComponent},
+  {path: 'internal-server-error', title: "Internal Server Error", component: InternalServerErrorComponent},
 
   //Wild card route for 404 request
   {path: "**", redirectTo: "page-not-found", pathMatch: "full"}
