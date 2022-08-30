@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-page-not-found',
@@ -7,13 +6,10 @@ import {Location} from "@angular/common";
   styleUrls: ['./page-not-found.component.css']
 })
 export class PageNotFoundComponent implements OnInit {
-
-  constructor(private location: Location) { }
+  header: string = "Are you lost?";
+  message: string = "Looks like the page you were looking for does not exist."
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  goBack() {
-    this.location.historyGo(-2);
   }
 }
