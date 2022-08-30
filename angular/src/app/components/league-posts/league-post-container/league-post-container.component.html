@@ -10,6 +10,6 @@
 
 
 <h2>League Posts:</h2>
-<div class="league-posts" *ngFor="let leaguePost of leaguePosts">
-    <app-league-post [post]="leaguePost"></app-league-post>
+<div class="league-posts">
+    <app-league-post *ngFor="let leaguePost of leaguePosts" [post]="leaguePost"></app-league-post>
 </div>

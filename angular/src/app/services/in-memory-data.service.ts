@@ -56,6 +56,7 @@ export class InMemoryDataService implements InMemoryDbService{
         gameType: "Ares Expedition",
         name: "My Test League",
         leagueAdmin: users[0],
+        numberOfPlayers: 6,
         numberOfRounds: 2,
         imageSource: "https://bobbyhadz.com/images/blog/typescript-date-format/banner.webp",
         comments: comments
@@ -67,6 +68,7 @@ export class InMemoryDataService implements InMemoryDbService{
         gameType: "Terraforming Mars",
         name: "Test Mars League",
         leagueAdmin:users[1],
+        numberOfPlayers: 8,
         numberOfRounds: 4,
         imageSource: "https://raketa.hu/uploads/2022/07/mars_sample_return-768x432.jpg",
         comments: comments
