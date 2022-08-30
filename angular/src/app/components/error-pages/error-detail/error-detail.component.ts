@@ -9,6 +9,7 @@ import {Location} from "@angular/common";
 export class ErrorDetailComponent implements OnInit {
   @Input() header?: string;
   @Input() message?: string;
+  @Input() status?: number;
 
   constructor(private location: Location) { }
 
