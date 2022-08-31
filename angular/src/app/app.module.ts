@@ -40,6 +40,7 @@ import { DateAgoPipe } from './pipes/date-ago/date-ago.pipe';
 import { DateAgoComponent } from './components/date-ago/date-ago.component';
 import {MatDividerModule} from "@angular/material/divider";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import { PostContainerComponent } from './components/posts/post-container/post-container.component';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     IconsComponent,
     DateAgoPipe,
     DateAgoComponent,
+    PostContainerComponent,
   ],
     imports: [
         BrowserModule,
