@@ -6,18 +6,33 @@
       <mat-card-subtitle>
         {{userPost.user.firstName}} {{userPost.user.lastName}} - {{userPost.timestamp}}
       </mat-card-subtitle>
+      <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
     </mat-card-header>
 
-    <mat-card-content class="content">
+    <mat-card-content>
       <p>{{userPost.description}}</p>
+      <div class="user-post-comments" *ngIf="!isPreview">
+        <mat-divider></mat-divider>
+        <form (ngSubmit)="handleSubmit($event)">
+          <textarea (keydown.enter)="handleSubmit($event)" class="write-comment" placeholder="Write a comment..." [ngModelOptions]="{standalone: true}" [(ngModel)]="commentFormText"></textarea>
+        </form>
+        <app-comment *ngFor="let comment of userPost.comments" [comment]="comment"></app-comment>
+      </div>
     </mat-card-content>
 
     <mat-card-actions>
       <button *ngIf="isPreview" mat-flat-button color="primary" class="details" routerLink="/user-posts/{{userPost.id}}">Details</button>
-      <div *ngIf="!isPreview">
-        <button mat-stroked-button type="button" color="primary" (click)="openEditDialog()">Edit</button>
-        <button mat-flat-button type="button" color="warn" (click)="openDeleteDialog()">Delete</button>
-      </div>
     </mat-card-actions>
   </mat-card>
 </div>
+
+<mat-menu #menu>
+  <button mat-menu-item (click)="openEditDialog()">
+    <mat-icon color="primary">edit</mat-icon>
+    <span>Edit</span>
+  </button>
+  <button mat-menu-item (click)="openDeleteDialog()">
+    <mat-icon color="warn">delete</mat-icon>
+    <span>Delete</span>
+  </button>
+</mat-menu>

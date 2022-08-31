@@ -1,5 +1,15 @@
 .user-post-detail {
-  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+}
+
+.user-post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
 }
 
 button {

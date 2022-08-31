@@ -15,6 +15,8 @@ export class UserPostComponent implements OnInit {
   @Input() public isPreview?: boolean;
   @Output() onDeleteUserPost: EventEmitter<UserPost> = new EventEmitter<UserPost>();
   @Output() onUpdateUserPost: EventEmitter<UserPost> = new EventEmitter<UserPost>();
+  public commentFormText: string = ""
+
 
   constructor(
     public dialog: MatDialog
@@ -53,5 +55,12 @@ export class UserPostComponent implements OnInit {
         this.onDeleteUserPost.emit(this.userPost);
       }
     })
+  }
+
+  handleSubmit(event: any) {
+    if (this.commentFormText) {
+      this.commentFormText = "";
+      event.preventDefault();
+    }
   }
 }

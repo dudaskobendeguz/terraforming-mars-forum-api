@@ -6,14 +6,20 @@
 .user-post .user-image {
   background-image: url("https://i.pinimg.com/originals/dc/10/c6/dc10c67988996b6fcd82384a23971adf.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
 }
 
-.user-post button {
-  margin: 5px;
-}
-
-.details {
-  align-self: start !important;
+.write-comment {
+  display: block;
+  border: none;
+  outline: none;
+  resize: none;
+  background-color: whitesmoke;
+  border-radius: 7px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 10px 0;
+  margin: 10px 0;
+  font-family: inherit;
+  font-size: inherit;
 }
 
