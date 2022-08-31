@@ -39,6 +39,7 @@ import { IconsComponent } from './components/league-posts/icons/icons.component'
 import { DateAgoPipe } from './pipes/date-ago/date-ago.pipe';
 import { DateAgoComponent } from './components/date-ago/date-ago.component';
 import {MatDividerModule} from "@angular/material/divider";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import {MatDividerModule} from "@angular/material/divider";
         MatIconModule,
         MatDividerModule,
         MatMenuModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatToolbarModule
     ],
   providers: [],
   bootstrap: [AppComponent]
