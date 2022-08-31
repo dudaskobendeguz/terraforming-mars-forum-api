@@ -3,6 +3,9 @@ import {UserPost} from "../../../interfaces/user-post";
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteDialogComponent} from "../../dialog-components/delete-dialog/delete-dialog.component";
 import {TextareaDialogComponent} from "../../dialog-components/textarea-dialog/textarea-dialog.component";
+import {UserPostService} from "../../../services/user-post/user-post.service";
+import {CommentService} from "../../../services/comment/comment.service";
+import {PostComment} from "../../../interfaces/post-comment";
 
 @Component({
   selector: 'app-user-post',
@@ -19,7 +22,9 @@ export class UserPostComponent implements OnInit {
 
 
   constructor(
-    public dialog: MatDialog
+    private dialog: MatDialog,
+    private userPostService: UserPostService,
+    private commentService: CommentService
   ) { }
 
   ngOnInit(): void {
@@ -57,8 +62,23 @@ export class UserPostComponent implements OnInit {
     })
   }
 
+  updateUserPost() {
+    if (this.userPost) {
+      this.userPostService.updateUserPost(this.userPost).subscribe();
+    }
+  }
+
+  addCommentToUserPost(description: string): void {
+    if (this.userPost) {
+      const postComment: PostComment = this.commentService.createComment(this.userPost?.user, description);
+      this.userPost.comments.push(postComment);
+      this.updateUserPost();
+    }
+  }
+
   handleSubmit(event: any) {
     if (this.commentFormText) {
+      this.addCommentToUserPost(this.commentFormText);
       this.commentFormText = "";
       event.preventDefault();
     }
