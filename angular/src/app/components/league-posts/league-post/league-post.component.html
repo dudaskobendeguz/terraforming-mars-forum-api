@@ -12,7 +12,7 @@
       routerLink="/league-posts/{{ post.leagueId }}">
       {{ post.name }}
     </mat-card-title>
-    <mat-card-subtitle>{{ post.gameType }} | {{ post.timestamp | date}}</mat-card-subtitle>
+    <mat-card-subtitle>{{ post.gameType }} | <app-date-ago [date]="post.timestamp"></app-date-ago> </mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
