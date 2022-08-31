@@ -5,4 +5,5 @@ div.league-posts {
   align-items: center;
   height: auto;
   gap: var(--post-gap);
+  margin: 25px;
 }
