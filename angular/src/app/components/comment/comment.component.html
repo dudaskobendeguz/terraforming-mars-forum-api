@@ -4,7 +4,7 @@
       <div mat-card-avatar class="comment-image"></div>
       <div class="comment-details">
         <strong><a class="comment-user-link" routerLink="/profile/{{comment.user.id}}">{{comment.user.username}}</a></strong>
-        <small class="comment-timestamp">{{comment.timestamp | date}}</small>
+        <app-date-ago class="comment-timestamp" [date]="comment.timestamp"></app-date-ago>
         <p class="comment-description">{{comment.description}}</p>
       </div>
     </mat-card-content>
