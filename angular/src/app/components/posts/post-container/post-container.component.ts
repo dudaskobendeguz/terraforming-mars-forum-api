@@ -3,6 +3,7 @@ import {UserPostService} from "../../../services/user-post/user-post.service";
 import {LeaguePostService} from "../../../services/league-post/league-post.service";
 import {MessageLoggerService} from "../../../services/message-logger/message-logger.service";
 import {Post} from "../../../interfaces/post";
+import arrayShuffle from "array-shuffle";
 
 @Component({
   selector: 'app-post-container',
@@ -27,6 +28,7 @@ export class PostContainerComponent implements OnInit {
     this.userPostService.getUserPosts().subscribe((userPosts) => {
       userPosts.forEach((userPost) => this.posts.push({userPost: userPost}));
       this.log('getAllUserPost: all user post added to "posts" array');
+      this.posts = arrayShuffle(this.posts);
     });
   }
 
@@ -34,6 +36,7 @@ export class PostContainerComponent implements OnInit {
     this.leaguePostService.getLeaguePosts().subscribe((leaguePosts) => {
       leaguePosts.forEach((leaguePost) => this.posts.push({leaguePost: leaguePost}));
       this.log('getAllLeaguePost: all league post added to "posts" array');
+      this.posts = arrayShuffle(this.posts);
     })
   }
 
