@@ -8,6 +8,7 @@ export interface LeaguePost {
   "gameType": string,
   "name": string,
   "leagueAdmin": User,
+  numberOfPlayers: number;
   "numberOfRounds": number,
   "imageSource": string,
   comments: PostComment[]

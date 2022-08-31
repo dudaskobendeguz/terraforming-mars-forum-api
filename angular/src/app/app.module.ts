@@ -32,6 +32,11 @@ import { UserRegisterDialogComponent } from './components/user/register/user-reg
 import {MatIconModule} from "@angular/material/icon";
 import {LeaguePostDetailComponent} from "./components/league-posts/league-post-detail/league-post-detail.component";
 import { TextareaDialogComponent } from './components/dialog-components/textarea-dialog/textarea-dialog.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
+import { IconsComponent } from './components/league-posts/icons/icons.component';
+import { DateAgoPipe } from './pipes/date-ago/date-ago.pipe';
+import { DateAgoComponent } from './components/date-ago/date-ago.component';
+import {MatDividerModule} from "@angular/material/divider";
 
 
 @NgModule({
@@ -53,6 +58,9 @@ import { TextareaDialogComponent } from './components/dialog-components/textarea
     ProfilePageComponent,
     UserRegisterDialogComponent,
     TextareaDialogComponent,
+    IconsComponent,
+    DateAgoPipe,
+    DateAgoComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +82,9 @@ import { TextareaDialogComponent } from './components/dialog-components/textarea
     MatInputModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

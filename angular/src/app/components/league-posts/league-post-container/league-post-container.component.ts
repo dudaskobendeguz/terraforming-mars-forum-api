@@ -12,6 +12,7 @@ import {FormBuilder} from "@angular/forms";
 export class LeaguePostContainerComponent implements OnInit {
   leaguePosts: LeaguePost[] = [];
   leagueDetails = this.formBuilder.group( {id: 0});
+  isLoading: boolean = true;
 
   constructor(
     private studentService: LeaguePostService,
@@ -28,6 +29,7 @@ export class LeaguePostContainerComponent implements OnInit {
       .subscribe( (leaguePosts) => {
         this.leaguePosts = leaguePosts;
         this.messageService.add(LeaguePostContainerComponent.name, 'getAllLeaguePosts: league posts fetched');
+        this.isLoading = false;
         }
       );
   }

@@ -13,7 +13,9 @@ import {LeaguePostService} from "../../../services/league-post/league-post.servi
 })
 export class LeaguePostDetailComponent implements OnInit {
   postDetails?: LeagueDetails;
+  isLoadingPostDetails: boolean = true;
   leaguePost?: LeaguePost;
+  isLoadingLeaguePost: boolean = true;
 
   constructor(
     private messageService: MessageLoggerService,
@@ -28,17 +30,19 @@ export class LeaguePostDetailComponent implements OnInit {
     this.getPostDetailById(id);
   }
 
-  private getPostDetailById(id: number): void {
-    this.postDetailService.getByLeagueId(id).subscribe( (leagueDetails) => {
-      this.postDetails = leagueDetails;
-      this.messageService.add(LeaguePostDetailService.name, `getPostDetailsById(${id}) fetched post details`);
-    });
-  }
-
   private getPostByiD(id: number): void {
     this.leaguePostService.getLeaguePostById(id).subscribe( (leaguePost) => {
       this.leaguePost = leaguePost;
       this.messageService.add(LeaguePostDetailService.name, `getPostById(${id}) fetched post`);
+      this.isLoadingLeaguePost = false;
+    });
+  }
+
+  private getPostDetailById(id: number): void {
+    this.postDetailService.getByLeagueId(id).subscribe( (leagueDetails) => {
+      this.postDetails = leagueDetails;
+      this.messageService.add(LeaguePostDetailService.name, `getPostDetailsById(${id}) fetched post details`);
+      this.isLoadingPostDetails = false;
     });
   }
 

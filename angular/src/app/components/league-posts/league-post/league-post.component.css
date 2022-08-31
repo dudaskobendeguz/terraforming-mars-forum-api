@@ -1,41 +1,16 @@
-div.league-post {
-  width: 450px;
-  height: auto;
-  background-color: aliceblue;
-  padding: 15px;
-  margin: 15px;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  transition: box-shadow 2s ease, background-color 2s ease;
-
-}
-div.league-post:hover {
-  background-color: #c0dbf6;
-
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
+.link {
   cursor: pointer;
 }
+
 img.league-image {
-  width: 400px;
-  height: auto;
-}
-div.league-admin {
-  background-color: #77a3cb;
-}
-img.league-admin-picture {
-  width: 50px;
-  height: auto;
-  background-color: brown;
-  border-radius: 30px;
-}
-p.gameType {
-  font-size: 1.5em;
-  color: #565c5e;
-  background-color: #77a3cb;
-  border-radius: 20px;
-
+  max-width: var(--post-width);
 }
 
+div.post {
+  width: var(--post-width);
+  height: fit-content;
+}
 
+.divider {
+  margin: 15px;
+}
