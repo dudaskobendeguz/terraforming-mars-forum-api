@@ -33,3 +33,7 @@ mat-card-content {
   display: block;
   margin-bottom: 10px;
 }
+
+.comment-description {
+  overflow-wrap: anywhere;
+}
