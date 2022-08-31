@@ -1,6 +1,5 @@
 .user-post {
-  width: 70vw;
-  margin: 15px;
+  width: var(--post-width);
 }
 
 .user-post .user-image {

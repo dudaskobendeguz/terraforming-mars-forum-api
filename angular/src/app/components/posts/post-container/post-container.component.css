@@ -1,0 +1,9 @@
+div.post-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  gap: var(--post-gap);
+  margin: 100px;
+}

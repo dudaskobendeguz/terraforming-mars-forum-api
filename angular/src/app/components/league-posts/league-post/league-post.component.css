@@ -2,13 +2,14 @@
   cursor: pointer;
 }
 
-img.league-image {
-  max-width: var(--post-width);
+.league-image {
+  max-width: 100% ;
 }
 
-div.post {
+.post {
   width: var(--post-width);
-  height: fit-content;
+  max-width: var(--post-width);
+
 }
 
 .divider {

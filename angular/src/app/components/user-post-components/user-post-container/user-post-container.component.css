@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding: 25px;
+  gap: 25px;
 }
 
 .user-post-container h2 {
