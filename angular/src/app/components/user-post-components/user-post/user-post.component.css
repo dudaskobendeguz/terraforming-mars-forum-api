@@ -8,6 +8,16 @@
   background-size: cover;
 }
 
+.user-post .user-link {
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+.user-post .user-link:hover  {
+  text-decoration: underline;
+}
+
 .write-comment {
   display: block;
   border: none;
@@ -23,3 +33,7 @@
   font-size: inherit;
 }
 
+mat-card-header {
+  display: flex;
+  flex-direction: row;
+}
