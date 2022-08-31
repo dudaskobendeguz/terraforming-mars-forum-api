@@ -35,6 +35,7 @@ import { TextareaDialogComponent } from './components/dialog-components/textarea
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { IconsComponent } from './components/league-posts/icons/icons.component';
 import { DateAgoPipe } from './pipes/date-ago/date-ago.pipe';
+import { DateAgoComponent } from './components/date-ago/date-ago.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { DateAgoPipe } from './pipes/date-ago/date-ago.pipe';
     TextareaDialogComponent,
     IconsComponent,
     DateAgoPipe,
+    DateAgoComponent,
   ],
     imports: [
         BrowserModule,
