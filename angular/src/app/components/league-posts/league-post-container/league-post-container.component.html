@@ -11,5 +11,7 @@
 
 <h2>League Posts:</h2>
 <div class="league-posts">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <p *ngIf="!isLoading && !leaguePosts.length">There are no league posts.</p>
     <app-league-post *ngFor="let leaguePost of leaguePosts" [post]="leaguePost"></app-league-post>
 </div>
