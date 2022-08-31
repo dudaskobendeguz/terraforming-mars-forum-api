@@ -36,6 +36,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import { IconsComponent } from './components/league-posts/icons/icons.component';
 import { DateAgoPipe } from './pipes/date-ago/date-ago.pipe';
 import { DateAgoComponent } from './components/date-ago/date-ago.component';
+import {MatDividerModule} from "@angular/material/divider";
 
 
 @NgModule({
@@ -61,29 +62,30 @@ import { DateAgoComponent } from './components/date-ago/date-ago.component';
     DateAgoPipe,
     DateAgoComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-        // and returns simulated server responses.
-        // Remove it when a real server is ready to receive requests.
-        HttpClientInMemoryWebApiModule.forRoot(
-            InMemoryDataService, {dataEncapsulation: false}
-        ),
-        FormsModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        MatSliderModule,
-        MatDialogModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatCardModule,
-        MatProgressSpinnerModule,
-        MatIconModule,
-        MatTooltipModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, {dataEncapsulation: false}
+    ),
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatDividerModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

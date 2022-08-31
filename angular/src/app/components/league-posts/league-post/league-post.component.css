@@ -6,13 +6,11 @@ img.league-image {
   max-width: var(--post-width);
 }
 
-.post {
+div.post {
   width: var(--post-width);
   height: fit-content;
 }
 
-div.post {
-
+.divider {
+  margin: 15px;
 }
-
-
