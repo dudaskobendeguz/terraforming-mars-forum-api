@@ -1,3 +1,4 @@
+<mat-spinner *ngIf="isLoadingLeaguePost && isLoadingPostDetails"></mat-spinner>
 <mat-card *ngIf="leaguePost && postDetails">
   <mat-card-header>
     <mat-card-title>{{ leaguePost.name }}</mat-card-title>
