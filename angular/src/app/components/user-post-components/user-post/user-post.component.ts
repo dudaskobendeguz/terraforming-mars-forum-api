@@ -77,7 +77,9 @@ export class UserPostComponent implements OnInit {
   }
 
   handleSubmit(event: any) {
-    if (this.commentFormText) {
+    event.preventDefault();
+    const pattern: RegExp = new RegExp("\\S+", "gi");
+    if (pattern.test(this.commentFormText)) {
       this.addCommentToUserPost(this.commentFormText);
       this.commentFormText = "";
       event.preventDefault();
