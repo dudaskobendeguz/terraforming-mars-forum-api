@@ -1,7 +1,9 @@
-<nav>
-  <button mat-flat-button type="button" routerLink="">Home</button>
-  <button mat-flat-button type="button" routerLink="/user-posts">User Posts</button>
-  <button mat-flat-button type="button" routerLink="/league-posts">League Posts</button>
-  <button mat-flat-button type="button" (click)="openRegisterModal()" >Registration!</button>
-  <button mat-flat-button type="button" routerLink="/profile/1">Profile</button>
-</nav>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button routerLink="" routerLinkActive="active">Home</button>
+    <button mat-button routerLink="/user-posts" routerLinkActive="active">User Posts</button>
+    <button mat-button routerLink="/league-posts" routerLinkActive="active">League Posts</button>
+    <button mat-button (click)="openRegisterModal()">Registration!</button>
+    <button mat-button routerLink="/profile/1" routerLinkActive="active">Profile</button>
+  </mat-toolbar-row>
+</mat-toolbar>
