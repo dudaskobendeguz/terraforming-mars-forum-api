@@ -43,6 +43,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import { PostContainerComponent } from './components/posts/post-container/post-container.component';
 import { PostHeaderComponent } from './components/league-posts/post-header/post-header.component';
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
+import { CommentIconComponent } from './components/icons/comment-icon/comment-icon.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { UserAvatarComponent } from './components/user-avatar/user-avatar.compon
     PostContainerComponent,
     PostHeaderComponent,
     UserAvatarComponent,
+    CommentIconComponent,
   ],
     imports: [
         BrowserModule,
