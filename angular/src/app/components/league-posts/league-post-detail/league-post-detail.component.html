@@ -1,5 +1,5 @@
 <div class="league-post-container">
-  <mat-spinner *ngIf="isLoadingLeaguePost && isLoadingPostDetails"></mat-spinner>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
   <mat-card *ngIf="leaguePost && leaguePost.leagueDetails">
     <mat-card-header>
       <mat-card-title>{{ leaguePost.name }}</mat-card-title>

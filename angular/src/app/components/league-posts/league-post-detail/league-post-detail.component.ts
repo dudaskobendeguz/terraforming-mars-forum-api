@@ -11,9 +11,8 @@ import {LeaguePostService} from "../../../services/league-post/league-post.servi
   styleUrls: ['./league-post-detail.component.css']
 })
 export class LeaguePostDetailComponent implements OnInit {
-  isLoadingPostDetails: boolean = true;
   leaguePost?: LeaguePost;
-  isLoadingLeaguePost: boolean = true;
+  isLoading: boolean = true;
 
   constructor(
     private messageService: MessageLoggerService,
@@ -31,7 +30,7 @@ export class LeaguePostDetailComponent implements OnInit {
     this.leaguePostService.getLeaguePostById(id).subscribe( (leaguePost) => {
       this.leaguePost = leaguePost;
       this.messageService.add(LeaguePostDetailService.name, `getPostById(${id}) fetched post`);
-      this.isLoadingLeaguePost = false;
+      this.isLoading = false;
     });
   }
 
