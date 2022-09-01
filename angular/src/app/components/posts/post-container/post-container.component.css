@@ -1,3 +1,15 @@
+.home {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.menu {
+  max-width: var(--menu-width);
+  width: var(--menu-width);
+  padding: 100px 50px;
+}
+
 div.post-container {
   display: flex;
   flex-direction: column;
@@ -5,5 +17,6 @@ div.post-container {
   align-items: center;
   height: auto;
   gap: var(--post-gap);
+  max-width: var(--post-width);
   margin: 100px;
 }

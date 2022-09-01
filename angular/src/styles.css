@@ -3,6 +3,7 @@
 :root {
   --post-width: 630px;
   --post-gap: 30px;
+  --menu-width: 315px;
 }
 
 html, body {

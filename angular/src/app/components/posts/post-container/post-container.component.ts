@@ -12,6 +12,8 @@ import arrayShuffle from "array-shuffle";
 })
 export class PostContainerComponent implements OnInit {
   public posts:Post[] = [];
+  public isLoading: boolean = true;
+  selectedValue: string = "ascDate";
 
   constructor(
     private userPostService: UserPostService,
@@ -29,7 +31,7 @@ export class PostContainerComponent implements OnInit {
       userPosts.forEach((userPost) => this.posts.push({userPost: userPost}));
       this.log('getAllUserPost: all user post added to "posts" array');
       this.filterByDate(true);
-      // this.posts = arrayShuffle(this.posts);
+      this.isLoading = false;
     });
   }
 
@@ -38,15 +40,15 @@ export class PostContainerComponent implements OnInit {
       leaguePosts.forEach((leaguePost) => this.posts.push({leaguePost: leaguePost}));
       this.log('getAllLeaguePost: all league post added to "posts" array');
       this.filterByDate(true);
-      // this.posts = arrayShuffle(this.posts);
+      this.isLoading = false;
     })
   }
 
-  private log(message: string): void {
-    this.logger.add(PostContainerComponent.name, message);
+  private shuffle() {
+    this.posts = arrayShuffle(this.posts);
   }
 
-  private filterByDate(isAscending: boolean): void {
+  public filterByDate(isAscending: boolean): void {
     this.posts.sort((post1, post2) => {
       const post1Date: Date = PostContainerComponent.getPostDate(post1);
       const post2Date: Date = PostContainerComponent.getPostDate(post2);
@@ -62,5 +64,24 @@ export class PostContainerComponent implements OnInit {
     } else {
       throw ReferenceError("Post interface doesn't have any type of post");
     }
+  }
+
+  public filter() {
+    switch (this.selectedValue) {
+      case 'ascDate': {
+        this.filterByDate(true);
+        break;
+      } case 'descDate': {
+        this.filterByDate(false);
+        break;
+      } case 'shuffle' : {
+        this.shuffle();
+        break;
+      }
+    }
+  }
+
+  private log(message: string): void {
+    this.logger.add(PostContainerComponent.name, message);
   }
 }

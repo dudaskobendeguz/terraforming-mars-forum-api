@@ -46,6 +46,7 @@ import { UserAvatarComponent } from './components/user-avatar/user-avatar.compon
 import { CommentIconComponent } from './components/icons/comment-icon/comment-icon.component';
 import { PlayersIconComponent } from './components/icons/players-icon/players-icon.component';
 import { IconComponent } from './components/icons/icon/icon.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -78,32 +79,33 @@ import { IconComponent } from './components/icons/icon/icon.component';
     PlayersIconComponent,
     IconComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-        // and returns simulated server responses.
-        // Remove it when a real server is ready to receive requests.
-        HttpClientInMemoryWebApiModule.forRoot(
-            InMemoryDataService, {dataEncapsulation: false}
-        ),
-        FormsModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        MatSliderModule,
-        MatDialogModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatCardModule,
-        MatProgressSpinnerModule,
-        MatIconModule,
-        MatDividerModule,
-        MatMenuModule,
-        MatTooltipModule,
-        MatToolbarModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, {dataEncapsulation: false}
+    ),
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatDividerModule,
+    MatMenuModule,
+    MatTooltipModule,
+    MatToolbarModule,
+    MatSelectModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

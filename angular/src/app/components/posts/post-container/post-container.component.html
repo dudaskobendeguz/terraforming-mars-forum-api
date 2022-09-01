@@ -1,6 +1,23 @@
-<div class="post-container">
-  <div class="post" *ngFor="let post of posts">
-    <app-user-post *ngIf="post.userPost" [userPost]="post.userPost"></app-user-post>
-    <app-league-post *ngIf="post.leaguePost" [post]="post.leaguePost"></app-league-post>
+<div class="home">
+  <div class="menu left">
+    <mat-form-field appearance="fill">
+      <mat-label>Sort By:</mat-label>
+      <mat-select [(ngModel)]="selectedValue" (selectionChange)="filter()" >
+        <mat-option value="ascDate" selected>Newest</mat-option>
+        <mat-option value="descDate">Oldest</mat-option>
+        <mat-option value="shuffle">Shuffle</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
+  <div class="post-container">
+    <h2>Posts</h2>
+
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <div class="post" *ngFor="let post of posts">
+      <app-user-post *ngIf="post.userPost" [userPost]="post.userPost"></app-user-post>
+      <app-league-post *ngIf="post.leaguePost" [post]="post.leaguePost"></app-league-post>
+    </div>
+  </div>
+  <div class="menu right"></div>
 </div>
+
