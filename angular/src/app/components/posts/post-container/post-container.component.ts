@@ -48,9 +48,19 @@ export class PostContainerComponent implements OnInit {
 
   private filterByDate(isAscending: boolean): void {
     this.posts.sort((post1, post2) => {
-      const date1: Date = (post1.userPost?.timestamp) ? post1.userPost.timestamp : (post1.leaguePost?.timestamp) ? post1.leaguePost.timestamp : new Date();
-      const date2: Date = (post2.userPost?.timestamp) ? post2.userPost.timestamp : (post2.leaguePost?.timestamp) ? post2.leaguePost.timestamp : new Date();
-      return isAscending ? (date1 < date2 ? 1 : -1) : (date2 < date1 ? 1 : -1);
+      const post1Date: Date = PostContainerComponent.getPostDate(post1);
+      const post2Date: Date = PostContainerComponent.getPostDate(post2);
+      return isAscending ? (post1Date < post2Date ? 1 : -1) : (post2Date < post1Date ? 1 : -1);
     });
+  }
+
+  private static getPostDate(post: Post): Date {
+    if (post.userPost) {
+      return  post.userPost.timestamp;
+    } else if (post.leaguePost) {
+      return  post.leaguePost.timestamp;
+    } else {
+      throw ReferenceError("Post interface doesn't have any type of post");
+    }
   }
 }
