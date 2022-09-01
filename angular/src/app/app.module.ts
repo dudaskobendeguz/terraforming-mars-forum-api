@@ -32,7 +32,9 @@ import { UserRegisterDialogComponent } from './components/user/register/user-reg
 import {MatIconModule} from "@angular/material/icon";
 import {LeaguePostDetailComponent} from "./components/league-posts/league-post-detail/league-post-detail.component";
 import { TextareaDialogComponent } from './components/dialog-components/textarea-dialog/textarea-dialog.component';
+import {MatMenuModule} from "@angular/material/menu";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { UserPostActionsMenuComponent } from './components/user-post-components/user-post-actions-menu/user-post-actions-menu.component';
 import { IconsComponent } from './components/league-posts/icons/icons.component';
 import { DateAgoPipe } from './pipes/date-ago/date-ago.pipe';
 import { DateAgoComponent } from './components/date-ago/date-ago.component';
@@ -58,34 +60,36 @@ import {MatDividerModule} from "@angular/material/divider";
     ProfilePageComponent,
     UserRegisterDialogComponent,
     TextareaDialogComponent,
+    UserPostActionsMenuComponent,
     IconsComponent,
     DateAgoPipe,
     DateAgoComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    ),
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatSliderModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    MatTooltipModule,
-    MatDividerModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+        // and returns simulated server responses.
+        // Remove it when a real server is ready to receive requests.
+        HttpClientInMemoryWebApiModule.forRoot(
+            InMemoryDataService, {dataEncapsulation: false}
+        ),
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatSliderModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatIconModule,
+        MatDividerModule,
+        MatMenuModule,
+        MatTooltipModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

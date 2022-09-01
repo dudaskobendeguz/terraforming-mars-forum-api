@@ -2,22 +2,26 @@
   <mat-card>
     <mat-card-header>
       <div mat-card-avatar class="user-image"></div>
-      <mat-card-title>User Post {{userPost.id}}</mat-card-title>
-      <mat-card-subtitle>
-        {{userPost.user.firstName}} {{userPost.user.lastName}} - {{userPost.timestamp}}
-      </mat-card-subtitle>
+        <mat-card-title><a class="user-link" routerLink="/profile/{{userPost.user.id}}">{{userPost.user.username}}</a></mat-card-title>
+        <mat-card-subtitle>
+          <app-date-ago [date]="userPost.timestamp"></app-date-ago>
+        </mat-card-subtitle>
+      <app-user-post-actions-menu class="actions-menu" *ngIf="!isPreview" (onEdit)="openEditDialog()" (onDelete)="openDeleteDialog()"></app-user-post-actions-menu>
     </mat-card-header>
 
-    <mat-card-content class="content">
+    <mat-card-content>
       <p>{{userPost.description}}</p>
+      <div class="user-post-comments" *ngIf="!isPreview">
+        <mat-divider></mat-divider>
+        <app-comment *ngFor="let comment of userPost.comments" [comment]="comment"></app-comment>
+        <form>
+          <textarea (keydown.enter)="handleSubmit($event)" class="write-comment" placeholder="Write a comment..." [ngModelOptions]="{standalone: true}" [(ngModel)]="commentFormText"></textarea>
+        </form>
+      </div>
     </mat-card-content>
 
     <mat-card-actions>
       <button *ngIf="isPreview" mat-flat-button color="primary" class="details" routerLink="/user-posts/{{userPost.id}}">Details</button>
-      <div *ngIf="!isPreview">
-        <button mat-stroked-button type="button" color="primary" (click)="openEditDialog()">Edit</button>
-        <button mat-flat-button type="button" color="warn" (click)="openDeleteDialog()">Delete</button>
-      </div>
     </mat-card-actions>
   </mat-card>
 </div>

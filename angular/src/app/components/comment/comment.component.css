@@ -1,43 +1,39 @@
-.comment-form {
-  background-color: burlywood;
+.comment {
+  margin: 10px 0;
 }
 
-.profile-picture {
-  display: inline;
-  height: 3.5em;
+.comment-image {
+  background-image: url("https://i.pinimg.com/736x/25/78/61/25786134576ce0344893b33a051160b1.jpg");
+  background-size: contain;
 }
 
-.user-full-name {
-  display: inline;
-
+mat-card {
+  background-color: whitesmoke;
+  width: fit-content;
+  box-shadow: none !important;
 }
 
-.username {
-  display: inline;
-  padding-left: 3%;
+mat-card-content {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
 }
 
-.description {
-  text-align: center;
-  height: 4em;
-  width: 90%;
+.comment-user-link {
+  text-decoration: none;
+  color: black;
+  display: block;
 }
 
-.submit-btn {
-  margin-left: 85%;
+.comment-user-link:hover {
+  text-decoration: underline;
 }
 
-.comment-head {
-  vertical-align: top;
-  background-color: peru;
+.comment-timestamp {
+  display: block;
+  margin-bottom: 10px;
 }
 
-.comment-head-text {
-  display: inline;
-}
-
-.separator {
-  width: 100%;
-  height: 1px;
-  background-color: black;
+.comment-description {
+  overflow-wrap: anywhere;
 }

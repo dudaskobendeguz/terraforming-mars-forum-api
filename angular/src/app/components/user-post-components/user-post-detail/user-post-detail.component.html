@@ -1,16 +1,12 @@
 <div class="user-post-detail">
   <button mat-flat-button color="primary" (click)="goBack()">Back</button>
   <mat-spinner *ngIf="!userPost"></mat-spinner>
-  <div *ngIf="userPost">
-    <h2>User Post {{userPost.id}}</h2>
+  <div *ngIf="userPost" class="user-post">
     <app-user-post
       [userPost]="userPost"
       (onDeleteUserPost)="deleteUserPost($event)"
-      (onUpdateUserPost)="updateUserPost($event)"></app-user-post>
-    <button mat-flat-button type="button" color="primary" (click)="openAddCommentDialog()">Add Comment</button>
-    <div class="user-post-comments" *ngFor="let comment of userPost.comments">
-      <app-comment [comment]="comment"></app-comment>
-    </div>
+      (onUpdateUserPost)="updateUserPost($event)"
+    ></app-user-post>
   </div>
 
 </div>
