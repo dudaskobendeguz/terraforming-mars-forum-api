@@ -1,4 +1,5 @@
-<div class="comment">
-  <mat-icon matTooltip="Comments">question_answer</mat-icon>
-  <span>{{ numberOfComments! }}</span>
-</div>
+<app-icon
+  [tooltip]="tooltip"
+  [matIconType]="iconType"
+  [message]="numberOfComments">
+</app-icon>

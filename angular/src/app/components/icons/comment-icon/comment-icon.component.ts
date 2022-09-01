@@ -7,6 +7,9 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CommentIconComponent implements OnInit {
   @Input() numberOfComments?: number;
+  iconType: string = "question_answer";
+  tooltip: string = "Comments";
+
 
   constructor() { }
 
