@@ -3,8 +3,8 @@
   <mat-card-title *ngIf="titleLink && title"
     class="link"
     routerLink="{{ titleLink }}">
-    {{ title }}
+    {{ title | titlecase }}
   </mat-card-title>
   <mat-card-title *ngIf="!titleLink && title">{{ title }}</mat-card-title>
-  <mat-card-subtitle>{{ subtitle }}<span *ngIf="subtitle"> | </span><app-date-ago [date]="date"></app-date-ago> </mat-card-subtitle>
+  <mat-card-subtitle>{{ subtitle! }}<span *ngIf="subtitle"> | </span><app-date-ago *ngIf="date" [date]="date"></app-date-ago> </mat-card-subtitle>
 </mat-card-header>
