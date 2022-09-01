@@ -1,0 +1,10 @@
+<mat-card-header>
+  <app-user-avatar mat-card-avatar [user]="user"></app-user-avatar>
+  <mat-card-title *ngIf="titleLink && title"
+    class="link"
+    routerLink="{{ titleLink }}">
+    {{ title }}
+  </mat-card-title>
+  <mat-card-title *ngIf="!titleLink && title">{{ title }}</mat-card-title>
+  <mat-card-subtitle>{{ subtitle }}<span *ngIf="subtitle"> | </span><app-date-ago [date]="date"></app-date-ago> </mat-card-subtitle>
+</mat-card-header>

@@ -11,7 +11,7 @@ import {LeaguePostService} from "../../../services/league-post/league-post.servi
   styleUrls: ['./league-post-detail.component.css']
 })
 export class LeaguePostDetailComponent implements OnInit {
-  leaguePost?: LeaguePost;
+  post?: LeaguePost;
   isLoading: boolean = true;
 
   constructor(
@@ -28,13 +28,13 @@ export class LeaguePostDetailComponent implements OnInit {
 
   private getPostByiD(id: number): void {
     this.leaguePostService.getLeaguePostById(id).subscribe( (leaguePost) => {
-      this.leaguePost = leaguePost;
+      this.post = leaguePost;
       this.messageService.add(LeaguePostDetailService.name, `getPostById(${id}) fetched post`);
       this.isLoading = false;
     });
   }
 
   hasComment(): boolean {
-    return this.leaguePost?.leagueDetails?.comments ? this.leaguePost.leagueDetails.comments.length> 0 : false;
+    return this.post?.leagueDetails?.comments ? this.post.leagueDetails.comments.length> 0 : false;
   }
 }

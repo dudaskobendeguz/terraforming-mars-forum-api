@@ -18,3 +18,7 @@ body {
 .mat-tooltip {
   font-size: 1em;
 }
+
+.link {
+  cursor: pointer;
+}

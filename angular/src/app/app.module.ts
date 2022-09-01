@@ -41,6 +41,7 @@ import { DateAgoComponent } from './components/date-ago/date-ago.component';
 import {MatDividerModule} from "@angular/material/divider";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { PostContainerComponent } from './components/posts/post-container/post-container.component';
+import { PostHeaderComponent } from './components/league-posts/post-header/post-header.component';
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 
 
@@ -68,6 +69,7 @@ import { UserAvatarComponent } from './components/user-avatar/user-avatar.compon
     DateAgoPipe,
     DateAgoComponent,
     PostContainerComponent,
+    PostHeaderComponent,
     UserAvatarComponent,
   ],
     imports: [
