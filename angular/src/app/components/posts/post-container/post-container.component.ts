@@ -13,11 +13,12 @@ import arrayShuffle from "array-shuffle";
 export class PostContainerComponent implements OnInit {
   public posts:Post[] = [];
   public isLoading: boolean = true;
-  public sortOptions = {
+  public readonly sortOptions = {
     'newest': () => {this.filterByDate(true)},
     'oldest': () => {this.filterByDate(false)},
     'shuffle': () => {this.shuffle()},
   };
+
   filter: () => void = this.sortOptions.newest;
 
   constructor(

@@ -3,7 +3,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Sort By:</mat-label>
       <mat-select [(ngModel)]="filter" (selectionChange)="filter()">
-        <mat-option *ngFor="let option of sortOptions | keyvalue" [value]="option.value">{{ option.key }}</mat-option>
+        <mat-option *ngFor="let option of sortOptions | keyvalue " [value]="option.value">{{ option.key | titlecase }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
