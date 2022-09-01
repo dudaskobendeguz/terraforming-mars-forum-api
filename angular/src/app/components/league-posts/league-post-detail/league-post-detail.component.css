@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+.post {
+  max-width: var(--post-width);
+  margin: 50px;
 }
 
 div.players {
