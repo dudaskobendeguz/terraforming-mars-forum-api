@@ -44,6 +44,7 @@ import { PostContainerComponent } from './components/posts/post-container/post-c
 import { PostHeaderComponent } from './components/league-posts/post-header/post-header.component';
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { CommentIconComponent } from './components/icons/comment-icon/comment-icon.component';
+import { PlayersIconComponent } from './components/icons/players-icon/players-icon.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { CommentIconComponent } from './components/icons/comment-icon/comment-ic
     PostHeaderComponent,
     UserAvatarComponent,
     CommentIconComponent,
+    PlayersIconComponent,
   ],
     imports: [
         BrowserModule,
