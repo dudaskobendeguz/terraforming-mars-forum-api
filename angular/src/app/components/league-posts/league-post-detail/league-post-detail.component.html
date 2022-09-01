@@ -1,6 +1,6 @@
 <div class="league-post-container">
   <mat-spinner *ngIf="isLoadingLeaguePost && isLoadingPostDetails"></mat-spinner>
-  <mat-card *ngIf="leaguePost && postDetails">
+  <mat-card *ngIf="leaguePost && leaguePost.leagueDetails">
     <mat-card-header>
       <mat-card-title>{{ leaguePost.name }}</mat-card-title>
       <mat-card-subtitle>{{ leaguePost.gameType }}</mat-card-subtitle>
@@ -10,18 +10,18 @@
 
     <mat-card-content>
 
-      <img src="{{ postDetails.imageSource }}" alt="league image">
+      <img src="{{ leaguePost.imageSource }}" alt="league image">
       <div class="league-details">
         <h2>Rounds: </h2>
-        <p>Started: <span>{{ postDetails.numberOfRounds }}</span></p>
-        <p>Finished: <span>{{ postDetails.numberOfFinishedRounds }}</span></p>
-        <p>In progress: <span>{{ postDetails.numberOfInProgressRounds }}</span></p>
+        <p>Started: <span>{{ leaguePost.numberOfRounds }}</span></p>
+        <p>Finished: <span>{{ leaguePost.leagueDetails.numberOfFinishedRounds }}</span></p>
+        <p>In progress: <span>{{ leaguePost.leagueDetails.numberOfInProgressRounds }}</span></p>
       </div>
 
       <h2>Players:</h2>
       <div class="players">
         <mat-card class="player shadow"
-                  *ngFor="let player of postDetails.leaguePlayers"
+                  *ngFor="let player of leaguePost.leagueDetails.leaguePlayers"
                   [ngClass]="leaguePost.leagueAdmin.id == player.id ? 'admin-player' : 'casual-player'"
                   routerLink="/profile/{{ player.id }}">
           <mat-card-header>
@@ -37,9 +37,9 @@
         <div class="comments" *ngIf="hasComment()">
           <div>
             <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="comment"></mat-icon>
-            <small>{{ leaguePost.comments.length }}</small>
+            <small>{{ leaguePost.leagueDetails.comments.length }}</small>
           </div>
-          <app-comment *ngFor="let comment of leaguePost.comments" [comment]="comment"></app-comment>
+          <app-comment *ngFor="let comment of leaguePost.leagueDetails.comments" [comment]="comment"></app-comment>
         </div>
         <div *ngIf="!hasComment()">
           <h3>No comments yet</h3>
