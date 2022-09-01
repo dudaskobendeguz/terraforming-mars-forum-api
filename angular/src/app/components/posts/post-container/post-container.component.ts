@@ -13,7 +13,12 @@ import arrayShuffle from "array-shuffle";
 export class PostContainerComponent implements OnInit {
   public posts:Post[] = [];
   public isLoading: boolean = true;
-  selectedValue: string = "ascDate";
+  public sortOptions = {
+    'newest': () => {this.filterByDate(true)},
+    'oldest': () => {this.filterByDate(false)},
+    'shuffle': () => {this.shuffle()},
+  };
+  filter: () => void = this.sortOptions.newest;
 
   constructor(
     private userPostService: UserPostService,
@@ -63,21 +68,6 @@ export class PostContainerComponent implements OnInit {
       return  post.leaguePost.timestamp;
     } else {
       throw ReferenceError("Post interface doesn't have any type of post");
-    }
-  }
-
-  public filter() {
-    switch (this.selectedValue) {
-      case 'ascDate': {
-        this.filterByDate(true);
-        break;
-      } case 'descDate': {
-        this.filterByDate(false);
-        break;
-      } case 'shuffle' : {
-        this.shuffle();
-        break;
-      }
     }
   }
 
