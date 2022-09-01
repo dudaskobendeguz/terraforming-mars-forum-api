@@ -7,6 +7,8 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class PlayersIconComponent implements OnInit {
   @Input() numberOfPlayers?: number;
+  iconType: string = "supervisor_account";
+  tooltip: string = "Players";
 
   constructor() { }
 

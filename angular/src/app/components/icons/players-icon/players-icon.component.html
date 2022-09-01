@@ -1,4 +1,5 @@
-<div class="players">
-  <mat-icon matTooltip="Players">supervisor_account</mat-icon>
-  <span>{{ numberOfPlayers! }}</span>
-</div>
+<app-icon
+  [tooltip]="tooltip"
+  [matIconType]="iconType"
+  [message]="numberOfPlayers!">
+</app-icon>
