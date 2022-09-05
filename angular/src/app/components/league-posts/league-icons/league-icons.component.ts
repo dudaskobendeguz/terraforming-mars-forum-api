@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-icons',
-  templateUrl: './icons.component.html',
-  styleUrls: ['./icons.component.css']
+  selector: 'app-league-icons',
+  templateUrl: './league-icons.component.html',
+  styleUrls: ['./league-icons.component.css']
 })
-export class IconsComponent implements OnInit {
+export class LeagueIconsComponent implements OnInit {
   @Input() numberOfComments?: number;
   @Input() numberOfPlayers?: number;
   @Input() numberOfRounds?: number;

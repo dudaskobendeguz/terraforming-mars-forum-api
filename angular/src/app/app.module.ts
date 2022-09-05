@@ -35,7 +35,7 @@ import { TextareaDialogComponent } from './components/dialog-components/textarea
 import {MatMenuModule} from "@angular/material/menu";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { UserPostActionsMenuComponent } from './components/user-post-components/user-post-actions-menu/user-post-actions-menu.component';
-import { IconsComponent } from './components/league-posts/icons/icons.component';
+import { LeagueIconsComponent } from './components/league-posts/league-icons/league-icons.component';
 import { DateAgoPipe } from './pipes/date-ago/date-ago.pipe';
 import { DateAgoComponent } from './components/date-ago/date-ago.component';
 import {MatDividerModule} from "@angular/material/divider";
@@ -69,7 +69,7 @@ import {MatSelectModule} from "@angular/material/select";
     UserRegisterDialogComponent,
     TextareaDialogComponent,
     UserPostActionsMenuComponent,
-    IconsComponent,
+    LeagueIconsComponent,
     DateAgoPipe,
     DateAgoComponent,
     PostContainerComponent,

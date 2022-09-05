@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IconsComponent } from './icons.component';
+import { LeagueIconsComponent } from './league-icons.component';
 
-describe('IconsComponent', () => {
-  let component: IconsComponent;
-  let fixture: ComponentFixture<IconsComponent>;
+describe('LeagueIconsComponent', () => {
+  let component: LeagueIconsComponent;
+  let fixture: ComponentFixture<LeagueIconsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IconsComponent ]
+      declarations: [ LeagueIconsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(IconsComponent);
+    fixture = TestBed.createComponent(LeagueIconsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
