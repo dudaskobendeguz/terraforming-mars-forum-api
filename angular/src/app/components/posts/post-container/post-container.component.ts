@@ -14,12 +14,12 @@ export class PostContainerComponent implements OnInit {
   public posts:Post[] = [];
   public isLoading: boolean = true;
   public readonly sortOptions = {
-    'newest': () => {this.filterByDate(true)},
-    'oldest': () => {this.filterByDate(false)},
+    'newest': () => {this.sortByDate(true)},
+    'oldest': () => {this.sortByDate(false)},
     'shuffle': () => {this.shuffle()},
   };
 
-  filter: () => void = this.sortOptions.newest;
+  sort: () => void = this.sortOptions.newest;
 
   constructor(
     private userPostService: UserPostService,
@@ -36,7 +36,7 @@ export class PostContainerComponent implements OnInit {
     this.userPostService.getUserPosts().subscribe((userPosts) => {
       userPosts.forEach((userPost) => this.posts.push({userPost: userPost}));
       this.log('getAllUserPost: all user post added to "posts" array');
-      this.filterByDate(true);
+      this.sortByDate(true);
       this.isLoading = false;
     });
   }
@@ -45,7 +45,7 @@ export class PostContainerComponent implements OnInit {
     this.leaguePostService.getLeaguePosts().subscribe((leaguePosts) => {
       leaguePosts.forEach((leaguePost) => this.posts.push({leaguePost: leaguePost}));
       this.log('getAllLeaguePost: all league post added to "posts" array');
-      this.filterByDate(true);
+      this.sortByDate(true);
       this.isLoading = false;
     })
   }
@@ -54,7 +54,7 @@ export class PostContainerComponent implements OnInit {
     this.posts = arrayShuffle(this.posts);
   }
 
-  public filterByDate(isAscending: boolean): void {
+  public sortByDate(isAscending: boolean): void {
     this.posts.sort((post1, post2) => {
       const post1Date: Date = PostContainerComponent.getPostDate(post1);
       const post2Date: Date = PostContainerComponent.getPostDate(post2);
