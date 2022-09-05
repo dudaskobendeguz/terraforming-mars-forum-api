@@ -1,22 +1,13 @@
 <mat-card *ngIf="post" class="post">
-  <mat-card-header>
-    <img class="link"
-         mat-card-avatar
-         matTooltip="{{ post.leagueAdmin.username | titlecase }}"
-         routerLink="/profile/{{ post.leagueAdmin.id }}"
-         src="{{ post.leagueAdmin.imageSource }}"
-         alt="{{ post.leagueAdmin.username }}'s profile picture"
-    >
-    <mat-card-title
-      class="link"
-      routerLink="/league-posts/{{ post.leagueId }}">
-      {{ post.name }}
-    </mat-card-title>
-    <mat-card-subtitle>{{ post.gameType }} | <app-date-ago [date]="post.timestamp"></app-date-ago> </mat-card-subtitle>
-  </mat-card-header>
+  <app-post-header
+    [user]="post.leagueAdmin"
+    [title]="post.name"
+    [titleLink]="'/league-posts/' + post.leagueId"
+    [subtitle]="post.gameType"
+    [date]="post.timestamp">
+  </app-post-header>
 
   <mat-card-content>
-
     <img class="league-image link"
          routerLink="/league-posts/{{ post.leagueId }}"
          src="{{ post.imageSource }}"
@@ -24,10 +15,10 @@
 
     <mat-divider class="divider"></mat-divider>
 
-    <app-icons
-      [numberOfComments]="post.comments.length"
+    <app-league-icons
+      [numberOfComments]="post.numberOfComments"
       [numberOfPlayers]="post.numberOfPlayers"
       [numberOfRounds]="post.numberOfRounds">
-    </app-icons>
+    </app-league-icons>
   </mat-card-content>
 </mat-card>

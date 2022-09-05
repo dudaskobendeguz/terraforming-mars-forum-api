@@ -48,6 +48,16 @@ export class InMemoryDataService implements InMemoryDbService{
       }
     ]
 
+    const leaguePostDetails: LeagueDetails[] = [
+      {
+        id: 1,
+        leagueId: 1,
+        leaguePlayers: users,
+        numberOfFinishedRounds: 1,
+        numberOfInProgressRounds: 0,
+        comments: comments,
+      },
+    ];
     const leaguePosts: LeaguePost[] = [
       {
         id: 1,
@@ -58,8 +68,9 @@ export class InMemoryDataService implements InMemoryDbService{
         leagueAdmin: users[0],
         numberOfPlayers: 6,
         numberOfRounds: 2,
+        numberOfComments: 8,
         imageSource: "https://bobbyhadz.com/images/blog/typescript-date-format/banner.webp",
-        comments: comments
+        leagueDetails: leaguePostDetails[0],
       },
       {
         id: 2,
@@ -70,10 +81,12 @@ export class InMemoryDataService implements InMemoryDbService{
         leagueAdmin:users[1],
         numberOfPlayers: 8,
         numberOfRounds: 4,
+        numberOfComments: 5,
         imageSource: "https://raketa.hu/uploads/2022/07/mars_sample_return-768x432.jpg",
-        comments: comments
+        leagueDetails: leaguePostDetails[0],
       }
     ]
+
     const userPosts: UserPost[] = [
       {
         id: 1,
@@ -89,20 +102,6 @@ export class InMemoryDataService implements InMemoryDbService{
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         comments: comments,
       }
-    ];
-
-    const leaguePostDetails: LeagueDetails[] = [
-      {
-        id: leaguePosts[0].leagueId,
-        gameType: leaguePosts[0].gameType,
-        name: leaguePosts[0].name,
-        imageSource: leaguePosts[0].imageSource,
-        leagueAdmin: leaguePosts[0].leagueAdmin,
-        leaguePlayers: users,
-        numberOfFinishedRounds: 1,
-        numberOfInProgressRounds: 0,
-        numberOfRounds: leaguePosts[0].numberOfRounds
-      },
     ];
     return {users, userPosts, leaguePosts, comments, leaguePostDetails};
   }

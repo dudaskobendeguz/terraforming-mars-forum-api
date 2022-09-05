@@ -1,13 +1,11 @@
 import {User} from "./user";
+import {PostComment} from "./post-comment";
 
 export interface LeagueDetails {
-  "id": number,
-  "gameType": string,
-  "name": string,
-  "imageSource": string,
-  "leagueAdmin": User,
-  "leaguePlayers": User[],
-  "numberOfFinishedRounds": number,
-  "numberOfInProgressRounds": number,
-  "numberOfRounds": number,
+  id: number,
+  leagueId: number,
+  leaguePlayers: User[],
+  numberOfFinishedRounds: number,
+  numberOfInProgressRounds: number,
+  comments: PostComment[]
 }

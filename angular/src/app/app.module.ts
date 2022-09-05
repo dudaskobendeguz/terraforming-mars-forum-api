@@ -35,11 +35,18 @@ import { TextareaDialogComponent } from './components/dialog-components/textarea
 import {MatMenuModule} from "@angular/material/menu";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { UserPostActionsMenuComponent } from './components/user-post-components/user-post-actions-menu/user-post-actions-menu.component';
-import { IconsComponent } from './components/league-posts/icons/icons.component';
+import { LeagueIconsComponent } from './components/league-posts/league-icons/league-icons.component';
 import { DateAgoPipe } from './pipes/date-ago/date-ago.pipe';
 import { DateAgoComponent } from './components/date-ago/date-ago.component';
 import {MatDividerModule} from "@angular/material/divider";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import { PostContainerComponent } from './components/posts/post-container/post-container.component';
+import { PostHeaderComponent } from './components/league-posts/post-header/post-header.component';
+import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
+import { CommentIconComponent } from './components/icons/comment-icon/comment-icon.component';
+import { PlayersIconComponent } from './components/icons/players-icon/players-icon.component';
+import { IconComponent } from './components/icons/icon/icon.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -62,36 +69,43 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     UserRegisterDialogComponent,
     TextareaDialogComponent,
     UserPostActionsMenuComponent,
-    IconsComponent,
+    LeagueIconsComponent,
     DateAgoPipe,
     DateAgoComponent,
+    PostContainerComponent,
+    PostHeaderComponent,
+    UserAvatarComponent,
+    CommentIconComponent,
+    PlayersIconComponent,
+    IconComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-        // and returns simulated server responses.
-        // Remove it when a real server is ready to receive requests.
-        HttpClientInMemoryWebApiModule.forRoot(
-            InMemoryDataService, {dataEncapsulation: false}
-        ),
-        FormsModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        MatSliderModule,
-        MatDialogModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatCardModule,
-        MatProgressSpinnerModule,
-        MatIconModule,
-        MatDividerModule,
-        MatMenuModule,
-        MatTooltipModule,
-        MatToolbarModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, {dataEncapsulation: false}
+    ),
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatDividerModule,
+    MatMenuModule,
+    MatTooltipModule,
+    MatToolbarModule,
+    MatSelectModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

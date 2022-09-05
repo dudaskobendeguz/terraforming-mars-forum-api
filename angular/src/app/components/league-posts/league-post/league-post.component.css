@@ -1,14 +1,11 @@
-.link {
-  cursor: pointer;
+.league-image {
+  max-width: 100% ;
 }
 
-img.league-image {
-  max-width: var(--post-width);
-}
-
-div.post {
+.post {
   width: var(--post-width);
-  height: fit-content;
+  max-width: var(--post-width);
+
 }
 
 .divider {

@@ -1,51 +1,46 @@
 <div class="league-post-container">
-  <mat-spinner *ngIf="isLoadingLeaguePost && isLoadingPostDetails"></mat-spinner>
-  <mat-card *ngIf="leaguePost && postDetails">
-    <mat-card-header>
-      <mat-card-title>{{ leaguePost.name }}</mat-card-title>
-      <mat-card-subtitle>{{ leaguePost.gameType }}</mat-card-subtitle>
-      <img mat-card-avatar src="{{ leaguePost.leagueAdmin.imageSource }}"
-           alt="{{ leaguePost.leagueAdmin.username }}'s profile picture">
-    </mat-card-header>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <mat-card *ngIf="post && post.leagueDetails" class="post">
+
+    <app-post-header
+      [user]="post.leagueAdmin"
+      [title]="post.name"
+      [subtitle]="post.gameType"
+      [date]="post.timestamp">
+    </app-post-header>
 
     <mat-card-content>
+      <img src="{{ post.imageSource }}" alt="league image">
 
-      <img src="{{ postDetails.imageSource }}" alt="league image">
       <div class="league-details">
         <h2>Rounds: </h2>
-        <p>Started: <span>{{ postDetails.numberOfRounds }}</span></p>
-        <p>Finished: <span>{{ postDetails.numberOfFinishedRounds }}</span></p>
-        <p>In progress: <span>{{ postDetails.numberOfInProgressRounds }}</span></p>
+        <p>Started: <span>{{ post.numberOfRounds }}</span></p>
+        <p>Finished: <span>{{ post.leagueDetails.numberOfFinishedRounds }}</span></p>
+        <p>In progress: <span>{{ post.leagueDetails.numberOfInProgressRounds }}</span></p>
       </div>
 
       <h2>Players:</h2>
       <div class="players">
         <mat-card class="player shadow"
-                  *ngFor="let player of postDetails.leaguePlayers"
-                  [ngClass]="leaguePost.leagueAdmin.id == player.id ? 'admin-player' : 'casual-player'"
+                  *ngFor="let player of post.leagueDetails.leaguePlayers"
+                  [ngClass]="post.leagueAdmin.id == player.id ? 'admin-player' : 'casual-player'"
                   routerLink="/profile/{{ player.id }}">
           <mat-card-header>
             <mat-card-title class="">{{ player.username }}#{{ player.id }}</mat-card-title>
-            <mat-card-subtitle>{{ leaguePost.leagueAdmin.id == player.id ? "Admin" : "Player" }}</mat-card-subtitle>
+            <mat-card-subtitle>{{ post.leagueAdmin.id == player.id ? "Admin" : "Player" }}</mat-card-subtitle>
             <!--          <mat-card-subtitle>{{ player.firstName |titlecase }} {{ player.lastName | titlecase }}</mat-card-subtitle>-->
             <img mat-card-avatar src="{{ player.imageSource }}" alt="{{ player.username }}'s profile page">
           </mat-card-header>
         </mat-card>
       </div>
 
-      <mat-card-footer>
-        <div class="comments" *ngIf="hasComment()">
-          <div>
-            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="comment"></mat-icon>
-            <small>{{ leaguePost.comments.length }}</small>
-          </div>
-          <app-comment *ngFor="let comment of leaguePost.comments" [comment]="comment"></app-comment>
-        </div>
-        <div *ngIf="!hasComment()">
-          <h3>No comments yet</h3>
-        </div>
-      </mat-card-footer>
-
+      <div class="comments" *ngIf="hasComment()">
+        <app-comment-icon [numberOfComments]="post.numberOfComments"></app-comment-icon>
+        <app-comment *ngFor="let comment of post.leagueDetails?.comments" [comment]="comment"></app-comment>
+      </div>
+      <div *ngIf="!hasComment()">
+        <h3>No comments yet</h3>
+      </div>
     </mat-card-content>
 
   </mat-card>

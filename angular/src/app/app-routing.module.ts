@@ -7,8 +7,10 @@ import {
 import {UserPostDetailComponent} from "./components/user-post-components/user-post-detail/user-post-detail.component";
 import {ProfilePageComponent} from "./components/user/profile-page/profile-page.component";
 import {LeaguePostDetailComponent} from "./components/league-posts/league-post-detail/league-post-detail.component";
+import {PostContainerComponent} from "./components/posts/post-container/post-container.component";
 
 const routes: Routes = [
+  {path: '', component: PostContainerComponent},
   {path: 'user-posts', component: UserPostContainerComponent},
   {path: 'league-posts/:id', component: LeaguePostDetailComponent},
   {path: 'league-posts', component: LeaguePostContainerComponent},
