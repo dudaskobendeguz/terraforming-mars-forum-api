@@ -24,6 +24,7 @@ export class LeaguePostDetailService {
     return this.http.get<LeagueDetails[]>(url)
       .pipe(
         tap((_) => this.log(`fetched league post id=${id}(TAP)`)),
+        // TODO remove array from this code(now only working with array, but it's not valid)
         catchError(this.errorHandler.handleError<LeagueDetails[]>(`get league post id=${id}`))
       );
   }

@@ -1,5 +1,4 @@
 import {User} from "./user";
-import {LeagueDetails} from "./league-details";
 
 export interface LeaguePost {
   leagueId: number
