@@ -9,5 +9,5 @@ public class Comment {
 
     private int id;
     private String description;
-    private User user;
+    private AppUser appUser;
 }
