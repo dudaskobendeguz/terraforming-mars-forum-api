@@ -12,6 +12,6 @@ import org.springframework.stereotype.Service;
 public class AppUserService {
 
     @NonNull
-    private UserDAO userDAO;
-    private AppUserRepository appUserRepository;
+    private final UserDAO userDAO;
+    private final AppUserRepository appUserRepository;
 }
