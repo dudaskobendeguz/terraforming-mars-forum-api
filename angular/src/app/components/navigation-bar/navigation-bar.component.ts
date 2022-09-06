@@ -35,9 +35,8 @@ export class NavigationBarComponent implements OnInit {
     registerDialog.afterClosed().subscribe(r => {
       if (true) { //TODO: registration requirements check
         this.userService.addUser(r);
-      }
-      }
-    )
+      }}
+    );
   }
 
   openLoginModal():void {
@@ -53,7 +52,7 @@ export class NavigationBarComponent implements OnInit {
       if (result) { //TODO: login requirements check
         console.log(result);
       }
-    })
+    });
   }
 
 }
