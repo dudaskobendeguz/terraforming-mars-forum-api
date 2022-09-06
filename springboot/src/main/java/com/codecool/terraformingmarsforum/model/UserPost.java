@@ -1,3 +1,4 @@
+
 package com.codecool.terraformingmarsforum.model;
 
 import lombok.*;
