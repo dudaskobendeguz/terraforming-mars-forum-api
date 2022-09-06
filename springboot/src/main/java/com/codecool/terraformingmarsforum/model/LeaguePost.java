@@ -1,9 +1,22 @@
 package com.codecool.terraformingmarsforum.model;
 
-import com.codecool.terraformingmarsforum.model.types.PostType;
+import lombok.*;
 
-public class LeaguePost extends Post {
-    public LeaguePost(int id, String title, String description, PostType type, String author) {
-        super(id, title, description, type, author);
-    }
+import javax.persistence.*;
+
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class LeaguePost {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+
+    String description;
+    @ManyToOne
+    LeagueDetail leagueDetail;
 }
