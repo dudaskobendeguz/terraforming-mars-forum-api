@@ -10,7 +10,7 @@ import {LeagueDetails} from "../../interfaces/league-details";
   providedIn: 'root'
 })
 export class LeaguePostDetailService {
-  private usersUrl: string = '/api/leaguePostDetails';
+  private leagueDetailsUrl: string = '/api/leaguePostDetails';
 
   constructor(
     private messageService: MessageLoggerService,
@@ -18,13 +18,14 @@ export class LeaguePostDetailService {
     private http: HttpClient
   ) { }
 
-  getByLeagueId(id: number): Observable<LeagueDetails> {
-    const url: string = `${this.usersUrl}/${id}`;
+  getByLeagueId(id: number): Observable<LeagueDetails[]> {
+    const url: string = `${this.leagueDetailsUrl}/?postId=${id}`;
     this.log(`get league post:${url}`)
-    return this.http.get<LeagueDetails>(url)
+    return this.http.get<LeagueDetails[]>(url)
       .pipe(
         tap((_) => this.log(`fetched league post id=${id}(TAP)`)),
-        catchError(this.errorHandler.handleError<LeagueDetails>(`get league post id=${id}`))
+        // TODO remove array from this code(now only working with array, but it's not valid)
+        catchError(this.errorHandler.handleError<LeagueDetails[]>(`get league post id=${id}`))
       );
   }
 

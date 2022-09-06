@@ -2,16 +2,16 @@
   <app-post-header
     [user]="post.leagueAdmin"
     [title]="post.name"
-    [titleLink]="'/league-posts/' + post.leagueId"
+    [titleLink]="link"
     [subtitle]="post.gameType"
     [date]="post.timestamp">
   </app-post-header>
 
   <mat-card-content>
     <img class="league-image link"
-         routerLink="/league-posts/{{ post.leagueId }}"
+         routerLink="{{ link }}"
          src="{{ post.imageSource }}"
-         alt="#{{ post.id }}League Post's Image">
+         alt="#{{ post.name }}League Post's Image">
 
     <mat-divider class="divider"></mat-divider>
 

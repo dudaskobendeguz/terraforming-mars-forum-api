@@ -1,14 +1,3 @@
-<div>
-
-  <h3>Get League post by id</h3>
-  <form [formGroup]="leagueDetails" (ngSubmit)="onSubmit()">
-    <label for="userId"></label>
-    <input type="number" name="userId" id="userId" formControlName="id" min="0">
-    <button type="submit">find</button>
-  </form>
-</div>
-
-
 <h2>League Posts:</h2>
 <div class="league-posts">
   <mat-spinner *ngIf="isLoading"></mat-spinner>
