@@ -1,9 +1,33 @@
 package com.codecool.terraformingmarsforum.model;
 
-import com.codecool.terraformingmarsforum.model.types.PostType;
+import lombok.*;
 
-public class UserPost extends Post {
-    public UserPost(int id, String title, String description, PostType type, String author) {
-        super(id, title, description, type, author);
-    }
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
+
+@Getter
+@Setter
+@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class UserPost {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date timestamp;
+
+    @ManyToOne
+    private AppUser user;
+
+    private String description;
+
+    @OneToMany
+    @ToString.Exclude
+    private List<Comment> comments;
 }
