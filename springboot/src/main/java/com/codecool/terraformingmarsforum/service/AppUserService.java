@@ -2,7 +2,6 @@ package com.codecool.terraformingmarsforum.service;
 
 
 import com.codecool.terraformingmarsforum.repository.AppUserRepository;
-import com.codecool.terraformingmarsforum.service.DAO.UserDAO;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,7 +10,5 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AppUserService {
 
-    @NonNull
-    private final UserDAO userDAO;
     private final AppUserRepository appUserRepository;
 }

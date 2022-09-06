@@ -18,7 +18,6 @@ import java.util.Objects;
 @NoArgsConstructor
 @Builder
 @Entity
-@RequiredArgsConstructor
 public class AppUser {
 
     @Id
