@@ -18,7 +18,9 @@ public class CommentController {
 
     @PostMapping("")
     public ResponseEntity<Comment> createComment(@RequestBody Comment comment) throws URISyntaxException {
-
+        commentService.createComment(comment);
         return ResponseEntity.created(new URI("/api/comments/")).body(comment);
     }
+
+
 }
