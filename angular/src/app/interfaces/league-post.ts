@@ -2,8 +2,7 @@ import {User} from "./user";
 import {LeagueDetails} from "./league-details";
 
 export interface LeaguePost {
-  id: number,
-  leagueId: number,
+  leagueId: number
   timestamp: Date,
   gameType: string,
   name: string,
@@ -12,5 +11,4 @@ export interface LeaguePost {
   numberOfRounds: number,
   numberOfComments: number
   imageSource: string,
-  leagueDetails?: LeagueDetails,
 }

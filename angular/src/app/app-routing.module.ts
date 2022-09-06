@@ -12,7 +12,7 @@ import {PostContainerComponent} from "./components/posts/post-container/post-con
 const routes: Routes = [
   {path: '', component: PostContainerComponent},
   {path: 'user-posts', component: UserPostContainerComponent},
-  {path: 'league-posts/:id', component: LeaguePostDetailComponent},
+  {path: 'league-post/:id', component: LeaguePostDetailComponent},
   {path: 'league-posts', component: LeaguePostContainerComponent},
   {path: 'profile/:id', component: ProfilePageComponent},
   {path: 'user-posts/:id', component: UserPostDetailComponent},

@@ -8,10 +8,12 @@ import {LeaguePost} from "../../../interfaces/league-post";
 })
 export class LeaguePostComponent implements OnInit {
   @Input() post?: LeaguePost;
+  link: string = '';
 
   constructor() { }
 
   ngOnInit(): void {
+    this.link = `/league-post/${this.post!.leagueId}`;
   }
 
 }

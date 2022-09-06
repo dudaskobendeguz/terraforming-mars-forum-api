@@ -50,9 +50,14 @@ export class InMemoryDataService implements InMemoryDbService{
 
     const leaguePostDetails: LeagueDetails[] = [
       {
-        id: 1,
-        leagueId: 1,
+        postId: 1,
+        name: "My Test League",
+        gameType: "Ares Expedition",
+        timestamp: new Date('2022-06-03T07:06:52.715Z'),
+        imageSource: "https://bobbyhadz.com/images/blog/typescript-date-format/banner.webp",
+        leagueAdmin: users[0],
         leaguePlayers: users,
+        numberOfRounds: 4,
         numberOfFinishedRounds: 1,
         numberOfInProgressRounds: 0,
         comments: comments,
@@ -60,7 +65,6 @@ export class InMemoryDataService implements InMemoryDbService{
     ];
     const leaguePosts: LeaguePost[] = [
       {
-        id: 1,
         leagueId: 1,
         timestamp: new Date('2022-06-03T07:06:52.715Z'),
         gameType: "Ares Expedition",
@@ -70,11 +74,9 @@ export class InMemoryDataService implements InMemoryDbService{
         numberOfRounds: 2,
         numberOfComments: 8,
         imageSource: "https://bobbyhadz.com/images/blog/typescript-date-format/banner.webp",
-        leagueDetails: leaguePostDetails[0],
       },
       {
-        id: 2,
-        leagueId: 2,
+        leagueId: 1,
         timestamp: new Date('2017-04-14T07:06:52.715Z'),
         gameType: "Terraforming Mars",
         name: "Test Mars League",
@@ -83,7 +85,6 @@ export class InMemoryDataService implements InMemoryDbService{
         numberOfRounds: 4,
         numberOfComments: 5,
         imageSource: "https://raketa.hu/uploads/2022/07/mars_sample_return-768x432.jpg",
-        leagueDetails: leaguePostDetails[0],
       }
     ]
 
