@@ -33,14 +33,4 @@ export class LeaguePostContainerComponent implements OnInit {
         }
       );
   }
-
-  onSubmit():void {
-    this.studentService.getLeaguePostById(<number>this.leagueDetails.value.id)
-      .subscribe( (leaguePost) => {
-        this.leaguePosts = [leaguePost];
-        this.messageService.add(LeaguePostContainerComponent.name, `leaguePost fetched by the given id:${leaguePost.id}`);
-        }
-
-      );
-  }
 }
