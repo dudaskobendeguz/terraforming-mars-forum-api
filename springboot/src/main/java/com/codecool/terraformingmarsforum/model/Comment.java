@@ -18,9 +18,10 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String description;
     @ManyToOne(cascade = CascadeType.ALL)
     private AppUser user;
+    private String description;
+    private String timeStamp;
 
     @Override
     public boolean equals(Object o) {
