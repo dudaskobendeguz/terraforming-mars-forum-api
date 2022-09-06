@@ -32,9 +32,9 @@ export class NavigationBarComponent implements OnInit {
           password: "",
         }
       });
-    registerDialog.afterClosed().subscribe(r => {
-      if (true) { //TODO: registration requirements check
-        this.userService.addUser(r);
+    registerDialog.afterClosed().subscribe(result => {
+      if (result) { //TODO: registration requirements check
+        this.userService.addUser(result);
       }}
     );
   }
@@ -47,12 +47,11 @@ export class NavigationBarComponent implements OnInit {
          email: "",
          password: "",
        }
-      })
+      });
     loginDialog.afterClosed().subscribe(result => {
       if (result) { //TODO: login requirements check
         console.log(result);
       }
     });
   }
-
 }
