@@ -16,4 +16,8 @@ public class AppUserService {
     public AppUser getAppUserById(Long id) {
         return appUserRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
+
+    public AppUser getAppUserByUsernameOrEmail(String username, String email) {
+        return appUserRepository.findAppUserByUsernameOrEmail(username, email).orElseThrow(NoSuchElementException::new);
+    }
 }
