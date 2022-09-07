@@ -25,7 +25,7 @@ public class LeaguePost {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    //TODO This description field is not used yet. implement it in frontend first.
+    //TODO Generate description based on the current league status.
     String description;
     @ManyToOne
     LeagueDetail leagueDetail;

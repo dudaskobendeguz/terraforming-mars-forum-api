@@ -16,7 +16,6 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class LeaguePostModel {
     Long leagueId;
-    //TODO This description field is not used yet. implement it in frontend first.
     String description;
     Timestamp timestamp;
     String gameType;
