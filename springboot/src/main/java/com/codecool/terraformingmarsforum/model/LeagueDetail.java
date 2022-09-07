@@ -5,9 +5,9 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 
 @Getter
@@ -24,10 +24,13 @@ public class LeagueDetail {
     Long id;
 
     Long leagueId;
-    Timestamp timestamp;
+    Date timestamp;
+
     @Column(length = 50)
     String gameType;
     String name;
+
+    @Column(length = 1000)
     String imageSource;
     int numberOfFinishedRounds;
     int numberOfRounds;
@@ -37,7 +40,7 @@ public class LeagueDetail {
 
     @ManyToMany
     @ToString.Exclude
-    Set<AppUser> players;
+    List<AppUser> players;
 
 
     @Override
