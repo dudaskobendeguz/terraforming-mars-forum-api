@@ -38,6 +38,8 @@ public class LeaguePost {
 
     int numberOfFinishedRounds;
 
+    Date timeStamp;
+
     @OneToMany
     List<Comment> comments;
 
