@@ -26,8 +26,14 @@ public class AppUserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<AppUser> getUserById(@PathVariable Long id){
-            AppUser appUser = appUserService.getAppUserById(id);
-            return ResponseEntity.ok(appUser);
+        AppUser appUser = appUserService.getAppUserById(id);
+        return ResponseEntity.ok(appUser);
+    }
+
+    @GetMapping("/login/{userData}")
+    public ResponseEntity<AppUser> getUserByUsernameOrEmail(@PathVariable String userData){
+        AppUser appUser = appUserService.getAppUserByUsernameOrEmail(userData, userData);
+        return ResponseEntity.ok(appUser);
     }
 
 }
