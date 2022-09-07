@@ -1,29 +1,46 @@
 package com.codecool.terraformingmarsforum.controller;
 
+import com.codecool.terraformingmarsforum.model.AppUser;
 import com.codecool.terraformingmarsforum.model.Comment;
+import com.codecool.terraformingmarsforum.model.types.PostType;
 import com.codecool.terraformingmarsforum.service.CommentService;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.net.URISyntaxException;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/api/comments")
 @RequiredArgsConstructor
 public class CommentController {
 
+
+    /**
+     * DTO for comment creation. Contains all data for comments, postType and postId. */
+    @Data
+    private static class CommentDetails {
+        private AppUser user;
+        private String description;
+        private Date timeStamp;
+        private Long postId;
+        private PostType postType;
+
+        public Comment getComment() {
+            return Comment.builder().description(description).timeStamp(timeStamp).user(user).build();
+        }
+    }
+
     private final CommentService commentService;
 
     /**
-     * API route for creating comments
-     */
+     * API route for creating comments */
     @PostMapping("")
-    public ResponseEntity<Comment> createComment(@RequestBody Comment comment) throws URISyntaxException {
-        commentService.createComment(comment);
-        return ResponseEntity.created(new URI("/api/comments/")).body(comment);
+    public ResponseEntity<Comment> createComment(@RequestBody CommentDetails commentDetails) {
+        commentService.createComment(commentDetails.getComment(), commentDetails.getPostType(), commentDetails.getPostId());
+        return ResponseEntity.created(URI.create("/api/comments/")).body(commentDetails.getComment());
     }
-
 
 }
