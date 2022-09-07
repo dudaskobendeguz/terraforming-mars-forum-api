@@ -15,7 +15,7 @@ public class RestExceptionHandler {
     }
 
     @ExceptionHandler(NoSuchElementException.class)
-    protected ResponseEntity<Void> handleNoSuchElementException() {
+    protected ResponseEntity<Object> handleNoSuchElementException() {
         return ResponseEntity.notFound().build();
     }
 }
