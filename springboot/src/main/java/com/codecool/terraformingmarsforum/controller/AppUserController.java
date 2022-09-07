@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/users")
@@ -18,17 +17,11 @@ import java.util.NoSuchElementException;
 public class AppUserController {
 
     private final AppUserService appUserService;
-    private final RestExceptionHandler restExceptionHandler;
-
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getUserById(@PathVariable Long id){
-        try {
+    public ResponseEntity<AppUser> getUserById(@PathVariable Long id){
             AppUser appUser = appUserService.getAppUserById(id);
             return ResponseEntity.ok(appUser);
-        } catch (NoSuchElementException msg){
-            return restExceptionHandler.handleNoSuchElementException();
-        }
     }
 
 }
