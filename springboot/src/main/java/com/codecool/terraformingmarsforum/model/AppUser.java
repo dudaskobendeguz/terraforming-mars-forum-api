@@ -4,10 +4,7 @@ package com.codecool.terraformingmarsforum.model;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
@@ -28,7 +25,11 @@ public class AppUser {
     private String lastName;
     private String email;
     private String password;
+
+    @Column(length = 1000)
     private String imgSource;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
 
     @Override
