@@ -15,9 +15,9 @@ import java.util.Date;
 
 @Component
 @RequiredArgsConstructor
-public class SampleDataInitializer {
+public class DataSampleInitializer {
 
-    private final Logger logger = LoggerFactory.getLogger(SampleDataInitializer.class);
+    private final Logger logger = LoggerFactory.getLogger(DataSampleInitializer.class);
     private final AppUserRepository appUserRepository;
     private final CommentRepository commentRepository;
     private final LeaguePostRepository leaguePostRepository;
