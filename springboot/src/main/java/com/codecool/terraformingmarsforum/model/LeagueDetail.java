@@ -5,39 +5,47 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.Objects;
+import java.util.Set;
+
 
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Builder
+@AllArgsConstructor
 @Entity
-public class AppUser {
+public class LeagueDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String username;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
+    Long id;
 
-    @Column(length = 1000)
-    private String imgSource;
+    Long leagueId;
+    Timestamp timestamp;
+    @Column(length = 50)
+    String gameType;
+    String name;
+    String imageSource;
+    int numberOfFinishedRounds;
+    int numberOfRounds;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date timestamp;
+    @ManyToOne
+    AppUser leagueAdmin;
+
+    @ManyToMany
+    @ToString.Exclude
+    Set<AppUser> players;
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        AppUser appUser = (AppUser) o;
-        return id != null && Objects.equals(id, appUser.id);
+        LeagueDetail that = (LeagueDetail) o;
+        return id != null && Objects.equals(id, that.id);
     }
 
     @Override

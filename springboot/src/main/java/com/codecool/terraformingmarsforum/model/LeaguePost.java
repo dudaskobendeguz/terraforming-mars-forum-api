@@ -1,9 +1,35 @@
 package com.codecool.terraformingmarsforum.model;
 
-import com.codecool.terraformingmarsforum.model.types.PostType;
+import lombok.*;
 
-public class LeaguePost extends Post {
-    public LeaguePost(int id, String title, String description, PostType type, String author) {
-        super(id, title, description, type, author);
-    }
+import javax.persistence.*;
+import java.util.List;
+
+
+/**
+ * This class is the representation of a league post.
+ * When new league detail information is coming from <a href="https://terraforming-mars-leagues.herokuapp.com/">terraforming Mars League</a>
+ * , this object has created with the league post details.<br>
+ * The Class {@link LeaguePost#description description} field contains the league 'status' information
+ * i.e., "Zsu has Started 'Brutal League'".
+ */
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class LeaguePost {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+
+    //TODO Generate description based on the current league status.
+    String description;
+    @ManyToOne
+    LeagueDetail leagueDetail;
+
+    @OneToMany
+    List<Comment> comments;
 }
