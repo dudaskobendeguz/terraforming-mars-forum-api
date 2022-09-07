@@ -28,10 +28,10 @@ public class LeaguePostService {
                 .leagueAdmin(leagueDetail.getLeagueAdmin())
                 .gameType(leagueDetail.getGameType())
                 .name(leagueDetail.getName())
+                .description(leaguePost.getDescription())
                 .timestamp(leagueDetail.getTimestamp())
                 .imageSource(leagueDetail.getImageSource())
-                //TODO add number of comments if comment entity created
-//                .numberOfComments()
+                .numberOfComments(leaguePost.getComments().size())
                 .numberOfPlayers(leagueDetail.getPlayers().size())
                 .numberOfRounds(leagueDetail.getNumberOfRounds())
                 .build();
