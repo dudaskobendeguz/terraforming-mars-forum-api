@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 
 @Getter
@@ -21,7 +22,7 @@ public class Comment {
     @ManyToOne(cascade = CascadeType.ALL)
     private AppUser user;
     private String description;
-    private String timeStamp;
+    private Date timeStamp;
 
     @Override
     public boolean equals(Object o) {
