@@ -29,8 +29,8 @@ public class LeagueDetail {
     String gameType;
     String name;
     String imageSource;
-    String numberOfFinishedRounds;
-    String numberOfRounds;
+    int numberOfFinishedRounds;
+    int numberOfRounds;
 
     @ManyToOne
     AppUser leagueAdmin;
