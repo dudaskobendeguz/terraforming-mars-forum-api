@@ -20,7 +20,7 @@ public class LeaguePostController {
 
     @GetMapping
     public ResponseEntity<List<LeaguePostModel>> getAll() {
-        return ResponseEntity.ok().body(leaguePostService.findAll());
+        return ResponseEntity.ok(leaguePostService.findAll());
     }
 
 }
