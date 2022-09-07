@@ -2,7 +2,7 @@ package com.codecool.terraformingmarsforum.service;
 
 import com.codecool.terraformingmarsforum.model.UserPost;
 import com.codecool.terraformingmarsforum.repository.UserPostRepository;
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -37,6 +37,6 @@ class UserPostServiceTest {
         List<UserPost> expected = getUserPosts();
         Mockito.when(userPostRepository.findAll()).thenReturn(expected);
         List<UserPost> actual = userPostService.getAllUserPosts();
-        Assertions.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 }
