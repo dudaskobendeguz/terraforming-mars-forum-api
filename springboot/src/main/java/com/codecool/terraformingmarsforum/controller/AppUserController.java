@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
+/**
+ * AppUserController is responsible for control any USER ACTIVITIES on site such as:
+ * - registration
+ * - login
+ * - profile page
+ */
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
