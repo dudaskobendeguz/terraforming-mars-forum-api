@@ -11,6 +11,10 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
 
+    /**
+     * Saves comment to database
+     * @param {Comment comment}
+     */
     public void createComment(Comment comment) {
         commentRepository.save(comment);
     }
