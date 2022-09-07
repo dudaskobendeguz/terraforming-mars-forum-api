@@ -16,6 +16,9 @@ public class CommentController {
 
     private final CommentService commentService;
 
+    /**
+     * API route for creating comments
+     */
     @PostMapping("")
     public ResponseEntity<Comment> createComment(@RequestBody Comment comment) throws URISyntaxException {
         commentService.createComment(comment);
