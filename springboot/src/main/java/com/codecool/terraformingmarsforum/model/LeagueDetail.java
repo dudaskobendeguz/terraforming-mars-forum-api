@@ -32,7 +32,7 @@ public class LeagueDetail {
 
     @Column(length = 1000)
     String imageSource;
-    int numberOfFinishedRounds;
+
     int numberOfRounds;
 
     @ManyToOne

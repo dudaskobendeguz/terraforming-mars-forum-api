@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 
@@ -35,6 +36,8 @@ public class LeaguePost {
     @ManyToOne
     LeagueDetail leagueDetail;
 
+    int numberOfFinishedRounds;
+
     @OneToMany
     List<Comment> comments;
 
@@ -52,13 +55,13 @@ public class LeaguePost {
             case ROUND_IN_PROGRESS ->
                 description = String.format(
                         "Round %d started!",
-                        (leagueDetail.numberOfFinishedRounds + 1)
+                        (numberOfFinishedRounds + 1)
                 );
 
             case ROUND_FINISHED ->
                 description = String.format(
                         "Round %d/%d finished",
-                        leagueDetail.numberOfFinishedRounds,
+                        numberOfFinishedRounds,
                         leagueDetail.numberOfRounds
                 );
 
