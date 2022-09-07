@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -17,7 +17,7 @@ import java.sql.Timestamp;
 public class LeaguePostModel {
     Long leagueId;
     String description;
-    Timestamp timestamp;
+    Date timestamp;
     String gameType;
     String name;
     AppUser leagueAdmin;
