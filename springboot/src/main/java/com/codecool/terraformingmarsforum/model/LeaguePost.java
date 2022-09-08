@@ -1,8 +1,11 @@
 package com.codecool.terraformingmarsforum.model;
 
+import com.codecool.terraformingmarsforum.model.types.LeagueStatus;
 import lombok.*;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 
@@ -27,8 +30,17 @@ public class LeaguePost {
 
     //TODO Generate description based on the current league status.
     String description;
+
+
+    @Enumerated(EnumType.STRING)
+    LeagueStatus leagueStatus;
+
     @ManyToOne
     LeagueDetail leagueDetail;
+
+    int numberOfFinishedRounds;
+
+    Date timeStamp;
 
     @OneToMany
     List<Comment> comments;

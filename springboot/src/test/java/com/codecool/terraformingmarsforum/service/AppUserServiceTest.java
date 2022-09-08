@@ -43,7 +43,7 @@ class AppUserServiceTest {
                 .lastName("Elek")
                 .email("tesztelek@gmail.com")
                 .password("teszt")
-                .imgSource("fb/img/tesztelek_profile_pic")
+                .imageSource("fb/img/tesztelek_profile_pic")
                 .timestamp(new Date())
                 .build();
     }

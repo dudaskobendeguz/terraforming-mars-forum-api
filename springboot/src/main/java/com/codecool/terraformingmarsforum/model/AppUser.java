@@ -29,7 +29,7 @@ public class AppUser {
     private String password;
 
     @Column(length = 1000)
-    private String imgSource;
+    private String imageSource;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;

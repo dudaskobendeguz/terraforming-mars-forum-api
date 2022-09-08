@@ -18,9 +18,49 @@ public class LeaguePostService {
 
     private final LeaguePostRepository leaguePostRepository;
 
+
+    public LeaguePost save(LeaguePost leaguePost) {
+        createDescription(leaguePost);
+        return leaguePostRepository.save(leaguePost);
+    }
+
     public List<LeaguePostModel> findAll() {
         List<LeaguePost> leaguePosts = leaguePostRepository.findAll();
         return leaguePosts.stream().map(this::createLeaguePostModel).toList();
+    }
+
+    //TODO description should be generated on frontend
+    private void createDescription(LeaguePost leaguePost) {
+        switch (leaguePost.getLeagueStatus()) {
+            case STARTED ->
+                    leaguePost.setDescription(String.format(
+                            "%s has started a %s %s league!",
+                            leaguePost.getLeagueDetail().getLeagueAdmin().getUsername(),
+                            leaguePost.getLeagueDetail().getGameType(),
+                            leaguePost.getLeagueDetail().getName()
+                    ));
+
+            case ROUND_IN_PROGRESS ->
+                    leaguePost.setDescription(String.format(
+                            "Round %d started!",
+                            (leaguePost.getNumberOfFinishedRounds() + 1)
+                    ));
+
+            case ROUND_FINISHED ->
+                    leaguePost.setDescription(String.format(
+                            "Round %d/%d finished",
+                            leaguePost.getNumberOfFinishedRounds(),
+                            leaguePost.getLeagueDetail().getNumberOfRounds()
+                    ));
+
+            case FINISHED ->
+                    leaguePost.setDescription(String.format(
+                            "The %s %s league has finished!",
+                            leaguePost.getLeagueDetail().getGameType(),
+                            leaguePost.getLeagueDetail().getName()
+                    ));
+            default -> throw new IllegalArgumentException("No description for the given LeagueStatus");
+        }
     }
 
     private LeaguePostModel createLeaguePostModel(LeaguePost leaguePost) {
