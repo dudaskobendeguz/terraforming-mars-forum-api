@@ -28,7 +28,7 @@ class AppUserServiceTest {
     }
 
     @Test
-    void getAppUserById_ValidId_ReturnsAppUser() {
+    public void getAppUserById_ValidId_ReturnsAppUser() {
         AppUser expectedTestUser = getAppUser();
         Mockito.when(appUserRepository.findById(1L)).thenReturn(Optional.ofNullable(expectedTestUser));
         AppUser actualTestUser = appUserService.getAppUserById(1L);
@@ -55,11 +55,21 @@ class AppUserServiceTest {
 
 
     @Test
-    void getAppUserByUsernameOrEmail_ValidUsername_ReturnsAppUser() {
+    public void getAppUserByUsernameOrEmail_ValidUsername_ReturnsAppUser() {
         AppUser expectedTestUser = getAppUser();
         Mockito.when(appUserRepository.findAppUserByUsernameOrEmail("TesztElek", "notValid"))
                 .thenReturn(Optional.ofNullable(expectedTestUser));
         AppUser actualTestUser = appUserService.getAppUserByUsernameOrEmail("TesztElek", "notValid");
+
+        assertEquals(expectedTestUser, actualTestUser);
+    }
+
+    @Test
+    public void getAppUserByUsernameOrEmail_ValidEmail_ReturnsAppUser() {
+        AppUser expectedTestUser = getAppUser();
+        Mockito.when(appUserRepository.findAppUserByUsernameOrEmail("notValid", "tesztelek@gmail.com"))
+                .thenReturn(Optional.ofNullable(expectedTestUser));
+        AppUser actualTestUser = appUserService.getAppUserByUsernameOrEmail("notValid", "tesztelek@gmail.com");
 
         assertEquals(expectedTestUser, actualTestUser);
     }
