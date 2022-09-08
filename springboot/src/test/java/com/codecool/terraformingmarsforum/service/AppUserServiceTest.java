@@ -55,7 +55,12 @@ class AppUserServiceTest {
 
 
     @Test
-    void getAppUserByUsernameOrEmail() {
+    void getAppUserByUsernameOrEmail_ValidUsername_ReturnsAppUser() {
+        AppUser expectedTestUser = getAppUser();
+        Mockito.when(appUserRepository.findAppUserByUsernameOrEmail("TesztElek", "notValid"))
+                .thenReturn(Optional.ofNullable(expectedTestUser));
+        AppUser actualTestUser = appUserService.getAppUserByUsernameOrEmail("TesztElek", "notValid");
 
+        assertEquals(expectedTestUser, actualTestUser);
     }
 }
