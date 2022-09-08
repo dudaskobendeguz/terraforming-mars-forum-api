@@ -35,6 +35,12 @@ public class UserPostService {
         return userPostRepository.save(userPost);
     }
 
+    public void updateUserPost(Long id, UserPost updatedUserPost) {
+        UserPost userPost = getUserPostById(id);
+        userPost.setDescription(updatedUserPost.getDescription());
+        userPostRepository.save(userPost);
+    }
+
     public void addCommentToPostByPostId(Long postId, Comment comment) {
         UserPost userPost = userPostRepository.findById(postId).orElseThrow(NoSuchElementException::new);
         userPost.getComments().add(comment);
