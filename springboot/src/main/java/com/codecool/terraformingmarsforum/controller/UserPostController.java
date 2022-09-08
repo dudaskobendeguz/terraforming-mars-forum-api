@@ -63,4 +63,13 @@ public class UserPostController {
                 .created(URI.create(String.format("/api/user-posts/%d", userPost.getId())))
                 .body(userPost);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateUserPost(
+            @PathVariable Long id,
+            @RequestBody UpdateUserPostRequest updateUserPostRequest) {
+        UserPost userPost = updateUserPostRequest.convertToUserPost();
+        userPostService.updateUserPost(id, userPost);
+        return ResponseEntity.noContent().build();
+    }
 }
