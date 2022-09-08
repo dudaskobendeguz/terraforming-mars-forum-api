@@ -10,10 +10,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -33,6 +35,11 @@ class UserPostControllerTest {
         userPosts.add(UserPost.builder().id(1L).build());
         userPosts.add(UserPost.builder().id(2L).build());
         return userPosts;
+    }
+
+    private UserPostController.CreateUserPostRequest getCreateUserPostRequest() {
+        return UserPostController.CreateUserPostRequest
+                .builder().userId(1L).description("test description").build();
     }
 
     @Test
@@ -65,5 +72,32 @@ class UserPostControllerTest {
         assertEquals(expected.getUser(), actual.getUser());
         assertEquals(expected.getDescription(), actual.getDescription());
     }
+
+    @Test
+    public void createUserPost_CreatingUserPost_HasStatus201() {
+        UserPostController.CreateUserPostRequest createUserPostRequest = getCreateUserPostRequest();
+        UserPost userPost = createUserPostRequest.convertToUserPost();
+
+        when(userPostService.createUserPost(any(UserPost.class))).thenReturn(userPost);
+
+        HttpStatus expected = HttpStatus.CREATED;
+        HttpStatus actual = userPostController.createUserPost(createUserPostRequest).getStatusCode();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void createUserPost_CreatingUserPost_HasLocation() {
+        Long userPostId = 1L;
+        UserPostController.CreateUserPostRequest createUserPostRequest = getCreateUserPostRequest();
+        UserPost userPost = createUserPostRequest.convertToUserPost();
+        userPost.setId(userPostId);
+
+        when(userPostService.createUserPost(any(UserPost.class))).thenReturn(userPost);
+
+        URI expected = URI.create("/api/user-posts/%s".formatted(userPostId));
+        URI actual = userPostController.createUserPost(createUserPostRequest).getHeaders().getLocation();
+        assertEquals(expected, actual);
+    }
+
 
 }
