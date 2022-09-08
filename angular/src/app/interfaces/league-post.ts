@@ -1,7 +1,8 @@
 import {User} from "./user";
 
 export interface LeaguePost {
-  leagueId: number
+  leagueId: number,
+  description: string,
   timestamp: Date,
   gameType: string,
   name: string,
