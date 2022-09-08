@@ -2,9 +2,13 @@ package com.codecool.terraformingmarsforum.sample_data;
 
 
 import com.codecool.terraformingmarsforum.model.AppUser;
+import com.codecool.terraformingmarsforum.model.LeagueDetail;
+import com.codecool.terraformingmarsforum.model.LeaguePost;
+import com.codecool.terraformingmarsforum.model.types.LeagueStatus;
 import com.codecool.terraformingmarsforum.repository.AppUserRepository;
 import com.codecool.terraformingmarsforum.repository.CommentRepository;
-import com.codecool.terraformingmarsforum.repository.LeaguePostRepository;
+import com.codecool.terraformingmarsforum.repository.LeagueDetailRepository;
+import com.codecool.terraformingmarsforum.service.LeaguePostService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.Date;
+import java.util.NoSuchElementException;
 
 @Component
 @RequiredArgsConstructor
@@ -20,7 +25,8 @@ public class DataSampleInitializer {
     private final Logger logger = LoggerFactory.getLogger(DataSampleInitializer.class);
     private final AppUserRepository appUserRepository;
     private final CommentRepository commentRepository;
-    private final LeaguePostRepository leaguePostRepository;
+    private final LeagueDetailRepository leagueDetailRepository;
+    private final LeaguePostService leaguePostService;
     private final String separator = "\n-----------------------------------------------------------\n";
 
 
@@ -28,11 +34,13 @@ public class DataSampleInitializer {
     private void initSampleData() {
         logger.info(separator + "Initialize Sample Data");
         createAppUser();
+        createLeagueDetails();
+        createLeaguePosts();
         logger.info("\nSample data initialized" + separator);
     }
 
     private void createAppUser() {
-        logger.info("initailze " + AppUser.class.getSimpleName() + "s");
+        logger.info("initialize " + AppUser.class.getSimpleName() + "s");
         appUserRepository.save(AppUser.builder()
                         .firstName("Bendegúz")
                         .lastName("Dudaskó")
@@ -70,5 +78,58 @@ public class DataSampleInitializer {
                         .timestamp(new Date())
                 .build());
         logger.info(AppUser.class.getSimpleName() + "s initialized");
+    }
+
+    private void createLeagueDetails() {
+        logger.info("initialize " + LeagueDetail.class.getSimpleName() + "s");
+
+        LeagueDetail leagueDetail = LeagueDetail.builder()
+                .leagueId(1L)
+                .name("First League")
+                .gameType("Terraforming Mars")
+                .timestamp(new Date())
+                .leagueAdmin(appUserRepository.findById(1L).orElseThrow(NoSuchElementException::new))
+                .players(appUserRepository.findAll())
+                .numberOfRounds(4)
+                .imageSource("https://m.blog.hu/di/diceandsorcery/image/terraforming_mars_magyar.jpg")
+                .build();
+        leagueDetailRepository.save(leagueDetail);
+
+        logger.info(LeagueDetail.class.getSimpleName() + "s initialized");
+
+    }
+
+    private void createLeaguePosts() {
+        logger.info("initialize " + LeaguePost.class.getSimpleName() + "s");
+
+        LeagueDetail leagueDetail = leagueDetailRepository.findById(1L)
+                .orElseThrow(NoSuchElementException::new);
+
+        LeaguePost startedLeaguePost = LeaguePost.builder()
+                .leagueDetail(leagueDetail)
+                .numberOfFinishedRounds(0)
+                .leagueStatus(LeagueStatus.STARTED)
+                .timeStamp(new Date())
+                .build();
+        leaguePostService.save(startedLeaguePost);
+
+        LeaguePost firstRoundStartedLeaguePost = LeaguePost.builder()
+                .leagueDetail(leagueDetail)
+                .numberOfFinishedRounds(0)
+                .leagueStatus(LeagueStatus.ROUND_IN_PROGRESS)
+                .timeStamp(new Date())
+                .build();
+        leaguePostService.save(firstRoundStartedLeaguePost);
+
+        LeaguePost firstRoundFinishedLeaguePost = LeaguePost.builder()
+                .leagueDetail(leagueDetail)
+                .numberOfFinishedRounds(1)
+                .leagueStatus(LeagueStatus.ROUND_FINISHED)
+                .timeStamp(new Date())
+                .build();
+        leaguePostService.save(firstRoundFinishedLeaguePost);
+
+        logger.info(LeaguePost.class.getSimpleName() + "s initialized");
+
     }
 }
