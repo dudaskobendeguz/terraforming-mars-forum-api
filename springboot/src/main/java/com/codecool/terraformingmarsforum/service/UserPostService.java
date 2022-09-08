@@ -31,7 +31,7 @@ public class UserPostService {
         return userPostRepository.save(userPost);
     }
 
-    public void addCommentToPostByPostId(Long postId, Comment comment){
+    public void addCommentToPostByPostId(Long postId, Comment comment) {
         UserPost userPost = userPostRepository.findById(postId).orElseThrow(NoSuchElementException::new);
         userPost.getComments().add(comment);
         userPostRepository.save(userPost);

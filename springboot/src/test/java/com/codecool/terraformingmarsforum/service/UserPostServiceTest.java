@@ -78,4 +78,16 @@ class UserPostServiceTest {
 
         assertNotNull(userPostService.createUserPost(userPost).getTimestamp());
     }
+
+    @Test
+    public void createUserPost_UserNotFound_ThrowsIllegalArgumentExceptionWithSpecifiedMessage() {
+        UserPost userPost = getUserPost();
+
+        when(appUserRepository.findById(1L)).thenReturn(Optional.empty());
+
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class,
+                () -> userPostService.createUserPost(userPost));
+
+        assertEquals("User: 1 not found", illegalArgumentException.getMessage());
+    }
 }
