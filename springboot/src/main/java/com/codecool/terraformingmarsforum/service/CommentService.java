@@ -20,10 +20,11 @@ public class CommentService {
      * @param   postType PostType
      * @param   postId Long*/
     public Comment createComment(Comment comment, PostType postType, Long postId) {
+        Comment result = commentRepository.save(comment);
         switch (postType) {
             case USER -> userPostService.addCommentToPostByPostId(postId, comment);
             case LEAGUE -> leaguePostService.addCommentToPostByPostId(postId, comment);
         }
-        return commentRepository.save(comment);
+        return result;
     }
 }

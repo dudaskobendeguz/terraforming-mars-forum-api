@@ -43,5 +43,6 @@ public class LeaguePostService {
     public void addCommentToPostByPostId(Long postId, Comment comment) {
         Optional<LeaguePost> post = leaguePostRepository.findById(postId);
         post.map(p -> p.getComments().add(comment)).orElseThrow(NoSuchElementException::new);
+        leaguePostRepository.save(post.get());
     }
 }
