@@ -1,6 +1,7 @@
 package com.codecool.terraformingmarsforum.service;
 
 import com.codecool.terraformingmarsforum.model.Comment;
+import com.codecool.terraformingmarsforum.model.types.PostType;
 import com.codecool.terraformingmarsforum.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,9 +14,10 @@ public class CommentService {
 
     /**
      * Saves comment to database
-     * @param {Comment comment}
-     */
-    public void createComment(Comment comment) {
-        commentRepository.save(comment);
+     * @param   comment Comment
+     * @param   postType PostType
+     * @param   postId Long*/
+    public Comment createComment(Comment comment, PostType postType, Long postId) {
+        return commentRepository.save(comment);
     }
 }
