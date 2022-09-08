@@ -73,4 +73,11 @@ class AppUserServiceTest {
 
         assertEquals(expectedTestUser, actualTestUser);
     }
+
+
+    @Test
+    public void getAppUserByUsernameOrEmail_InvalidEmailAndUsername_ThrowsException() {
+        assertThrows(NoSuchElementException.class,
+                ()-> appUserService.getAppUserByUsernameOrEmail("notValidUsername", "notValidEmail"));
+    }
 }
