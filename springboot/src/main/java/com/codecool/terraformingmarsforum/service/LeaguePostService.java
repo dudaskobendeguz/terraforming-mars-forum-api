@@ -29,6 +29,7 @@ public class LeaguePostService {
         return leaguePosts.stream().map(this::createLeaguePostModel).toList();
     }
 
+    //TODO description should be generated on frontend
     private void createDescription(LeaguePost leaguePost) {
         switch (leaguePost.getLeagueStatus()) {
             case STARTED ->
