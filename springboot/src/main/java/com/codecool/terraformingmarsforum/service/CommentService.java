@@ -11,13 +11,19 @@ import org.springframework.stereotype.Service;
 public class CommentService {
 
     private final CommentRepository commentRepository;
+    private final LeaguePostService leaguePostService;
+    private final UserPostService userPostService;
 
     /**
-     * Saves comment to database
+     * Saves comment to comment table and links it to post.
      * @param   comment Comment
      * @param   postType PostType
      * @param   postId Long*/
     public Comment createComment(Comment comment, PostType postType, Long postId) {
+        switch (postType) {
+            case USER -> userPostService.addCommentToPostByPostId(postId, comment);
+            case LEAGUE -> leaguePostService.addCommentToPostByPostId(postId, comment);
+        }
         return commentRepository.save(comment);
     }
 }

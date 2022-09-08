@@ -1,5 +1,6 @@
 package com.codecool.terraformingmarsforum.service;
 
+import com.codecool.terraformingmarsforum.model.Comment;
 import com.codecool.terraformingmarsforum.model.LeagueDetail;
 import com.codecool.terraformingmarsforum.model.LeaguePost;
 import com.codecool.terraformingmarsforum.model.LeaguePostModel;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -35,5 +37,10 @@ public class LeaguePostService {
                 .numberOfPlayers(leagueDetail.getPlayers().size())
                 .numberOfRounds(leagueDetail.getNumberOfRounds())
                 .build();
+    }
+
+    public void addCommentToPostByPostId(Long postId, Comment comment) {
+        Optional<LeaguePost> post = leaguePostRepository.findById(postId);
+        post.ifPresent(leaguePost -> leaguePost.getComments().add(comment));
     }
 }
