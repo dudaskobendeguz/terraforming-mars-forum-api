@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Date;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,7 +28,7 @@ class AppUserServiceTest {
     }
 
     @Test
-    void getAppUserById_ValidId_returnsAppUser() {
+    void getAppUserById_ValidId_ReturnsAppUser() {
         AppUser expectedTestUser = AppUser.builder()
                 .username("TesztElek")
                 .firstName("Teszt")
@@ -43,6 +44,11 @@ class AppUserServiceTest {
         AppUser actualTestUser = appUserService.getAppUserById(1L);
 
         assertEquals(expectedTestUser, actualTestUser);
+    }
+
+    @Test
+    public void getAppUserById_InvalidId_ThrowsNoSuchElementException(){
+        assertThrows(NoSuchElementException.class, ()-> appUserService.getAppUserById(-1L));
     }
 
 
