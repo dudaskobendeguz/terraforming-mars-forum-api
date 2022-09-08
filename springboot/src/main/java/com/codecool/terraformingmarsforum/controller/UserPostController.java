@@ -23,6 +23,7 @@ public class UserPostController {
     @Data
     @Builder
     public static final class CreateUserPostRequest {
+
         @NonNull
         private String description;
         @NonNull
@@ -32,6 +33,20 @@ public class UserPostController {
             return UserPost.builder()
                     .description(description)
                     .user(AppUser.builder().id(userId).build())
+                    .build();
+        }
+    }
+
+    @Data
+    @Builder
+    public static final class UpdateUserPostRequest {
+
+        @NonNull
+        private String description;
+
+        public UserPost convertToUserPost() {
+            return UserPost.builder()
+                    .description(description)
                     .build();
         }
     }
