@@ -5,6 +5,7 @@ import com.codecool.terraformingmarsforum.model.UserPost;
 import com.codecool.terraformingmarsforum.repository.AppUserRepository;
 import com.codecool.terraformingmarsforum.repository.UserPostRepository;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -15,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
@@ -89,5 +91,12 @@ class UserPostServiceTest {
                 () -> userPostService.createUserPost(userPost));
 
         assertEquals("User: 1 not found", illegalArgumentException.getMessage());
+    }
+
+    @Test
+    public void updateUserPost_UserPostNotFound_ThrowsIllegalArgumentException() {
+        when(userPostRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        assertThrows(NoSuchElementException.class, () -> userPostService.updateUserPost(1L, getUserPost()));
     }
 }

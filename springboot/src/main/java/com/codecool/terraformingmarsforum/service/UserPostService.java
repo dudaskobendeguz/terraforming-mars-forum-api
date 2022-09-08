@@ -18,6 +18,10 @@ public class UserPostService {
     private final UserPostRepository userPostRepository;
     private final AppUserRepository appUserRepository;
 
+    private UserPost getUserPostById(Long id) {
+        return userPostRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    }
+
     public List<UserPost> getAllUserPosts() {
         return userPostRepository.findAll();
     }
@@ -29,6 +33,12 @@ public class UserPostService {
         ));
         userPost.setTimestamp(new Date());
         return userPostRepository.save(userPost);
+    }
+
+    public void updateUserPost(Long id, UserPost updatedUserPost) {
+        UserPost userPost = getUserPostById(id);
+        userPost.setDescription(updatedUserPost.getDescription());
+        userPostRepository.save(userPost);
     }
 
     public void addCommentToPostByPostId(Long postId, Comment comment) {
