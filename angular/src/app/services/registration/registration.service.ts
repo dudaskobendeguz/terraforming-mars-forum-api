@@ -4,12 +4,13 @@ import {MessageLoggerService} from "../message-logger/message-logger.service";
 import {ErrorHandlerService} from "../error-handler/error-handler.service";
 import {catchError, Observable, tap} from "rxjs";
 import {User} from "../../interfaces/user";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistrationService {
-  private commentsUrl: string = "api/users";
+  private commentsUrl: string = `${environment.baseUrl}/api/users`;
   private httpOptions: {} = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };

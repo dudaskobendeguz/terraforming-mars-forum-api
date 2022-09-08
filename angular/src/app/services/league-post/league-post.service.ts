@@ -4,12 +4,13 @@ import {MessageLoggerService} from "../message-logger/message-logger.service";
 import {ErrorHandlerService} from "../error-handler/error-handler.service";
 import {catchError, Observable, tap} from "rxjs";
 import {LeaguePost} from "../../interfaces/league-post";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LeaguePostService {
-  private leaguePostsUrl: string = 'api/leaguePosts';
+  private leaguePostsUrl: string = `${environment.baseUrl}/api/league-posts`;
   private httpOptions: {} = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
