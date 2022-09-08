@@ -6,12 +6,13 @@ import {catchError, Observable, tap} from "rxjs";
 import {PostComment} from "../../interfaces/post-comment";
 import {UserPost} from "../../interfaces/user-post";
 import {User} from "../../interfaces/user";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
-  private commentsUrl: string = "api/comments";
+  private commentsUrl: string = `${environment.baseUrl}/api/comments`;
   private httpOptions: {} = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
@@ -50,7 +51,7 @@ export class CommentService {
 
     return this.http.post<PostComment>(this.commentsUrl, comment, this.httpOptions)
       .pipe(
-        tap((a) => this.log(`created comment | id=${comment.id}`)),
+        tap((_) => this.log(`created comment | id=${comment.id}`)),
         catchError(this.errorHandler.handleError<UserPost>('addUserPost'))
       )
   }

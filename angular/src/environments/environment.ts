@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  /*
+  Redirect the application itself, to use CORS
+   */
+  baseUrl: "http://localhost:4200"
 };
 
 /*

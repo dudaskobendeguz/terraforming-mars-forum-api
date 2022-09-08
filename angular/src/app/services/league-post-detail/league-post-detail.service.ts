@@ -5,12 +5,13 @@ import {MessageLoggerService} from "../message-logger/message-logger.service";
 import {LeaguePostService} from "../league-post/league-post.service";
 import {catchError, Observable, tap} from "rxjs";
 import {LeagueDetails} from "../../interfaces/league-details";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LeaguePostDetailService {
-  private leagueDetailsUrl: string = '/api/leaguePostDetails';
+  private leagueDetailsUrl: string = `${environment.baseUrl}/api/leaguePostDetails`;
 
   constructor(
     private messageService: MessageLoggerService,
