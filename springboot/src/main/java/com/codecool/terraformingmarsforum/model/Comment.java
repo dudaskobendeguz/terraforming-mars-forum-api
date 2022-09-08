@@ -29,7 +29,9 @@ public class Comment {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         Comment comment = (Comment) o;
-        return id != null && Objects.equals(id, comment.id);
+        return Objects.equals(description, comment.description) &&
+                Objects.equals(user, comment.user) &&
+                Objects.equals(timeStamp, comment.timeStamp);
     }
 
     @Override
