@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 
@@ -41,6 +42,6 @@ public class LeaguePostService {
 
     public void addCommentToPostByPostId(Long postId, Comment comment) {
         Optional<LeaguePost> post = leaguePostRepository.findById(postId);
-        post.ifPresent(leaguePost -> leaguePost.getComments().add(comment));
+        post.map(p -> p.getComments().add(comment)).orElseThrow(NoSuchElementException::new);
     }
 }
