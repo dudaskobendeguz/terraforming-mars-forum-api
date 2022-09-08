@@ -1,28 +1,34 @@
 package com.codecool.terraformingmarsforum.service;
 
+import com.codecool.terraformingmarsforum.model.AppUser;
 import com.codecool.terraformingmarsforum.model.UserPost;
+import com.codecool.terraformingmarsforum.repository.AppUserRepository;
 import com.codecool.terraformingmarsforum.repository.UserPostRepository;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 class UserPostServiceTest {
 
     @Mock
     private UserPostRepository userPostRepository;
+    @Mock
+    private AppUserRepository appUserRepository;
     private UserPostService userPostService;
 
     @BeforeEach
     public void init() {
-        userPostService = new UserPostService(userPostRepository);
+        userPostService = new UserPostService(userPostRepository, appUserRepository);
     }
 
     private List<UserPost> getUserPosts() {
@@ -32,11 +38,56 @@ class UserPostServiceTest {
         return userPosts;
     }
 
+    private AppUser getUser() {
+        return AppUser.builder().id(1L).build();
+    }
+
+    private UserPost getUserPost() {
+        return UserPost.builder().user(getUser()).description("").build();
+    }
+
     @Test
-    public void getAllUserPosts_ReturnsAllUserPosts() {
+    public void getAllUserPosts_GetAllUserPosts_ReturnsAllUserPosts() {
         List<UserPost> expected = getUserPosts();
-        Mockito.when(userPostRepository.findAll()).thenReturn(expected);
+
+        when(userPostRepository.findAll()).thenReturn(expected);
+
         List<UserPost> actual = userPostService.getAllUserPosts();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void createUserPost_NewUserPost_HasNewId() {
+        Long expected = 1L;
+        UserPost userPostWithNewId = UserPost.builder().id(expected).build();
+        UserPost userPost = getUserPost();
+
+        when(userPostRepository.save(userPost)).thenReturn(userPostWithNewId);
+        when(appUserRepository.findById(1L)).thenReturn(Optional.of(getUser()));
+
+        Long actual = userPostService.createUserPost(userPost).getId();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void createUserPost_NewUserPost_HasTimestamp() {
+        UserPost userPost = getUserPost();
+
+        when(userPostRepository.save(userPost)).thenReturn(userPost);
+        when(appUserRepository.findById(1L)).thenReturn(Optional.of(getUser()));
+
+        assertNotNull(userPostService.createUserPost(userPost).getTimestamp());
+    }
+
+    @Test
+    public void createUserPost_UserNotFound_ThrowsIllegalArgumentExceptionWithSpecifiedMessage() {
+        UserPost userPost = getUserPost();
+
+        when(appUserRepository.findById(1L)).thenReturn(Optional.empty());
+
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class,
+                () -> userPostService.createUserPost(userPost));
+
+        assertEquals("User: 1 not found", illegalArgumentException.getMessage());
     }
 }

@@ -2,10 +2,12 @@
 package com.codecool.terraformingmarsforum.model;
 
 import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Entity object representing a post created by the user.
@@ -34,4 +36,17 @@ public class UserPost {
     @OneToMany
     @ToString.Exclude
     private List<Comment> comments;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        UserPost userPost = (UserPost) o;
+        return id != null && Objects.equals(id, userPost.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

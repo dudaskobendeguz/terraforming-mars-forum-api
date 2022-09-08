@@ -1,13 +1,16 @@
 package com.codecool.terraformingmarsforum.controller;
 
+import com.codecool.terraformingmarsforum.model.AppUser;
 import com.codecool.terraformingmarsforum.model.UserPost;
 import com.codecool.terraformingmarsforum.service.UserPostService;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -17,8 +20,32 @@ public class UserPostController {
 
     private final UserPostService userPostService;
 
+    @Data
+    @Builder
+    public static final class CreateUserPostRequest {
+        @NonNull
+        private String description;
+        @NonNull
+        private Long userId;
+
+        public UserPost convertToUserPost() {
+            return UserPost.builder()
+                    .description(description)
+                    .user(AppUser.builder().id(userId).build())
+                    .build();
+        }
+    }
+
     @GetMapping
     public ResponseEntity<List<UserPost>> getAllUserPosts() {
         return ResponseEntity.ok(userPostService.getAllUserPosts());
+    }
+
+    @PostMapping
+    public ResponseEntity<UserPost> createUserPost(@RequestBody CreateUserPostRequest createUserPostRequest) {
+        UserPost userPost = userPostService.createUserPost(createUserPostRequest.convertToUserPost());
+        return ResponseEntity
+                .created(URI.create(String.format("/api/user-posts/%d", userPost.getId())))
+                .body(userPost);
     }
 }
