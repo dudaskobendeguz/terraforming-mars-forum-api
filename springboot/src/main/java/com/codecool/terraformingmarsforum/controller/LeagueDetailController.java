@@ -16,6 +16,11 @@ import java.util.List;
 public class LeagueDetailController {
     private final LeagueDetailService leagueDetailService;
 
+
+    /**
+     * Representation of the "player" of the {@link League leage}'s players,
+     * who's are Users of the <a href="https://terraforming-mars-leagues.herokuapp.com/dashboard">Terraforming Mars League</a>
+     */
     @Data
     private static class Player {
         @JsonProperty("id")
@@ -37,6 +42,9 @@ public class LeagueDetailController {
         String username;
     }
 
+    /**
+     * Representation of the incoming League form <a href="https://terraforming-mars-leagues.herokuapp.com/dashboard">Terraforming Mars League</a>
+     */
     @Data
     private static class League {
         @JsonProperty("id")
@@ -68,14 +76,22 @@ public class LeagueDetailController {
     };
 
     //TODO do something with the incoming players(are they already users, or not?).
+    /**
+     * Save new {@link com.codecool.terraformingmarsforum.model.LeagueDetail LeagueDetail}
+     * entity
+     * @param league {@link League league} DTO
+     */
 //    @PostMapping("/new")
 //    public void save(@RequestBody League league) {
-//        LeagueDetail leagueDetail = LeagueDetail.builder()
-//                .gameType(league.gameType)
-//                .imageSource(league.imageSource)
-//                .leagueId(league.id)
-//                .leagueAdmin(league.leaguePlayers.stream().filter(player -> player.id.equals(league.id)).findFirst())
-//                .build();
-//        leaguePostService.save()
+//    LeagueDetail leagueDetail = LeagueDetail.builder()
+//            .gameType(league.gameType)
+//            .imageSource(league.imageSource)
+//            .leagueId(league.id)
+//            .leagueAdmin(league.leaguePlayers.stream().filter(player -> player.id.equals(league.id)).findFirst())
+//            .build();
+//    leaguePostService.save()
 //    }
 }
+
+
+
