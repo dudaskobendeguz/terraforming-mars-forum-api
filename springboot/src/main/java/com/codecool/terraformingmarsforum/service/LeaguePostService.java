@@ -18,6 +18,12 @@ public class LeaguePostService {
 
     private final LeaguePostRepository leaguePostRepository;
 
+
+    public LeaguePost save(LeaguePost leaguePost) {
+        createDescription(leaguePost);
+        return leaguePostRepository.save(leaguePost);
+    }
+
     public List<LeaguePostModel> findAll() {
         List<LeaguePost> leaguePosts = leaguePostRepository.findAll();
         return leaguePosts.stream().map(this::createLeaguePostModel).toList();
