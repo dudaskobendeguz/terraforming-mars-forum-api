@@ -40,4 +40,12 @@ public class UserPostController {
     public ResponseEntity<List<UserPost>> getAllUserPosts() {
         return ResponseEntity.ok(userPostService.getAllUserPosts());
     }
+
+    @PostMapping
+    public ResponseEntity<UserPost> createUserPost(@RequestBody CreateUserPostRequest createUserPostRequest) {
+        UserPost userPost = userPostService.createUserPost(createUserPostRequest.convertToUserPost());
+        return ResponseEntity
+                .created(URI.create(String.format("/api/user-posts/%d", userPost.getId())))
+                .body(userPost);
+    }
 }
