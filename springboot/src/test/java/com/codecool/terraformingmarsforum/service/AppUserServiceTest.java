@@ -29,7 +29,15 @@ class AppUserServiceTest {
 
     @Test
     void getAppUserById_ValidId_ReturnsAppUser() {
-        AppUser expectedTestUser = AppUser.builder()
+        AppUser expectedTestUser = getAppUser();
+        Mockito.when(appUserRepository.findById(1L)).thenReturn(Optional.ofNullable(expectedTestUser));
+        AppUser actualTestUser = appUserService.getAppUserById(1L);
+
+        assertEquals(expectedTestUser, actualTestUser);
+    }
+
+    private AppUser getAppUser() {
+        return AppUser.builder()
                 .username("TesztElek")
                 .firstName("Teszt")
                 .lastName("Elek")
@@ -38,12 +46,6 @@ class AppUserServiceTest {
                 .imgSource("fb/img/tesztelek_profile_pic")
                 .timestamp(new Date())
                 .build();
-
-        Mockito.when(appUserRepository.findById(1L)).thenReturn(Optional.ofNullable(expectedTestUser));
-
-        AppUser actualTestUser = appUserService.getAppUserById(1L);
-
-        assertEquals(expectedTestUser, actualTestUser);
     }
 
     @Test
@@ -54,5 +56,6 @@ class AppUserServiceTest {
 
     @Test
     void getAppUserByUsernameOrEmail() {
+
     }
 }
