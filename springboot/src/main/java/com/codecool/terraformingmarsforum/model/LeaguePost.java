@@ -42,38 +42,4 @@ public class LeaguePost {
 
     @OneToMany
     List<Comment> comments;
-
-    @PostConstruct
-    private void createDescription() {
-        switch (leagueStatus) {
-            case STARTED ->
-                description = String.format(
-                        "%s has started a %s %s league!",
-                        leagueDetail.getLeagueAdmin().getUsername(),
-                        leagueDetail.gameType,
-                        leagueDetail.name
-                );
-
-            case ROUND_IN_PROGRESS ->
-                description = String.format(
-                        "Round %d started!",
-                        (numberOfFinishedRounds + 1)
-                );
-
-            case ROUND_FINISHED ->
-                description = String.format(
-                        "Round %d/%d finished",
-                        numberOfFinishedRounds,
-                        leagueDetail.numberOfRounds
-                );
-
-            case FINISHED ->
-                description = String.format(
-                        "The %s %s league has finished!",
-                        leagueDetail.gameType,
-                        leagueDetail.name
-                );
-            default -> throw new IllegalArgumentException("No description for the given LeagueStatus");
-        }
-    }
 }
