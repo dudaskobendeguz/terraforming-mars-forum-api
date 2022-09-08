@@ -31,7 +31,15 @@ class CommentControllerTest {
     @Test
     public void createComment_createComment_returnsStatus201() {
         HttpStatus expected = HttpStatus.CREATED;
-        HttpStatus actual = commentController.createComment(CommentController.CommentDetails.builder().build()).getStatusCode();
+        HttpStatus actual = commentController.createComment(CommentController.CommentDetails.builder()
+                .postId(0L)
+                .user(AppUser.builder()
+                        .id(1L)
+                        .build())
+                .postType(PostType.LEAGUE)
+                .description("desc")
+                .timeStamp(new Date())
+                .build()).getStatusCode();
         Assertions.assertEquals(expected, actual);
     }
 
