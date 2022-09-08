@@ -31,6 +31,8 @@ public class LeaguePost {
     //TODO Generate description based on the current league status.
     String description;
 
+
+    @Enumerated(EnumType.STRING)
     LeagueStatus leagueStatus;
 
     @ManyToOne
