@@ -18,6 +18,10 @@ public class UserPostService {
     private final UserPostRepository userPostRepository;
     private final AppUserRepository appUserRepository;
 
+    private UserPost getUserPostById(Long id) {
+        return userPostRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    }
+
     public List<UserPost> getAllUserPosts() {
         return userPostRepository.findAll();
     }
