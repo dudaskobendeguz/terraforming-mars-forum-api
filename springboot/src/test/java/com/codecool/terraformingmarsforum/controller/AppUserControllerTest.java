@@ -29,4 +29,12 @@ class AppUserControllerTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void getAppUserByUsernameOrEmail_HasStatus200(){
+        HttpStatus expected = HttpStatus.OK;
+        HttpStatus actual = appUserController.getUserByUsernameOrEmail("Test").getStatusCode();
+
+        assertEquals(expected, actual);
+    }
 }
