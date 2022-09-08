@@ -42,6 +42,11 @@ class UserPostControllerTest {
                 .builder().userId(1L).description("test description").build();
     }
 
+    private UserPostController.UpdateUserPostRequest getUpdateUserPostRequest() {
+        return UserPostController.UpdateUserPostRequest
+                .builder().description("test description").build();
+    }
+
     @Test
     public void getAllUserPosts_HasAllUserPostsInRequestBody() {
         List<UserPost> expected = getUserPosts();
@@ -99,5 +104,11 @@ class UserPostControllerTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void updateUserPost_UpdatingUserPost_HasStatus204() {
+        HttpStatus expected = HttpStatus.NO_CONTENT;
+        HttpStatus actual = userPostController.updateUserPost(1L, getUpdateUserPostRequest()).getStatusCode();
 
+        assertEquals(expected, actual);
+    }
 }
