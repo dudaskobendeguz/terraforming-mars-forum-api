@@ -6,6 +6,7 @@ import com.codecool.terraformingmarsforum.model.types.PostType;
 import com.codecool.terraformingmarsforum.service.CommentService;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,10 +25,15 @@ public class CommentController {
     @Data
     @Builder
     protected static class CommentDetails {
+        @NonNull
         private AppUser user;
+        @NonNull
         private String description;
+        @NonNull
         private Date timeStamp;
+        @NonNull
         private Long postId;
+        @NonNull
         private PostType postType;
 
         public Comment getComment() {
