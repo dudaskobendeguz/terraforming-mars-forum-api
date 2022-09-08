@@ -21,8 +21,8 @@ public class UserPostService {
     }
 
     public void addCommentToPostByPostId(Long postId, Comment comment){
-        Optional<UserPost> post = userPostRepository.findById(postId);
-        post.map(p -> p.getComments().add(comment)).orElseThrow(NoSuchElementException::new);
-        userPostRepository.save(post.get());
+        UserPost userPost = userPostRepository.findById(postId).orElseThrow(NoSuchElementException::new);
+        userPost.getComments().add(comment);
+        userPostRepository.save(userPost);
     }
 }
