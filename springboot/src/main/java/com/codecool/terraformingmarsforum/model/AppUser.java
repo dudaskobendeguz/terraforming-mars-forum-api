@@ -1,6 +1,7 @@
 package com.codecool.terraformingmarsforum.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -24,6 +25,7 @@ public class AppUser {
     private String firstName;
     private String lastName;
     private String email;
+    @JsonIgnore
     private String password;
 
     @Column(length = 1000)
