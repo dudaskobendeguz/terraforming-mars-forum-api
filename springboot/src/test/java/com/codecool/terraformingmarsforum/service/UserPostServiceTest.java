@@ -99,4 +99,11 @@ class UserPostServiceTest {
 
         assertThrows(NoSuchElementException.class, () -> userPostService.updateUserPost(1L, getUserPost()));
     }
+
+    @Test
+    public void deleteUserPost_UserPostNotFound_ThrowsNoSuchElementException() {
+        when(userPostRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        assertThrows(NoSuchElementException.class, () -> userPostService.deleteUserPost(1L));
+    }
 }
