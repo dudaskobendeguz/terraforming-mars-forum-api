@@ -58,7 +58,7 @@ public class UserPostController {
 
     @PostMapping
     public ResponseEntity<UserPost> createUserPost(@RequestBody CreateUserPostRequest createUserPostRequest) {
-        UserPost userPost = userPostService.createUserPost(createUserPostRequest.convertToUserPost());
+        UserPost userPost = userPostService.addUserPost(createUserPostRequest.convertToUserPost());
         return ResponseEntity
                 .created(URI.create(String.format("/api/user-posts/%d", userPost.getId())))
                 .body(userPost);

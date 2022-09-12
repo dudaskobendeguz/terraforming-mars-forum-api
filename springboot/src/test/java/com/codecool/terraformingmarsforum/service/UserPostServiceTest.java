@@ -67,7 +67,7 @@ class UserPostServiceTest {
         when(userPostRepository.save(userPost)).thenReturn(userPostWithNewId);
         when(appUserRepository.findById(1L)).thenReturn(Optional.of(getUser()));
 
-        Long actual = userPostService.createUserPost(userPost).getId();
+        Long actual = userPostService.addUserPost(userPost).getId();
         assertEquals(expected, actual);
     }
 
@@ -78,7 +78,7 @@ class UserPostServiceTest {
         when(userPostRepository.save(userPost)).thenReturn(userPost);
         when(appUserRepository.findById(1L)).thenReturn(Optional.of(getUser()));
 
-        assertNotNull(userPostService.createUserPost(userPost).getTimestamp());
+        assertNotNull(userPostService.addUserPost(userPost).getTimestamp());
     }
 
     @Test
@@ -88,7 +88,7 @@ class UserPostServiceTest {
         when(appUserRepository.findById(1L)).thenReturn(Optional.empty());
 
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class,
-                () -> userPostService.createUserPost(userPost));
+                () -> userPostService.addUserPost(userPost));
 
         assertEquals("User: 1 not found", illegalArgumentException.getMessage());
     }

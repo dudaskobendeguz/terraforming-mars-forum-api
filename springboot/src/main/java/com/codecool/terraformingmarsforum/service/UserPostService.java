@@ -33,7 +33,7 @@ public class UserPostService {
         return userPostRepository.findAll();
     }
 
-    public UserPost createUserPost(UserPost userPost) {
+    public UserPost addUserPost(UserPost userPost) {
         Long userId = userPost.getUser().getId();
         userPost.setUser(appUserRepository.findById(userId).orElseThrow(
                 () -> new IllegalArgumentException("User: %d not found".formatted(userId))
