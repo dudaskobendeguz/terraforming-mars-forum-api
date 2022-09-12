@@ -68,6 +68,12 @@ public class UserPostService {
         userPostRepository.save(userPost);
     }
 
+    /**
+     * Deletes {@link UserPost} from the database if exists, otherwise throws {@link NoSuchElementException}
+     *
+     * @param id of {@link UserPost} to be deleted
+     * @throws NoSuchElementException if {@link UserPost} is not found
+     */
     public void deleteUserPost(Long id) {
         getUserPostById(id); // check if user post is present
         userPostRepository.deleteById(id);
