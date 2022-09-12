@@ -30,6 +30,9 @@ public class UserPostService {
         return userPostRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
+    /**
+     * @return every {@link UserPost} entry in the database.
+     */
     public List<UserPost> getAllUserPosts() {
         return userPostRepository.findAll();
     }
