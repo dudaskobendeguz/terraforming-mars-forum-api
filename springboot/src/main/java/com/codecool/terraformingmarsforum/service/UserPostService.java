@@ -48,8 +48,13 @@ public class UserPostService {
         userPostRepository.save(userPost);
     }
 
-    public void addCommentToPostByPostId(Long postId, Comment comment) {
-        UserPost userPost = userPostRepository.findById(postId).orElseThrow(NoSuchElementException::new);
+    public void deleteUserPost(Long id) {
+        getUserPostById(id); // check if user post is present
+        userPostRepository.deleteById(id);
+    }
+
+    public void addCommentToPostByPostId(Long id, Comment comment) {
+        UserPost userPost = getUserPostById(id);
         userPost.getComments().add(comment);
         userPostRepository.save(userPost);
     }
