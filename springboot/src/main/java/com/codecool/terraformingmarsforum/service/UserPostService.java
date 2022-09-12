@@ -6,6 +6,7 @@ import com.codecool.terraformingmarsforum.repository.AppUserRepository;
 import com.codecool.terraformingmarsforum.repository.UserPostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.codecool.terraformingmarsforum.model.AppUser;
 
 import java.util.Date;
 import java.util.List;
@@ -33,6 +34,15 @@ public class UserPostService {
         return userPostRepository.findAll();
     }
 
+    /**
+     * Creates an entry of a newly created {@link UserPost} in the database.
+     * Returns the newly created {@link UserPost} if corresponding {@link AppUser} is found, otherwise
+     * throws {@link IllegalArgumentException}.
+     *
+     * @param userPost data of {@link UserPost} to be created
+     * @return the newly created {@link UserPost}
+     * @throws IllegalArgumentException if {@link AppUser} is not found
+     */
     public UserPost addUserPost(UserPost userPost) {
         Long userId = userPost.getUser().getId();
         userPost.setUser(appUserRepository.findById(userId).orElseThrow(
