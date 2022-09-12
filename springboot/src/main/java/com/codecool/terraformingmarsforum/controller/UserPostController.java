@@ -72,4 +72,10 @@ public class UserPostController {
         userPostService.updateUserPost(id, userPost);
         return ResponseEntity.noContent().build();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUserPost(@PathVariable Long id) {
+        userPostService.deleteUserPost(id);
+        return ResponseEntity.noContent().build();
+    }
 }
