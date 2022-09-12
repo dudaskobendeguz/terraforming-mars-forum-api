@@ -1,9 +1,0 @@
-div.league-posts {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  gap: var(--post-gap);
-  margin: 25px;
-}

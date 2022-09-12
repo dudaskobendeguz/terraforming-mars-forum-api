@@ -1,9 +1,0 @@
-<div class="user-post-container">
-  <h2>User Posts</h2>
-  <button mat-raised-button color="primary" (click)="openAddDialog()">Add Post</button>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <p *ngIf="!userPosts.length && !isLoading">There are no user posts.</p>
-  <div class="user-posts" *ngFor="let userPost of userPosts">
-    <app-user-post [userPost]="userPost" [isPreview]="true"></app-user-post>
-  </div>
-</div>
