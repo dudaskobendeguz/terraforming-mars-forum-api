@@ -55,6 +55,13 @@ public class UserPostService {
         return userPostRepository.save(userPost);
     }
 
+    /**
+     * Updates {@link UserPost} in the database if exists, otherwise throws {@link NoSuchElementException}.
+     *
+     * @param id of {@link UserPost} to be updated
+     * @param updatedUserPost the updated information of {@link UserPost}
+     * @throws NoSuchElementException if {@link UserPost} is not found
+     */
     public void updateUserPost(Long id, UserPost updatedUserPost) {
         UserPost userPost = getUserPostById(id);
         userPost.setDescription(updatedUserPost.getDescription());
