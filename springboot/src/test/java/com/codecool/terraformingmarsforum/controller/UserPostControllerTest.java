@@ -83,7 +83,7 @@ class UserPostControllerTest {
         UserPostController.CreateUserPostRequest createUserPostRequest = getCreateUserPostRequest();
         UserPost userPost = createUserPostRequest.convertToUserPost();
 
-        when(userPostService.createUserPost(any(UserPost.class))).thenReturn(userPost);
+        when(userPostService.addUserPost(any(UserPost.class))).thenReturn(userPost);
 
         HttpStatus expected = HttpStatus.CREATED;
         HttpStatus actual = userPostController.createUserPost(createUserPostRequest).getStatusCode();
@@ -97,7 +97,7 @@ class UserPostControllerTest {
         UserPost userPost = createUserPostRequest.convertToUserPost();
         userPost.setId(userPostId);
 
-        when(userPostService.createUserPost(any(UserPost.class))).thenReturn(userPost);
+        when(userPostService.addUserPost(any(UserPost.class))).thenReturn(userPost);
 
         URI expected = URI.create("/api/user-posts/%s".formatted(userPostId));
         URI actual = userPostController.createUserPost(createUserPostRequest).getHeaders().getLocation();
