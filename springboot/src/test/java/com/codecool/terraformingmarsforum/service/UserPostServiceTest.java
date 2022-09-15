@@ -7,7 +7,7 @@ import com.codecool.terraformingmarsforum.repository.UserPostRepository;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -49,6 +49,9 @@ class UserPostServiceTest {
         return UserPost.builder().user(getUser()).description("").build();
     }
 
+    /*------------------------------- Get All User Posts -------------------------------*/
+
+
     @Test
     public void getAllUserPosts_GetAllUserPosts_ReturnsAllUserPosts() {
         List<UserPost> expected = getUserPosts();
@@ -58,6 +61,9 @@ class UserPostServiceTest {
         List<UserPost> actual = userPostService.getAllUserPosts();
         assertEquals(expected, actual);
     }
+
+    /*------------------------------- Create User Post -------------------------------*/
+
 
     @Test
     public void createUserPost_NewUserPost_HasNewId() {
@@ -94,6 +100,9 @@ class UserPostServiceTest {
         assertEquals("User: 1 not found", illegalArgumentException.getMessage());
     }
 
+    /*------------------------------- Update User Post -------------------------------*/
+
+
     @Test
     public void updateUserPost_UpdatingUserPost_UpdatesUserPost() {
         UserPost userPost = getUserPost();
@@ -116,6 +125,21 @@ class UserPostServiceTest {
         when(userPostRepository.findById(anyLong())).thenReturn(Optional.empty());
 
         assertThrows(NoSuchElementException.class, () -> userPostService.updateUserPost(1L, getUserPost()));
+    }
+
+    /*------------------------------- Delete User Post -------------------------------*/
+
+
+    @Test
+    public void deleteUserPost_DeletingUserPost_InvokesRepositoryDeleteExactlyOnce() {
+        UserPost userPost = getUserPost();
+        Long id = 1L;
+
+        when(userPostRepository.findById(id)).thenReturn(Optional.of(userPost));
+
+        userPostService.deleteUserPost(id);
+
+        verify(userPostRepository, times(1)).deleteById(id);
     }
 
     @Test
