@@ -1,6 +1,7 @@
 package com.codecool.terraformingmarsforum.service;
 
 import com.codecool.terraformingmarsforum.model.AppUser;
+import com.codecool.terraformingmarsforum.model.Comment;
 import com.codecool.terraformingmarsforum.model.UserPost;
 import com.codecool.terraformingmarsforum.repository.AppUserRepository;
 import com.codecool.terraformingmarsforum.repository.UserPostRepository;
@@ -47,6 +48,10 @@ class UserPostServiceTest {
 
     private UserPost getUserPost() {
         return UserPost.builder().user(getUser()).description("").build();
+    }
+
+    private Comment getComment() {
+        return Comment.builder().id(1L).build();
     }
 
     /*------------------------------- Get All User Posts -------------------------------*/
@@ -148,4 +153,22 @@ class UserPostServiceTest {
 
         assertThrows(NoSuchElementException.class, () -> userPostService.deleteUserPost(1L));
     }
+
+
+    /*------------------------------- Add Comment To User Post -------------------------------*/
+
+    @Test
+    public void addCommentToUserPost_AfterAddingComment_CommentIsPresentInUserPost() {
+        UserPost userPost = getUserPost();
+        Long id = userPost.getId();
+        Comment comment = getComment();
+
+        when(userPostRepository.findById(id)).thenReturn(Optional.of(userPost));
+        when(userPostRepository.save(any(UserPost.class))).thenReturn(userPost);
+
+        userPostService.addCommentToUserPost(userPost.getId(), comment);
+
+        assertTrue(userPost.getComments().contains(comment));
+    }
+
 }

@@ -22,7 +22,7 @@ public class CommentService {
     public Comment createComment(Comment comment, PostType postType, Long postId) {
         Comment result = commentRepository.save(comment);
         switch (postType) {
-            case USER -> userPostService.addCommentToPostByPostId(postId, comment);
+            case USER -> userPostService.addCommentToUserPost(postId, comment);
             case LEAGUE -> leaguePostService.addCommentToPostByPostId(postId, comment);
         }
         return result;
