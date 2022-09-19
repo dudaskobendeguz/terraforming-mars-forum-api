@@ -78,4 +78,9 @@ public class UserPostController {
         userPostService.deleteUserPost(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserPost> getUserPostById(@PathVariable Long id) {
+        return ResponseEntity.ok(userPostService.getUserPostById(id));
+    }
 }

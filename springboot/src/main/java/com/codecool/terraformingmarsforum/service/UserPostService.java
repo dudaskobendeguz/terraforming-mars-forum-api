@@ -26,7 +26,7 @@ public class UserPostService {
      * @return the requested {@link UserPost}
      * @throws NoSuchElementException if {@link UserPost} with corresponding id is not found
      */
-    private UserPost getUserPostById(Long id) {
+    public UserPost getUserPostById(Long id) {
         return userPostRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
