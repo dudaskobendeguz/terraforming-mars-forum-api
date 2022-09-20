@@ -111,4 +111,13 @@ class UserPostControllerTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void deleteUserPost_DeletingUserPost_HasStatus204() {
+        HttpStatus expected = HttpStatus.NO_CONTENT;
+        HttpStatus actual = userPostController.deleteUserPost(1L).getStatusCode();
+
+        assertEquals(expected, actual);
+    }
+
 }
