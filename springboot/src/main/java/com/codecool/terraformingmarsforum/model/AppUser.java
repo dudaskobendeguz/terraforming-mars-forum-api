@@ -1,12 +1,14 @@
 package com.codecool.terraformingmarsforum.model;
 
 
+import com.codecool.terraformingmarsforum.security.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -29,6 +31,8 @@ public class AppUser {
     private String email;
     @JsonIgnore
     private String password;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<Role> roles;
 
     @Column(length = 1000)
     private String imageSource;
