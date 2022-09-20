@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -108,6 +109,26 @@ class UserPostControllerTest {
     public void updateUserPost_UpdatingUserPost_HasStatus204() {
         HttpStatus expected = HttpStatus.NO_CONTENT;
         HttpStatus actual = userPostController.updateUserPost(1L, getUpdateUserPostRequest()).getStatusCode();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void deleteUserPost_DeletingUserPost_HasStatus204() {
+        HttpStatus expected = HttpStatus.NO_CONTENT;
+        HttpStatus actual = userPostController.deleteUserPost(1L).getStatusCode();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getUserPostById_GetUserPostById_HasUserPostInResponseBody() {
+        Long id = 1L;
+        UserPost expected = UserPost.builder().id(id).build();
+
+        when(userPostService.getUserPostById(id)).thenReturn(expected);
+
+        UserPost actual = userPostController.getUserPostById(id).getBody();
 
         assertEquals(expected, actual);
     }
