@@ -20,7 +20,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class UserPost {
+public class UserPost implements Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
