@@ -14,7 +14,7 @@ import java.util.Date;
 @Data
 @Builder
 @AllArgsConstructor
-public class LeaguePostModel {
+public class LeaguePostModel implements Post {
     Long leagueId;
     String description;
     Date timestamp;
