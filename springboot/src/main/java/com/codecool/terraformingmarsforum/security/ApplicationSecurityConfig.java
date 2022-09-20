@@ -1,21 +1,22 @@
 package com.codecool.terraformingmarsforum.security;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
 @EnableWebSecurity
-public class ApplicationSecurityConfig {
+public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests((auth)->
-                        auth.anyRequest().authenticated())
+                .authorizeRequests()
+                .anyRequest()
+                .permitAll()
+                .and()
                 .httpBasic();
-        return http.build();
     }
 }
