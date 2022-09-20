@@ -27,7 +27,9 @@ public class UserPostService {
      * @throws NoSuchElementException if {@link UserPost} with corresponding id is not found
      */
     public UserPost getUserPostById(Long id) {
-        return userPostRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        return userPostRepository.findById(id).orElseThrow(() ->
+                new NoSuchElementException("User post not found with id: '%d'!".formatted(id))
+        );
     }
 
     /**
@@ -58,7 +60,7 @@ public class UserPostService {
     /**
      * Updates {@link UserPost} in the database if exists, otherwise throws {@link NoSuchElementException}.
      *
-     * @param id of {@link UserPost} to be updated
+     * @param id              of {@link UserPost} to be updated
      * @param updatedUserPost the updated information of {@link UserPost}
      * @throws NoSuchElementException if {@link UserPost} is not found
      */

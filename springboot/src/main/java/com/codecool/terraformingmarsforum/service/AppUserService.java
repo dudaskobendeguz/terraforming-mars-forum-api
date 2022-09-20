@@ -14,7 +14,9 @@ public class AppUserService {
     private final AppUserRepository appUserRepository;
 
     public AppUser getAppUserById(Long id) {
-        return appUserRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        return appUserRepository.findById(id).orElseThrow(() ->
+                new NoSuchElementException("User not found with id: '%d'!".formatted(id))
+        );
     }
 
     /**
@@ -26,6 +28,10 @@ public class AppUserService {
      * @return AppUser Object if username or email is exists, throws NoSuchElementException anyway
      */
     public AppUser getAppUserByUsernameOrEmail(String username, String email) {
-        return appUserRepository.findAppUserByUsernameOrEmail(username, email).orElseThrow(NoSuchElementException::new);
+        return appUserRepository.findAppUserByUsernameOrEmail(username, email).orElseThrow(() ->
+                new NoSuchElementException(
+                        "User not found with username: '%s' or email: '%s'".formatted(username, email)
+                )
+        );
     }
 }

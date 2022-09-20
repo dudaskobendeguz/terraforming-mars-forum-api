@@ -32,33 +32,29 @@ public class LeaguePostService {
     //TODO description should be generated on frontend
     private void createDescription(LeaguePost leaguePost) {
         switch (leaguePost.getLeagueStatus()) {
-            case STARTED ->
-                    leaguePost.setDescription(String.format(
-                            "%s has started a %s %s league!",
-                            leaguePost.getLeagueDetail().getLeagueAdmin().getUsername(),
-                            leaguePost.getLeagueDetail().getGameType(),
-                            leaguePost.getLeagueDetail().getName()
-                    ));
+            case STARTED -> leaguePost.setDescription(String.format(
+                    "%s has started a %s %s league!",
+                    leaguePost.getLeagueDetail().getLeagueAdmin().getUsername(),
+                    leaguePost.getLeagueDetail().getGameType(),
+                    leaguePost.getLeagueDetail().getName()
+            ));
 
-            case ROUND_IN_PROGRESS ->
-                    leaguePost.setDescription(String.format(
-                            "Round %d started!",
-                            (leaguePost.getNumberOfFinishedRounds() + 1)
-                    ));
+            case ROUND_IN_PROGRESS -> leaguePost.setDescription(String.format(
+                    "Round %d started!",
+                    (leaguePost.getNumberOfFinishedRounds() + 1)
+            ));
 
-            case ROUND_FINISHED ->
-                    leaguePost.setDescription(String.format(
-                            "Round %d/%d finished",
-                            leaguePost.getNumberOfFinishedRounds(),
-                            leaguePost.getLeagueDetail().getNumberOfRounds()
-                    ));
+            case ROUND_FINISHED -> leaguePost.setDescription(String.format(
+                    "Round %d/%d finished",
+                    leaguePost.getNumberOfFinishedRounds(),
+                    leaguePost.getLeagueDetail().getNumberOfRounds()
+            ));
 
-            case FINISHED ->
-                    leaguePost.setDescription(String.format(
-                            "The %s %s league has finished!",
-                            leaguePost.getLeagueDetail().getGameType(),
-                            leaguePost.getLeagueDetail().getName()
-                    ));
+            case FINISHED -> leaguePost.setDescription(String.format(
+                    "The %s %s league has finished!",
+                    leaguePost.getLeagueDetail().getGameType(),
+                    leaguePost.getLeagueDetail().getName()
+            ));
             default -> throw new IllegalArgumentException("No description for the given LeagueStatus");
         }
     }
@@ -80,7 +76,9 @@ public class LeaguePostService {
     }
 
     public void addCommentToPostByPostId(Long postId, Comment comment) {
-        LeaguePost leaguePost = leaguePostRepository.findById(postId).orElseThrow(NoSuchElementException::new);
+        LeaguePost leaguePost = leaguePostRepository.findById(postId).orElseThrow(() ->
+                new NoSuchElementException("League post not found with id: '%d'!".formatted(postId))
+        );
         leaguePost.getComments().add(comment);
         leaguePostRepository.save(leaguePost);
     }
