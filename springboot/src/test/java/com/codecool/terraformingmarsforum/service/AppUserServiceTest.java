@@ -57,9 +57,10 @@ class AppUserServiceTest {
     @Test
     public void getAppUserByUsernameOrEmail_ValidUsername_ReturnsAppUser() {
         AppUser expectedTestUser = getAppUser();
-        Mockito.when(appUserRepository.findAppUserByUsernameOrEmail("TesztElek", "notValid"))
+        String username = "TesztElek";
+        Mockito.when(appUserRepository.findAppUserByUsernameOrEmail(username, username))
                 .thenReturn(Optional.ofNullable(expectedTestUser));
-        AppUser actualTestUser = appUserService.getAppUserByUsernameOrEmail("TesztElek", "notValid");
+        AppUser actualTestUser = appUserService.getAppUserByUsernameOrEmail(username);
 
         assertEquals(expectedTestUser, actualTestUser);
     }
@@ -67,9 +68,10 @@ class AppUserServiceTest {
     @Test
     public void getAppUserByUsernameOrEmail_ValidEmail_ReturnsAppUser() {
         AppUser expectedTestUser = getAppUser();
-        Mockito.when(appUserRepository.findAppUserByUsernameOrEmail("notValid", "tesztelek@gmail.com"))
+        String email = "tesztelek@gmail.com";
+        Mockito.when(appUserRepository.findAppUserByUsernameOrEmail(email, email))
                 .thenReturn(Optional.ofNullable(expectedTestUser));
-        AppUser actualTestUser = appUserService.getAppUserByUsernameOrEmail("notValid", "tesztelek@gmail.com");
+        AppUser actualTestUser = appUserService.getAppUserByUsernameOrEmail(email);
 
         assertEquals(expectedTestUser, actualTestUser);
     }
@@ -77,7 +79,8 @@ class AppUserServiceTest {
 
     @Test
     public void getAppUserByUsernameOrEmail_InvalidEmailAndUsername_ThrowsException() {
+        String notValidData = "notValidData";
         assertThrows(NoSuchElementException.class,
-                ()-> appUserService.getAppUserByUsernameOrEmail("notValidUsername", "notValidEmail"));
+                ()-> appUserService.getAppUserByUsernameOrEmail(notValidData));
     }
 }
