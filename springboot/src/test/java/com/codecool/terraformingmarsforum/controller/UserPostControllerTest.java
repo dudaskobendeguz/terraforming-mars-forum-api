@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -120,4 +121,15 @@ class UserPostControllerTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void getUserPostById_GetUserPostById_HasUserPostInResponseBody() {
+        Long id = 1L;
+        UserPost expected = UserPost.builder().id(id).build();
+
+        when(userPostService.getUserPostById(id)).thenReturn(expected);
+
+        UserPost actual = userPostController.getUserPostById(id).getBody();
+
+        assertEquals(expected, actual);
+    }
 }
