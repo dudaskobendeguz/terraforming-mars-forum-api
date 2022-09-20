@@ -32,7 +32,7 @@ public class AppUserController {
 
     @GetMapping("/login/{userData}")
     public ResponseEntity<AppUser> getUserByUsernameOrEmail(@PathVariable String userData){
-        AppUser appUser = appUserService.getAppUserByUsernameOrEmail(userData, userData);
+        AppUser appUser = appUserService.getAppUserByUsernameOrEmail(userData);
         return ResponseEntity.ok(appUser);
     }
 

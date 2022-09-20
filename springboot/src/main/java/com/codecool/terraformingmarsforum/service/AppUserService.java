@@ -22,15 +22,13 @@ public class AppUserService {
     /**
      * This method tries to get a user from the DB using username or email.
      * Any valid username OR email is acceptable
-     * @param username of the user
-     *                 OR
-     * @param email of the user
+     * @param userData username or email of the user
      * @return AppUser Object if username or email is exists, throws NoSuchElementException anyway
      */
-    public AppUser getAppUserByUsernameOrEmail(String username, String email) {
-        return appUserRepository.findAppUserByUsernameOrEmail(username, email).orElseThrow(() ->
+    public AppUser getAppUserByUsernameOrEmail(String userData) {
+        return appUserRepository.findAppUserByUsernameOrEmail(userData, userData).orElseThrow(() ->
                 new NoSuchElementException(
-                        "User not found with username: '%s' or email: '%s'".formatted(username, email)
+                        "User not found with username/email: '%s'!".formatted(userData)
                 )
         );
     }
