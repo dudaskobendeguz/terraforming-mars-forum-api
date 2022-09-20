@@ -79,8 +79,8 @@ public class UserPostService {
         userPostRepository.deleteById(id);
     }
 
-    public void addCommentToPostByPostId(Long id, Comment comment) {
-        UserPost userPost = getUserPostById(id);
+    public void addCommentToUserPost(Long userPostId, Comment comment) {
+        UserPost userPost = getUserPostById(userPostId);
         userPost.getComments().add(comment);
         userPostRepository.save(userPost);
     }

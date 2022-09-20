@@ -1,12 +1,14 @@
 package com.codecool.terraformingmarsforum.service;
 
 import com.codecool.terraformingmarsforum.model.AppUser;
+import com.codecool.terraformingmarsforum.model.Comment;
 import com.codecool.terraformingmarsforum.model.UserPost;
 import com.codecool.terraformingmarsforum.repository.AppUserRepository;
 import com.codecool.terraformingmarsforum.repository.UserPostRepository;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -48,6 +50,13 @@ class UserPostServiceTest {
         return UserPost.builder().user(getUser()).description("").build();
     }
 
+    private Comment getComment() {
+        return Comment.builder().id(1L).build();
+    }
+
+    /*------------------------------- Get All User Posts -------------------------------*/
+
+
     @Test
     public void getAllUserPosts_GetAllUserPosts_ReturnsAllUserPosts() {
         List<UserPost> expected = getUserPosts();
@@ -57,6 +66,9 @@ class UserPostServiceTest {
         List<UserPost> actual = userPostService.getAllUserPosts();
         assertEquals(expected, actual);
     }
+
+    /*------------------------------- Create User Post -------------------------------*/
+
 
     @Test
     public void createUserPost_NewUserPost_HasNewId() {
@@ -93,11 +105,46 @@ class UserPostServiceTest {
         assertEquals("User: 1 not found", illegalArgumentException.getMessage());
     }
 
+    /*------------------------------- Update User Post -------------------------------*/
+
+
+    @Test
+    public void updateUserPost_UpdatingUserPost_UpdatesUserPost() {
+        UserPost userPost = getUserPost();
+        UserPost updatedUserPost = getUserPost();
+        Long id = 1L;
+        String expected = "updated description";
+        updatedUserPost.setDescription(expected);
+
+        when(userPostRepository.findById(id)).thenReturn(Optional.of(userPost));
+        when(userPostRepository.save(any(UserPost.class))).thenReturn(userPost);
+
+        userPostService.updateUserPost(id, updatedUserPost);
+
+        String actual = userPost.getDescription();
+        assertEquals(expected, actual);
+    }
+
     @Test
     public void updateUserPost_UserPostNotFound_ThrowsIllegalArgumentException() {
         when(userPostRepository.findById(anyLong())).thenReturn(Optional.empty());
 
         assertThrows(NoSuchElementException.class, () -> userPostService.updateUserPost(1L, getUserPost()));
+    }
+
+    /*------------------------------- Delete User Post -------------------------------*/
+
+
+    @Test
+    public void deleteUserPost_DeletingUserPost_InvokesRepositoryDeleteExactlyOnce() {
+        UserPost userPost = getUserPost();
+        Long id = 1L;
+
+        when(userPostRepository.findById(id)).thenReturn(Optional.of(userPost));
+
+        userPostService.deleteUserPost(id);
+
+        verify(userPostRepository, times(1)).deleteById(id);
     }
 
     @Test
@@ -106,4 +153,22 @@ class UserPostServiceTest {
 
         assertThrows(NoSuchElementException.class, () -> userPostService.deleteUserPost(1L));
     }
+
+
+    /*------------------------------- Add Comment To User Post -------------------------------*/
+
+    @Test
+    public void addCommentToUserPost_AfterAddingComment_CommentIsPresentInUserPost() {
+        UserPost userPost = getUserPost();
+        Long id = userPost.getId();
+        Comment comment = getComment();
+
+        when(userPostRepository.findById(id)).thenReturn(Optional.of(userPost));
+        when(userPostRepository.save(any(UserPost.class))).thenReturn(userPost);
+
+        userPostService.addCommentToUserPost(userPost.getId(), comment);
+
+        assertTrue(userPost.getComments().contains(comment));
+    }
+
 }
