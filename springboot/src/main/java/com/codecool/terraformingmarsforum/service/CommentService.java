@@ -27,4 +27,12 @@ public class CommentService {
         }
         return result;
     }
+
+    /**
+     * Function for deleting comment in commentRepository
+     * @param commentId Long
+     */
+    public void deleteCommentById(Long commentId) {
+        commentRepository.deleteById(commentId);
+    }
 }

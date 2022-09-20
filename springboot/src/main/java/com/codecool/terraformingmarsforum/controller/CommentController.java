@@ -51,4 +51,15 @@ public class CommentController {
         return ResponseEntity.created(URI.create("/api/comments/")).body(comment);
     }
 
+    /**
+     * API route for deleting comment by id
+     * @param commentId Long
+     * @return ResponseEntity
+     */
+    @DeleteMapping("")
+    public ResponseEntity<Void> deleteComment(@RequestBody Long commentId) {
+        commentService.deleteCommentById(commentId);
+        return ResponseEntity.noContent().build();
+    }
+
 }
