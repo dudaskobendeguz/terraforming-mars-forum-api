@@ -10,7 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class CommentServiceTest {
@@ -34,6 +34,14 @@ class CommentServiceTest {
         when(commentRepository.save(comment)).thenReturn(comment);
         Comment actual = commentService.createComment(comment, PostType.LEAGUE, 1L);
         Assertions.assertEquals(comment, actual);
+    }
+
+    @Test
+    public void deleteComment_commentDeletionById_commentNotInDB() {
+        Long commentId = 1L;
+        commentService.deleteCommentById(commentId);
+
+        verify(commentRepository, times(1)).deleteById(commentId);
     }
 
 }
