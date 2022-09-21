@@ -82,4 +82,11 @@ class CommentControllerTest {
         HttpStatus actual = commentController.updateComment(commentUpdateDTO).getStatusCode();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void deleteComment_deletingComment_returnStatus204() {
+        HttpStatus expected = HttpStatus.NO_CONTENT;
+        HttpStatus actual = commentController.deleteComment(1L).getStatusCode();
+        assertEquals(expected, actual);
+    }
 }
