@@ -1,5 +1,6 @@
 package com.codecool.terraformingmarsforum.security;
 
+import com.codecool.terraformingmarsforum.security.jwt.JwtTokenVerifier;
 import com.codecool.terraformingmarsforum.security.jwt.JwtUsernameAndPasswordAuthenticationFilter;
 import com.codecool.terraformingmarsforum.service.AppUserService;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
+                .addFilterAfter(new JwtTokenVerifier(), JwtUsernameAndPasswordAuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers("/").hasRole("USER")
                 .anyRequest()
