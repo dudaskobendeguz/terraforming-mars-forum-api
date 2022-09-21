@@ -1,5 +1,7 @@
 package com.codecool.terraformingmarsforum.service;
 
+import com.codecool.terraformingmarsforum.dto.CommentCreationDTO;
+import com.codecool.terraformingmarsforum.mappers.CommentMapper;
 import com.codecool.terraformingmarsforum.model.Comment;
 import com.codecool.terraformingmarsforum.model.types.PostType;
 import com.codecool.terraformingmarsforum.repository.CommentRepository;
@@ -13,19 +15,24 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final LeaguePostService leaguePostService;
     private final UserPostService userPostService;
+    private final CommentMapper commentMapper;
 
     /**
      * Saves comment to comment table and links it to post.
-     * @param   comment Comment
-     * @param   postType PostType
-     * @param   postId Long*/
-    public Comment createComment(Comment comment, PostType postType, Long postId) {
-        Comment result = commentRepository.save(comment);
+     * @param commentDetails CommentCreationDTO -- details unpacked via mapStruct
+     * @return savedComment Comment
+     */
+    public Comment createComment(CommentCreationDTO commentDetails) {
+        Comment newComment = commentMapper.CommentCreationDTOToComment(commentDetails);
+        PostType postType = commentDetails.getPostType();
+        Long postId = commentDetails.getPostId();
+
+        Comment savedComment = commentRepository.save(newComment);
         switch (postType) {
-            case USER -> userPostService.addCommentToUserPost(postId, comment);
-            case LEAGUE -> leaguePostService.addCommentToPostByPostId(postId, comment);
+            case USER -> userPostService.addCommentToUserPost(postId, newComment);
+            case LEAGUE -> leaguePostService.addCommentToPostByPostId(postId, newComment);
         }
-        return result;
+        return savedComment;
     }
 
     /**
