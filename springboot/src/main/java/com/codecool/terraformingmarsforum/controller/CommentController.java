@@ -42,11 +42,11 @@ public class CommentController {
      *  isTimestampOverride = True
      *  timestamp = new Timestamp
      * @param commentUpdateDTO dto for update comment
-     * @return ResponseEntity<Comment>
+     * @return ResponseEntity<Void>
      */
     @PutMapping("")
-    public ResponseEntity<Comment> updateComment(@RequestBody CommentUpdateDTO commentUpdateDTO) {
-        Comment comment = commentService.updateComment(commentUpdateDTO);
-        return ResponseEntity.created(URI.create("/api/comments/")).body(comment);
+    public ResponseEntity<Void> updateComment(@RequestBody CommentUpdateDTO commentUpdateDTO) {
+        commentService.updateComment(commentUpdateDTO);
+        return ResponseEntity.noContent().build();
     }
 }
