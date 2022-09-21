@@ -1,6 +1,7 @@
 package com.codecool.terraformingmarsforum.controller;
 
-import com.codecool.terraformingmarsforum.dto.CommentCreationDTO;
+import com.codecool.terraformingmarsforum.dto.comment.CommentCreationDTO;
+import com.codecool.terraformingmarsforum.dto.comment.CommentUpdateDTO;
 import com.codecool.terraformingmarsforum.mappers.CommentMapper;
 import com.codecool.terraformingmarsforum.model.AppUser;
 import com.codecool.terraformingmarsforum.model.Comment;
@@ -17,6 +18,7 @@ import org.springframework.http.HttpStatus;
 
 import java.util.Date;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -26,10 +28,12 @@ class CommentControllerTest {
     private CommentService commentService;
     private CommentController commentController;
     private final CommentMapper commentMapper = Mappers.getMapper(CommentMapper.class);
+    private Date date;
 
     @BeforeEach
     public void init() {
         commentController = new CommentController(commentService);
+        date = new Date();
     }
 
     @Test
@@ -42,7 +46,7 @@ class CommentControllerTest {
                         .build())
                 .postType(PostType.LEAGUE)
                 .description("desc")
-                .timeStamp(new Date())
+                .timeStamp(date)
                 .build()).getStatusCode();
         Assertions.assertEquals(expected, actual);
     }
@@ -56,7 +60,7 @@ class CommentControllerTest {
                         .build())
                 .postType(PostType.LEAGUE)
                 .description("desc")
-                .timeStamp(new Date())
+                .timeStamp(date)
                 .build();
 
         Comment expected = commentMapper.CommentCreationDTOToComment(commentCreationDTO);
@@ -66,4 +70,16 @@ class CommentControllerTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void updateComment_updatingComment_returnStatus204() {
+        CommentUpdateDTO commentUpdateDTO = CommentUpdateDTO.builder()
+                .id(1L)
+                .description("desc")
+                .isTimestampOverride(false)
+                .timeStamp(date)
+                .build();
+        HttpStatus expected = HttpStatus.CREATED;
+        HttpStatus actual = commentController.updateComment(commentUpdateDTO).getStatusCode();
+        assertEquals(expected, actual);
+    }
 }
