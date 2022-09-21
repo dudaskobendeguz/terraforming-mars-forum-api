@@ -1,6 +1,7 @@
 package com.codecool.terraformingmarsforum.controller;
 
-import com.codecool.terraformingmarsforum.dto.CommentCreationDTO;
+import com.codecool.terraformingmarsforum.dto.comment.CommentCreationDTO;
+import com.codecool.terraformingmarsforum.dto.comment.CommentUpdateDTO;
 import com.codecool.terraformingmarsforum.model.Comment;
 import com.codecool.terraformingmarsforum.service.CommentService;
 import lombok.RequiredArgsConstructor;
@@ -35,4 +36,17 @@ public class CommentController {
         return ResponseEntity.noContent().build();
     }
 
+    /**
+     * API route for updating comment by id.
+     * If the Timestamp need to be overwritten then provide
+     *  isTimestampOverride = True
+     *  timestamp = new Timestamp
+     * @param commentUpdateDTO dto for update comment
+     * @return ResponseEntity<Comment>
+     */
+    @PutMapping("")
+    public ResponseEntity<Comment> updateComment(@RequestBody CommentUpdateDTO commentUpdateDTO) {
+        Comment comment = commentService.updateComment(commentUpdateDTO);
+        return ResponseEntity.created(URI.create("/api/comments/")).body(comment);
+    }
 }
