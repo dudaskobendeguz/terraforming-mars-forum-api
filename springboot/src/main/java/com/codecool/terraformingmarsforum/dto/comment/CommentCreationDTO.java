@@ -1,4 +1,4 @@
-package com.codecool.terraformingmarsforum.dto;
+package com.codecool.terraformingmarsforum.dto.comment;
 
 import com.codecool.terraformingmarsforum.model.AppUser;
 import com.codecool.terraformingmarsforum.model.types.PostType;
