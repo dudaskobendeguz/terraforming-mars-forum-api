@@ -78,7 +78,7 @@ class CommentControllerTest {
                 .isTimestampOverride(false)
                 .timeStamp(date)
                 .build();
-        HttpStatus expected = HttpStatus.CREATED;
+        HttpStatus expected = HttpStatus.NO_CONTENT;
         HttpStatus actual = commentController.updateComment(commentUpdateDTO).getStatusCode();
         assertEquals(expected, actual);
     }
