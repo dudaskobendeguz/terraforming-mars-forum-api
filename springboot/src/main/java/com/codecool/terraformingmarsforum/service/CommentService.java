@@ -1,12 +1,16 @@
 package com.codecool.terraformingmarsforum.service;
 
-import com.codecool.terraformingmarsforum.dto.CommentCreationDTO;
+import com.codecool.terraformingmarsforum.dto.comment.CommentCreationDTO;
+import com.codecool.terraformingmarsforum.dto.comment.CommentUpdateDTO;
 import com.codecool.terraformingmarsforum.mappers.CommentMapper;
 import com.codecool.terraformingmarsforum.model.Comment;
 import com.codecool.terraformingmarsforum.model.types.PostType;
 import com.codecool.terraformingmarsforum.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -41,5 +45,23 @@ public class CommentService {
      */
     public void deleteCommentById(Long commentId) {
         commentRepository.deleteById(commentId);
+    }
+
+    /**
+     * Update comment description and comment timestamp if isTimestampOverride = True
+     * @param commentUpdateDTO dto fro comment update
+     * @return updated comment
+     * @throws NoSuchElementException if comment is not found on specified id
+     * @throws IllegalArgumentException if timestamp should be overridden, but timestamp is not provided
+     */
+    public Comment updateComment(CommentUpdateDTO commentUpdateDTO) {
+        Comment comment = commentRepository.findById(commentUpdateDTO.getId()).orElseThrow(NoSuchElementException::new);
+        comment.setDescription(commentUpdateDTO.getDescription());
+        if (commentUpdateDTO.getIsTimestampOverride()) {
+            Date timeStamp = commentUpdateDTO.getTimeStamp();
+            if (timeStamp == null) {throw new IllegalArgumentException();}
+            comment.setTimeStamp(timeStamp);
+        }
+        return commentRepository.save(comment);
     }
 }
