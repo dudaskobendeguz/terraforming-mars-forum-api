@@ -1,14 +1,12 @@
 package com.codecool.terraformingmarsforum.controller;
 
 
+import com.codecool.terraformingmarsforum.dto.user.CreateAppUserDTO;
 import com.codecool.terraformingmarsforum.model.AppUser;
 import com.codecool.terraformingmarsforum.service.AppUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -34,6 +32,11 @@ public class AppUserController {
     public ResponseEntity<AppUser> getUserByUsernameOrEmail(@PathVariable String userData){
         AppUser appUser = appUserService.getAppUserByUsernameOrEmail(userData);
         return ResponseEntity.ok(appUser);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<AppUser> registerUser(@RequestBody CreateAppUserDTO userDetails) {
+        return ResponseEntity.ok(appUserService.createAppUser(userDetails));
     }
 
 }

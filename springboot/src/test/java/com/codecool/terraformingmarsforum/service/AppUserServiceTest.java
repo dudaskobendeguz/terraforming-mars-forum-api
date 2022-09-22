@@ -1,5 +1,6 @@
 package com.codecool.terraformingmarsforum.service;
 
+import com.codecool.terraformingmarsforum.mappers.AppUserMapper;
 import com.codecool.terraformingmarsforum.model.AppUser;
 import com.codecool.terraformingmarsforum.repository.AppUserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Date;
 import java.util.NoSuchElementException;
@@ -21,10 +23,14 @@ class AppUserServiceTest {
     @Mock
     private AppUserRepository appUserRepository;
     private AppUserService appUserService;
+    @Mock
+    private AppUserMapper appUserMapper;
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @BeforeEach
     public void init() {
-        appUserService = new AppUserService(appUserRepository);
+        appUserService = new AppUserService(appUserRepository, appUserMapper, passwordEncoder);
     }
 
     @Test

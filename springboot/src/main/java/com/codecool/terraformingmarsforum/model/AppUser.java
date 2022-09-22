@@ -7,6 +7,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -31,8 +32,9 @@ public class AppUser {
     private String email;
     @JsonIgnore
     private String password;
+    @Builder.Default
     @ElementCollection(fetch = FetchType.EAGER)
-    private List<Role> roles;
+    private List<Role> roles = new ArrayList<>();
 
     @Column(length = 1000)
     private String imageSource;
@@ -40,6 +42,9 @@ public class AppUser {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
 
+    public void addRole(Role role) {
+        roles.add(role);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
