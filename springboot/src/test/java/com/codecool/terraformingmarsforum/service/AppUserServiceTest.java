@@ -1,5 +1,6 @@
 package com.codecool.terraformingmarsforum.service;
 
+import com.codecool.terraformingmarsforum.mappers.AppUserMapper;
 import com.codecool.terraformingmarsforum.model.AppUser;
 import com.codecool.terraformingmarsforum.repository.AppUserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,10 +22,12 @@ class AppUserServiceTest {
     @Mock
     private AppUserRepository appUserRepository;
     private AppUserService appUserService;
+    @Mock
+    private AppUserMapper appUserMapper;
 
     @BeforeEach
     public void init() {
-        appUserService = new AppUserService(appUserRepository);
+        appUserService = new AppUserService(appUserRepository, appUserMapper);
     }
 
     @Test

@@ -1,7 +1,10 @@
 package com.codecool.terraformingmarsforum.service;
 
+import com.codecool.terraformingmarsforum.dto.user.CreateAppUserDTO;
+import com.codecool.terraformingmarsforum.mappers.AppUserMapper;
 import com.codecool.terraformingmarsforum.model.AppUser;
 import com.codecool.terraformingmarsforum.repository.AppUserRepository;
+import com.codecool.terraformingmarsforum.security.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -10,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -19,6 +23,7 @@ import java.util.Set;
 public class AppUserService  implements UserDetailsService {
 
     private final AppUserRepository appUserRepository;
+    private final AppUserMapper appUserMapper;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -50,5 +55,12 @@ public class AppUserService  implements UserDetailsService {
                         "User not found with username/email: '%s'!".formatted(userData)
                 )
         );
+    }
+
+    public AppUser createAppUser(CreateAppUserDTO userDetails){
+        AppUser appUser = appUserMapper.createAppUserDTOtoAppUser(userDetails);
+        appUser.addRole(Role.ROLE_USER);
+        appUser.setTimestamp(new Date());
+        return appUserRepository.save(appUser);
     }
 }
