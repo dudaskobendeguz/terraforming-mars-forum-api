@@ -5,7 +5,6 @@ import com.codecool.terraformingmarsforum.dto.user.CreateAppUserDTO;
 import com.codecool.terraformingmarsforum.model.AppUser;
 import com.codecool.terraformingmarsforum.service.AppUserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +34,7 @@ public class AppUserController {
         return ResponseEntity.ok(appUser);
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<AppUser> registerUser(@RequestBody CreateAppUserDTO userDetails) {
         return ResponseEntity.ok(appUserService.createAppUser(userDetails));
     }
