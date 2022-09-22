@@ -13,10 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.NoSuchElementException;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -58,6 +55,10 @@ public class AppUserService  implements UserDetailsService {
     }
 
     public AppUser createAppUser(CreateAppUserDTO userDetails){
+        Optional<AppUser> existingUser = appUserRepository.findAppUserByUsernameOrEmail(userDetails.getUsername(), userDetails.getEmail());
+        if (existingUser.isPresent()) {
+            throw new IllegalArgumentException("User already exists");
+        }
         AppUser appUser = appUserMapper.createAppUserDTOtoAppUser(userDetails);
         appUser.addRole(Role.ROLE_USER);
         appUser.setTimestamp(new Date());
