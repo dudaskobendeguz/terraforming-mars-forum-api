@@ -14,6 +14,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.servlet.http.HttpServletResponse;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -33,6 +35,9 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").hasRole("USER")
                 .anyRequest()
                 .authenticated();
+
+        http.exceptionHandling().authenticationEntryPoint((request, response, authException) ->
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized"));
     }
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider(){
