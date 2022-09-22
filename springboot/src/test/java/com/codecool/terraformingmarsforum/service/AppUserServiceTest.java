@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Date;
 import java.util.NoSuchElementException;
@@ -24,10 +25,12 @@ class AppUserServiceTest {
     private AppUserService appUserService;
     @Mock
     private AppUserMapper appUserMapper;
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @BeforeEach
     public void init() {
-        appUserService = new AppUserService(appUserRepository, appUserMapper);
+        appUserService = new AppUserService(appUserRepository, appUserMapper, passwordEncoder);
     }
 
     @Test
